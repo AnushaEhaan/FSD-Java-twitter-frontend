@@ -15,7 +15,26 @@ const authReducer = (
 				...state,
 				loading: true,
 				error: null,
+				user: null,
+				isAuthenticated: false,
 			};
+		case AuthActionTypes.AUTH_LOGIN_SUCCESS:
+			return {
+				...state,
+				loading: false,
+				error: null,
+				user: action.payload,
+				isAuthenticated: true,
+			};
+		case AuthActionTypes.AUTH_LOGIN_FAILURE:
+			return {
+				...state,
+				loading: false,
+				error: action.payload,
+				isAuthenticated: false,
+				user: null,
+			};
+
 		default:
 			return state;
 	}

@@ -4,6 +4,9 @@ const baseURL = 'http://localhost:5050/api/v1';
 
 const api = axios.create({
     baseURL,
+    headers: {
+        'Content-Type': 'application/json',
+    },
 });
 
 api.interceptors.request.use(

@@ -15,7 +15,12 @@ const Spinner = ({ size, height:h }: Iprops) => {
 				alignItems: 'center',
 			}}
 		>
-			<div className={` ${size ? `spinner-border-${size}` : 'spinner-border'} `} role='status'>
+			<div
+				className={`spinner-border ${
+					size && `spinner-border-${size}`
+				} `}
+				role='status'
+			>
 				<span className='visually-hidden'>Loading...</span>
 			</div>
 		</div>

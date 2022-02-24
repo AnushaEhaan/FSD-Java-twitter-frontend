@@ -1,5 +1,33 @@
 import { AuthActionTypes, AuthAction } from '../../interfaces/store/auth.store.types';
-
+import axios from '../../common/axios';
 const authLoginStart = (): AuthAction => ({
     type: AuthActionTypes.AUTH_LOGIN_START,
 });
+
+export const authLoginSuccess = (user: any): AuthAction => ({
+    type: AuthActionTypes.AUTH_LOGIN_SUCCESS,
+    payload: user,
+});
+
+const authLoginFailure = (error: any): AuthAction => ({
+    type: AuthActionTypes.AUTH_LOGIN_FAILURE,
+    payload: error,
+});
+
+
+export const authLogin = (form:any) => async (dispatch: any) => {
+    dispatch(authLoginStart());
+    try {
+        const response = await axios.post('/auth/login', JSON.stringify(form));
+        const data = await response.data;
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', data.user);
+        dispatch(authLoginSuccess(data.user));
+        return data.user;
+    } catch (error) {
+        dispatch(authLoginFailure(error));
+        return error;
+    }
+};
+
+

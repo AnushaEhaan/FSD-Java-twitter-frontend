@@ -2,6 +2,7 @@ export interface AuthState {
 	user: any;
 	loading: boolean;
     error: string | null;
+	isAuthenticated: boolean;
 }
 
 export interface AuthAction {
@@ -13,6 +14,7 @@ export const initialState: AuthState = {
 	user: null,
     loading: false,
     error: null,
+	isAuthenticated: false
 };
 
 export enum AuthActionTypes {
