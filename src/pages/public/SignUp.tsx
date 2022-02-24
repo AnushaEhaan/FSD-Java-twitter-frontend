@@ -40,7 +40,7 @@ const SignUp = () => {
 			</section>
 			<footer className='mt-5'>
 				<p className='text-center text-gray-600'>
-					Already have an account?
+					Already have an account?{" "}
 					<Link to='/'>
 						<span className='fw-bold fs-17'>Sign In</span>
 					</Link>
