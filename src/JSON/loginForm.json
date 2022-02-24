@@ -1,0 +1,16 @@
+[
+    {
+        "name": "email",
+        "value": "",
+        "type": "email",
+        "placeholder": "Email address",
+        "required": true
+    },
+    {
+        "name": "password",
+        "value": "",
+        "type": "password",
+        "placeholder": "Password",
+        "required": true
+    }
+]

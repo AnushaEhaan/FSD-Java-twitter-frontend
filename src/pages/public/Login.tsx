@@ -1,7 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import formJson from '../../JSON/loginForm.json';
+
 
 const Login = () => {
+	const initialFormState:any = {}
+	formJson.forEach(form => {
+		initialFormState[`${form.name}`] = '';
+	});
+
+	const [form, setForm] = React.useState<any>(initialFormState);
+
+	const handleSubmit = (e:any) => {
+		e.preventDefault();
+		console.log(form);
+	}
+
 	return (
 		<div>
 			<header>
@@ -9,19 +23,30 @@ const Login = () => {
 			</header>
       
 			<section className='mt-7'>
-				<form>
-					<div className='mb-3'>
-						<label htmlFor='Email' className='form-label'>
-							Email address
-						</label>
-						<input type='email' className='form-control' id='Email' />
-					</div>
-					<div className='mb-3'>
-						<label htmlFor='Password' className='form-label'>
-							Password
-						</label>
-						<input type='email' className='form-control' id='Password' />
-					</div>
+				<form onSubmit={handleSubmit}>
+					{
+						formJson.map((field, index) => {
+							return (
+								<div key={index} className='mb-3'>
+									<label htmlFor={field.name} className='form-label'>
+										{field.placeholder}
+									</label>
+									<input 
+											type={field.type} className='form-control' 
+											id={field.name}
+											name={field.name}
+											value={form[field.name]}
+											onChange={(e) => {
+												setForm({
+													...form,
+													[field.name]: e.target.value
+												})
+											}}
+									/>
+								</div>
+							);
+						})
+					}
 					<div>
 						<button className='btn btn-dark mt-4 w-100 btn-block'>Sign in</button>
 					</div>
