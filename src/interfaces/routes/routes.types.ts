@@ -8,5 +8,6 @@ export interface IRoute {
 export enum Routes {
 	Home = '/',
 	Login = '/login',
+	SignUp = '/signup',
 	Dashboard = '/dashboard',
 }

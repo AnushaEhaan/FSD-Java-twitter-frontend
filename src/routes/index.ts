@@ -5,12 +5,10 @@ export const secureRoutes: IRoute[] = [
 	{
 		path: Routes.Home,
 		element: lazy(() => import('../pages/secure/Home')),
-		exact: true,
 		childrens: [
 			{
 				path: Routes.Dashboard,
 				element: lazy(() => import('../pages/secure/Dashboard')),
-				exact: true,
 			},
 		],
 	},
@@ -19,7 +17,16 @@ export const secureRoutes: IRoute[] = [
 export const publicRoutes: IRoute[] = [
 	{
 		path: Routes.Home,
-		element: lazy(() => import('../pages/public/Login')),
-		exact: true,
+		element: lazy(() => import('../pages/public/Register')),
+		childrens: [
+			{
+				path: Routes.Home,
+				element: lazy(() => import('../pages/public/Login')),
+			},
+			{
+				path: Routes.SignUp,
+				element: lazy(() => import('../pages/public/SignUp')),
+			},
+		],
 	},
 ];
