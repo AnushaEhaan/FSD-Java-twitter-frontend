@@ -21,7 +21,7 @@ export const authLogin = (form:any) => async (dispatch: any) => {
         const response = await axios.post('/auth/login', JSON.stringify(form));
         const data = await response.data;
         localStorage.setItem('token', data.token);
-        localStorage.setItem('user', data.user);
+        localStorage.setItem('user', JSON.stringify(data.user));
         dispatch(authLoginSuccess(data.user));
         return data.user;
     } catch (error) {
