@@ -37,7 +37,7 @@ $grays: (
 // fusv-enable
 
 // scss-docs-start color-variables
-$blue:    #0864ef !default;
+$blue:    #1d9bf0 !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
 $pink:    #d41776 !default;
@@ -762,7 +762,7 @@ $table-variants: (
 // Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 
 // scss-docs-start input-btn-variables
-$input-btn-padding-y:         .4rem !default;
+$input-btn-padding-y:         .5rem !default;
 $input-btn-padding-x:         .8rem !default;
 $input-btn-font-family:       null !default;
 $input-btn-font-size:         $font-size-base * 0.94 !default;

@@ -2,11 +2,17 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 const Register = () => {
   return (
-    <>
-        <h1>Register</h1>
-        <Outlet/>
-    </>
-  )
+		<div className='bg-dark bg-opacity-35 pt-7 vh-100'>
+			<section className='w-md-xl2 bg-white shadow-lg mx-auto  p-6 px-9  rounded-3'>
+				<div className='text-center mb-5'>
+					<i className='fa-brands fa-twitter fs-39'></i>
+				</div>
+				<aside className='col'>
+					<Outlet />
+				</aside>
+			</section>
+		</div>
+	);
 }
 
 export default Register
