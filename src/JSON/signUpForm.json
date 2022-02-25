@@ -1,0 +1,30 @@
+[
+    {
+        "name": "name",
+        "value": "",
+        "type": "text",
+        "placeholder": "Name",
+        "required": true
+    },
+    {
+        "name": "email",
+        "value": "",
+        "type": "email",
+        "placeholder": "Email address",
+        "required": true
+    },
+    {
+        "name": "password",
+        "value": "",
+        "type": "password",
+        "placeholder": "Password",
+        "required": true
+    },
+    {
+        "name": "confirmPassword",
+        "value": "",
+        "type": "password",
+        "placeholder": "Confirm Password",
+        "required": true
+    }
+]

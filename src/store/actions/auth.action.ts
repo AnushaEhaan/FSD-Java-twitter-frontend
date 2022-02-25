@@ -1,6 +1,8 @@
 import { AuthActionTypes, AuthAction } from '../../interfaces/store/auth.store.types';
 import axios from '../../common/axios';
 import Cookies from 'js-cookie';
+import { toast } from 'react-toastify';
+
 
 const authLoginStart = (): AuthAction => ({
     type: AuthActionTypes.AUTH_LOGIN_START,
@@ -25,10 +27,10 @@ export const authLogin = (form:any) => async (dispatch: any) => {
         Cookies.set('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
         dispatch(authLoginSuccess(data.user));
-        return data.user;
-    } catch (error) {
-        dispatch(authLoginFailure(error));
-        return error;
+        toast.success('Login Successful');
+    } catch (error:any) {
+        dispatch(authLoginFailure(error?.response.data.message));
+        toast.error(error?.response.data.message);
     }
 };
 
@@ -40,4 +42,5 @@ export const authLogout = () => (dispatch: any) => {
     dispatch({
         type: AuthActionTypes.AUTH_LOGOUT,
     });
+    toast.success('Logout Successful');
 }
