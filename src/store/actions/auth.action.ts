@@ -1,5 +1,7 @@
 import { AuthActionTypes, AuthAction } from '../../interfaces/store/auth.store.types';
 import axios from '../../common/axios';
+import Cookies from 'js-cookie';
+
 const authLoginStart = (): AuthAction => ({
     type: AuthActionTypes.AUTH_LOGIN_START,
 });
@@ -20,7 +22,7 @@ export const authLogin = (form:any) => async (dispatch: any) => {
     try {
         const response = await axios.post('/auth/login', JSON.stringify(form));
         const data = await response.data;
-        localStorage.setItem('token', data.token);
+        Cookies.set('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
         dispatch(authLoginSuccess(data.user));
         return data.user;
