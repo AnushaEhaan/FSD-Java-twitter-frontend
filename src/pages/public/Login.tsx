@@ -38,7 +38,7 @@ const Login = () => {
 				<h1 className='text-3xl font-bold text-center text-gray-900'>Sign in to Twitter</h1>
 			</header>
 
-			<section className='mt-7'>
+			<section className='mt-6'>
 				<form onSubmit={handleSubmit}>
 					{formJson.map((field, index) => {
 						return (

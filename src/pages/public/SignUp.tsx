@@ -22,8 +22,6 @@ const SingUp = () => {
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
 
-		console.log(form);
-		// check if the form is valid
 		const isValid = Object.values(form).every((value) => value !== '');
 		if (!isValid ) {
 			toast.error('Please fill all the fields');
@@ -32,9 +30,7 @@ const SingUp = () => {
 			toast.error('Passwords do not match');
 			return;
 		}
-			
-	
-
+				
 		const { name, email, password } = form;
 		dispatch(signUp({ name, email, password }));
 	};
@@ -51,7 +47,7 @@ const SingUp = () => {
 				<h1 className='text-3xl font-bold text-center text-gray-900'>Create your account</h1>
 			</header>
 
-			<section className='mt-7'>
+			<section className='mt-6'>
 				<form onSubmit={handleSubmit}>
 					{formJson.map((field, index) => {
 						return (
