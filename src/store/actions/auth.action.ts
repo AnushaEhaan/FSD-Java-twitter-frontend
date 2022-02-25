@@ -33,3 +33,11 @@ export const authLogin = (form:any) => async (dispatch: any) => {
 };
 
 
+
+export const authLogout = () => (dispatch: any) => {
+    Cookies.remove('token');
+    localStorage.removeItem('user');
+    dispatch({
+        type: AuthActionTypes.AUTH_LOGOUT,
+    });
+}
