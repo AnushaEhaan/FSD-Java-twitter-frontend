@@ -1,5 +1,6 @@
 import React from 'react';
 import Calendar from '../common/Calendar';
+import EditProfileCover from './EditProfileCover.profile';
 const EditProfileModel = () => {
 	return (
 		<div
@@ -22,7 +23,8 @@ const EditProfileModel = () => {
 						></button>
 					</div>
 					<div className='modal-body'>
-						<div className='mb-3'>
+                        <EditProfileCover/>
+						<div className='mb-3 mt-4'>
 							<label htmlFor='name' className='form-label'>
 								Name
 							</label>
@@ -47,7 +49,7 @@ const EditProfileModel = () => {
 						<button type='button' className='btn btn-secondary' data-bs-dismiss='modal'>
 							Close
 						</button>
-						<button type='button' className='btn btn-primary'>
+						<button type='button' className='btn btn-dark'>
 							Save changes
 						</button>
 					</div>

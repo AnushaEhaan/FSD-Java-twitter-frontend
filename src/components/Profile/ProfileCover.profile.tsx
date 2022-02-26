@@ -1,5 +1,4 @@
-import React from 'react'
-import EditProfileModel from '../Profile/EditProfileModel.profile';
+import React from 'react';
 const ProfileCover = () => {
   return (
 		<div className='position-relative'>
@@ -29,7 +28,6 @@ const ProfileCover = () => {
 					Edit Profile
 				</button>
 			</div>
-			<EditProfileModel />
 		</div>
 	);
 }

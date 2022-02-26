@@ -37,7 +37,7 @@ const MonthDropdown = () => {
 	return (
 		<div className='dropdown w-100'>
 			<button
-				className='btn btn-secondary w-100 dropdown-toggle'
+				className='btn btn-outline-secondary text-dark w-100 dropdown-toggle'
 				type='button'
 				id='months'
 				data-bs-toggle='dropdown'
@@ -74,7 +74,7 @@ const Days = () => {
 	return (
 		<div className='dropdown w-100'>
 			<button
-				className='btn btn-secondary w-100 dropdown-toggle'
+				className='btn btn-outline-secondary text-dark w-100 dropdown-toggle'
 				type='button'
 				id='Day'
 				data-bs-toggle='dropdown'
@@ -106,7 +106,7 @@ const Years = () => {
 	return (
 		<div className='dropdown w-100'>
 			<button
-				className='btn btn-secondary w-100 dropdown-toggle'
+				className='btn btn-outline-secondary text-dark w-100 dropdown-toggle'
 				type='button'
 				id='Day'
 				data-bs-toggle='dropdown'
