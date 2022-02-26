@@ -14,18 +14,18 @@ export const secureRoutes: IRoute[] = [
 	},
 ];
 
-export const publicRoutes: IRoute[] = [
+export const authRoutes: IRoute[] = [
 	{
 		path: Routes.Home,
-		element: lazy(() => import('../pages/public/Register')),
+		element: lazy(() => import('../pages/auth/Register')),
 		childrens: [
 			{
 				path: Routes.Home,
-				element: lazy(() => import('../pages/public/Login')),
+				element: lazy(() => import('../pages/auth/Login')),
 			},
 			{
 				path: Routes.SignUp,
-				element: lazy(() => import('../pages/public/SignUp')),
+				element: lazy(() => import('../pages/auth/SignUp')),
 			},
 		],
 	},

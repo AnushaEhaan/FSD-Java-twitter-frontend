@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { secureRoutes, publicRoutes } from './routes';
+import { secureRoutes, authRoutes } from './routes';
 import renderRoutes from './config/renderRoutes.config';
 import { useSelector, useDispatch } from 'react-redux';
 import {authLoginSuccess} from "./store/actions/auth.action";
@@ -25,11 +25,11 @@ const App = () => {
 			<>
 				<Router>
 					<Routes>
-						{renderRoutes(isAuthenticated ? secureRoutes : publicRoutes)}
+						{renderRoutes(isAuthenticated ? secureRoutes : authRoutes)}
 						<Route path='*' element={<h1>404</h1>} />
 					</Routes>
 				</Router>
-				<ToastContainer/>
+				<ToastContainer />
 			</>
 		);
 }
