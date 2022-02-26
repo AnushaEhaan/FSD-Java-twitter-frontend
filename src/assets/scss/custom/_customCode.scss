@@ -386,3 +386,13 @@ img{
     overflow-x: auto !important;
     white-space: nowrap !important;
 }
+
+.hover-bg-secondary:hover {
+    background-color: $gray-200 !important;
+}
+
+@media (max-width:991px){
+    .left-lg-0{
+        left: 0 !important;
+    }
+}

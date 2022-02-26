@@ -378,7 +378,7 @@ $spacers: (
   0: 0,
   1: $spacer * .29,
   2: $spacer * .8,
-  3: $spacer,
+  3: $spacer * 1.2,
   4: $spacer * 1.57,
   5: $spacer * 2.5,
   6: $spacer * 3.5,
@@ -484,7 +484,7 @@ $grid-breakpoints: (
   sm: 576px,
   md: 700px,
   lg: 982px,
-  xl: 1090px,
+  xl: 1210px,
   xxl: 1400px
 ) !default;
 // scss-docs-end grid-breakpoints
@@ -500,9 +500,9 @@ $grid-breakpoints: (
 // scss-docs-start container-max-widths
 $container-max-widths: (
   xs:94vw,
-  sm: 94vw,
-  md: 94vw,
-  lg: 94vw,
+  sm: 97vw,
+  md: 97vw,
+  lg: 99vw,
   xl: 93vw,
   xxl: 89vw
 ) !default;
