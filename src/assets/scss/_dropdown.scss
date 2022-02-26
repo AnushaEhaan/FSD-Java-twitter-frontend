@@ -8,7 +8,7 @@
 
 .dropdown-toggle {
   white-space: nowrap;
-
+  text-align: left;
   // Generate the caret automatically
   @include caret();
 }

@@ -30,8 +30,9 @@
   @if $enable-caret {
     &::after {
       display: inline-block;
-      margin-left: $caret-spacing;
-      vertical-align: $caret-vertical-align;
+      position: absolute;
+      right: 15px;
+      top: 46%;
       content: "";
       @if $direction == down {
         @include caret-down();

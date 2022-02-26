@@ -7,23 +7,23 @@ const Home = () => {
   return (
 		<div>
 			<section className='container'>
-				<div className='row gx-md-3'>
-					<aside className='col-xl-2 col-lg-1 col-12 px-lg-auto px-0 mx-0'>
-						<div className='w-100 position-relative'>
-							<div className='position-fixed w-lg-auto w-100 left-lg-0 px-lg-auto px-4 bg-white'>
+				<div className='row gx-0'>
+					<aside className='col-xl-2 col-lg-1 col-12 '>
+						<div className='w-100 position-relative '>
+							<div className='position-fixed   w-lg-auto w-100 left-lg-0 bg-white ' style={{zIndex:"10"}}>
 								<Nav />
 							</div>
 						</div>
 					</aside>
 
-					<main className='col-xl-6 col-lg-7 col-md-7 col-12'>
-						<div className='bg-dark'>
+					<main className='col-xl-6 col-lg-7  col-md-7 col-12'>
+						<div className='border px-4 min-vh-100 py-lg-0 py-9'>
 							<Outlet />
 						</div>
 					</main>
 
 					<aside className='col-xl-4 col-lg-4 col-md-5 col-12'>
-						<div className='d-md-flex d-none shadow bg-success'>
+						<div className='d-md-fle d-none '>
 							<SideBar />
 						</div>
 					</aside>

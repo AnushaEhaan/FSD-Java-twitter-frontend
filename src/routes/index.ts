@@ -10,6 +10,10 @@ export const secureRoutes: IRoute[] = [
 				path: Routes.Home,
 				element: lazy(() => import('../pages/secure/Dashboard')),
 			},
+			{
+				path: Routes.Profile,
+				element: lazy(() => import('../pages/secure/Profile')),
+			},
 		],
 	},
 ];

@@ -6,14 +6,14 @@ import DropDownMenu from '../Nav/DropDownMenu.nav';
 
 const Nav = () => {
   return (
-		<section className='w-100 vh-lg-100 py-lg-0 py-4 border-end-lg pe-xl-0 pe-1'>
-			<main className='d-flex  flex-lg-column justify-content-between h-100'>
+		<section className='w-100 vh-lg-100 py-lg-0 py-3'>
+			<main className='d-flex flex-lg-column justify-content-between h-100'>
 				<ul className='nav py-lg-5 flex-lg-column'>
 					{navData.map((item, index) => {
 						return (
 							<li
 								key={index}
-								className={`nav-item py-1 mb-2 hover-bg-secondary rounded-pill ${
+								className={`nav-item py-1 mb-lg-2 hover-bg-secondary rounded-pill ${
 									item.hideOnMd
 										? 'd-lg-inline d-none'
 										: 'w-lg-auto h-lg-auto w-47px me-lg-0 me-3 h-47px d-lg-inline d-flex justify-content-center align-items-center '
