@@ -7,7 +7,7 @@ export const secureRoutes: IRoute[] = [
 		element: lazy(() => import('../pages/secure/Home')),
 		childrens: [
 			{
-				path: Routes.Dashboard,
+				path: Routes.Home,
 				element: lazy(() => import('../pages/secure/Dashboard')),
 			},
 		],
