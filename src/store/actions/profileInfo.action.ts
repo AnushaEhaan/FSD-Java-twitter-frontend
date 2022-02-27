@@ -21,6 +21,12 @@ const getProfileUserFailure = (error: any): ProfileUserAction => ({
 });
 
 
+export const setProfileUser = (profileUser: any): ProfileUserAction => ({
+    type: ProfileUserActionTypes.SET_PROFILE_USER,
+    payload: profileUser,
+});
+
+
 export const getProfileUser = (userId: string) => async (dispatch: any) => {
     dispatch(getProfileUserStart());
     try {

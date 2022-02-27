@@ -28,6 +28,13 @@ const profileUserReducer = (
                 loading: false,
                 error: action.payload,
             };
+
+        case ProfileUserActionTypes.SET_PROFILE_USER:
+            return {
+                ...state,
+                profileUser: action.payload,
+            };
+
         default:
             return state;
     }

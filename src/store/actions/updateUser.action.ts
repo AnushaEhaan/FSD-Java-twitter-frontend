@@ -5,6 +5,7 @@ import {
 import axios from '../../common/axios';
 import { toast } from 'react-toastify';
 import store from '../store';
+import {setProfileUser} from "./profileInfo.action"
 
 export const updateUserStart = (): UpdateUserAction => ({
 	type: UpdateUserActionTypes.UPDATE_USER_START,
@@ -52,6 +53,7 @@ export const updateUser = (form: any) => async (dispatch: any) => {
 		const response = await axios.put(`/user/updateUser/${user._id}`, formData);
 		const data = await response.data;
 		data.status === 200 && dispatch(updateUserSuccess());
+		data.status === 200 && dispatch(setProfileUser(data.user));
         data.status === 200 && toast.success(data.message);
 	} catch (error: any) {
 		const message = error?.response?.data?.message;
