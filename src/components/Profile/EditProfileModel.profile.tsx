@@ -19,6 +19,7 @@ const EditProfileModel = () => {
 	const { loading, isUserUpdated } = useSelector((state: any) => state.updateUser);
 
 	const [avatar, setAvatar] = React.useState<any>({});
+	const [cover, setCover] = React.useState<any>({});
 	const [name, setName] = React.useState('');
 	const [bio, setBio] = React.useState('');
 	const [date_Of_birth, setDate_Of_birth] = React.useState<any>({
@@ -31,8 +32,15 @@ const EditProfileModel = () => {
 		setDate_Of_birth(date);
 	};
 
-	const handleAvatar = (avatar: any) => {
-		setAvatar(avatar);
+	const handleAvatarAndCover = ({
+		state,
+		file,
+	}:any) => {
+		if (state === 'avatar') {
+			setAvatar(file);
+		} else if (state === 'cover') {
+			setCover(file);
+		}
 	};
 
 	const handleSubmit = async () => {
@@ -93,7 +101,7 @@ const EditProfileModel = () => {
 						></button>
 					</div>
 					<div className='modal-body'>
-						<EditProfileCover handleAvatar={handleAvatar} />
+						<EditProfileCover handleAvatar={handleAvatarAndCover} />
 						<div className='mb-3 mt-4'>
 							<label htmlFor='name' className='form-label'>
 								Name
@@ -130,7 +138,7 @@ const EditProfileModel = () => {
 							Close
 						</button>
 						<button type='button' className='btn btn-dark editProfile' onClick={handleSubmit}>
-							{loading ? <Spinner size="sm" /> : 'Save changes'}
+							{loading ? <Spinner size='sm' /> : 'Save changes'}
 						</button>
 					</div>
 				</div>
