@@ -1,17 +1,40 @@
-import React from 'react'
-import { useParams } from 'react-router'
+import React from 'react';
+import { useParams } from 'react-router';
 import ProfileCover from '../../components/Profile/ProfileCover.profile';
 import ProfileInfo from '../../components/Profile/ProfileInfo.profile';
 import EditProfileModel from '../../components/Profile/EditProfileModel.profile';
-const Profile = () => {
-  const params = useParams()
-  return (
-		<div>
-			<ProfileCover />
-			<ProfileInfo />
-			<EditProfileModel />
-		</div>
-	);
-}
+import { useSelector, useDispatch } from 'react-redux';
+import { getProfileUser } from '../../store/actions/profileInfo.action';
 
-export default Profile
+const Profile = () => {
+	const params = useParams();
+	const { id }: any = params;
+
+	const dispatch = useDispatch();
+	const { profileUser, loading, error } = useSelector((state: any) => state.profileUser);
+
+	React.useEffect(() => {
+		dispatch(getProfileUser(id));
+	}, []);
+
+	console.log(profileUser);
+
+	if (loading) {
+		return <div className='vh-50 center'>Loading...</div>;
+	}
+	if (error) {
+		return <div className='vh-50 center'>{error}</div>;
+	}
+
+	return (
+		profileUser && (
+			<div>
+				<ProfileCover user={profileUser} />
+				<ProfileInfo />
+				<EditProfileModel user={profileUser} />
+			</div>
+		)
+	);
+};
+
+export default Profile;

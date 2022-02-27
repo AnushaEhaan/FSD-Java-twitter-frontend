@@ -1,22 +1,31 @@
 import React from 'react';
-const ProfileCover = () => {
-  return (
+
+interface Iprops {
+	user: any;
+}
+
+const ProfileCover = ({ user }: Iprops) => {
+	return (
 		<div className='position-relative'>
 			<div>
-				<img
-					src='https://firebasestorage.googleapis.com/v0/b/hellogram-c4311.appspot.com/o/imgs%2F2022-01-30T14%3A22%3A28.018Zimg%20(44).jpg?alt=media&token=8fbc36f6-bd2f-417c-b24b-66d4a0955196'
-					className='w-100 h-sm'
-					alt=''
-				/>
+				{user.cover ? (
+					<img src={user.cover} className='w-100 h-sm bg-secondary object-cover' alt='' />
+				) : (
+					<div className='w-100 h-sm bg-secondary'></div>
+				)}
 			</div>
 
-			<div className='' style={{ marginTop: '-50px' }}>
+			<div className='position-relative' style={{ marginTop: '-50px', zIndex: '2' }}>
 				<div>
-					<img
-						src='https://pbs.twimg.com/profile_images/1151890543162646528/RG-t6m7R_400x400.jpg'
-						className='h-122px border border-white   border-4 w-122px rounded-circle'
-						alt=''
-					/>
+					{user.avatar ? (
+						<img
+							src={user.avatar}
+							className='h-122px border border-white   border-4 w-122px rounded-circle'
+							alt=''
+						/>
+					) : (
+						<div className='h-122px border border-white bg-secondary  border-4 w-122px rounded-circle'></div>
+					)}
 				</div>
 
 				<button
@@ -30,6 +39,6 @@ const ProfileCover = () => {
 			</div>
 		</div>
 	);
-}
+};
 
-export default ProfileCover
+export default ProfileCover;

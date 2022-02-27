@@ -24,7 +24,7 @@ const getProfileUserFailure = (error: any): ProfileUserAction => ({
 export const getProfileUser = (userId: string) => async (dispatch: any) => {
     dispatch(getProfileUserStart());
     try {
-        const response = await axios.get(`/users/getUserById/${userId}`);
+        const response = await axios.get(`/user/getUserById/${userId}`);
         const data = await response.data;
         dispatch(getProfileUserSuccess(data.user));
     } catch (error:any) {

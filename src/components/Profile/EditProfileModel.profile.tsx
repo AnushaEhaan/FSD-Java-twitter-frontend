@@ -10,7 +10,11 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../common/Spinner';
 
-const EditProfileModel = () => {
+interface Iprops {
+	user: any;
+}
+
+const EditProfileModel = ({user}:any) => {
 	const model = React.useRef<any>(null);
 
 	const dispatch = useDispatch();
@@ -18,8 +22,12 @@ const EditProfileModel = () => {
 
 	const [avatar, setAvatar] = React.useState<any>({});
 	const [cover, setCover] = React.useState<any>({});
-	const [name, setName] = React.useState('');
-	const [bio, setBio] = React.useState('');
+	const [name, setName] = React.useState(
+		user.name || '',
+	);
+	const [bio, setBio] = React.useState(
+		user.bio || '',
+	);
 	const [date_Of_birth, setDate_Of_birth] = React.useState<any>({
 		month: null,
 		day: null,
@@ -98,7 +106,7 @@ const EditProfileModel = () => {
 						></button>
 					</div>
 					<div className='modal-body'>
-						<EditProfileCover handleAvatar={handleAvatarAndCover} />
+						<EditProfileCover handleAvatar={handleAvatarAndCover} user={user} />
 						<div className='mb-3 mt-4'>
 							<label htmlFor='name' className='form-label'>
 								Name

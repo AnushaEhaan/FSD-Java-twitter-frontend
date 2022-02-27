@@ -2,9 +2,10 @@ import React from 'react';
 
 interface Iprops {
 	handleAvatar: (avatar: any) => void;
+	user: any;
 }
 
-const EditProfileCover = ({ handleAvatar }: Iprops) => {
+const EditProfileCover = ({ handleAvatar, user }: Iprops) => {
 	const [selectedAvatar, setSelectedAvatar] = React.useState<any>(null);
 	const [cover, setCover] = React.useState<any>(null);
 
@@ -41,7 +42,7 @@ const EditProfileCover = ({ handleAvatar }: Iprops) => {
 	return (
 		<div className='position-relative'>
 			<div className='position-relative'>
-				<img src={cover} className='w-100 h-sm' alt='' />
+				<img src={cover || user.cover} className='w-100 h-sm' alt='' />
 				<div className='bg-dark center  position-absolute w-100 top-0 h-100 bg-opacity-25'>
 					<label
 						className='btn bg-secondary bg-opacity-10 w-40px h-40px center'
@@ -56,7 +57,7 @@ const EditProfileCover = ({ handleAvatar }: Iprops) => {
 			<div className='position-relative' style={{ marginTop: '-50px', zIndex: '2' }}>
 				<div className='position-relative rounded-circle h-122px w-122px '>
 					<img
-						src={selectedAvatar}
+						src={selectedAvatar || user.avatar}
 						className='rounded-circle border-white w-100 h-100  border-4 bg-white'
 						alt=''
 					/>
