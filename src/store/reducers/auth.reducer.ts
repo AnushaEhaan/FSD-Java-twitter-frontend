@@ -42,7 +42,13 @@ const authReducer = (
 				user: null,
 				isAuthenticated: false,
 			};
-	
+
+		case AuthActionTypes.SET_AUTH_USER:
+			return {
+				...state,
+				user: action.payload,
+			};
+			
 		default:
 			return state;
 	}
