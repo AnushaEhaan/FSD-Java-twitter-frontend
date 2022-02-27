@@ -7,11 +7,16 @@ import {
 	uploadAvatar,
 	updateUserStart,
 } from '../../store/actions/updateUser.action';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import Spinner from '../common/Spinner';
 
 
 const EditProfileModel = () => {
+
+	const model = React.useRef<any>(null);
+
 	const dispatch = useDispatch();
+	const { loading, isUserUpdated } = useSelector((state: any) => state.updateUser);
 
 	const [avatar, setAvatar] = React.useState<any>({});
 	const [name, setName] = React.useState('');
@@ -58,10 +63,19 @@ const EditProfileModel = () => {
 		dispatch(updateUser(data));
 	};
 
+	React.useEffect(()=>{
+		if(isUserUpdated){
+			model.current.style.display = 'none';
+			const modalBackdrop = document.querySelector('.modal-backdrop');
+			modalBackdrop && modalBackdrop.remove();
+		}
+	},[isUserUpdated])
+
 	return (
 		<div
 			className='modal fade'
 			id='exampleModal'
+			ref={model}
 			aria-labelledby='exampleModalLabel'
 			aria-hidden='true'
 		>
@@ -115,8 +129,8 @@ const EditProfileModel = () => {
 						<button type='button' className='btn btn-secondary' data-bs-dismiss='modal'>
 							Close
 						</button>
-						<button type='button' className='btn btn-dark' onClick={handleSubmit}>
-							Save changes
+						<button type='button' className='btn btn-dark editProfile' onClick={handleSubmit}>
+							{loading ? <Spinner size="sm" /> : 'Save changes'}
 						</button>
 					</div>
 				</div>
