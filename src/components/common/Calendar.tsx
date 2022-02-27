@@ -1,18 +1,47 @@
 import React from 'react';
 
-const Calendar = () => {
+interface IProps {
+	handleDate_Of_birth: (date: object) => void;
+}
+
+const Calendar = ({ handleDate_Of_birth } : IProps ) => {
+
+	const [selectedMonth, setSelectedMonth] = React.useState(null);
+	const [selectedDay, setSelectedDay] = React.useState(null);
+	const [selectedYear, setSelectedYear] = React.useState(null);
+
+	const getMonth = (value: any) => {
+		setSelectedMonth(value);
+	};
+
+	const getDay= (value: any) => {
+		setSelectedDay(value);
+	};
+
+	const getYear = (value: any) => {
+		setSelectedYear(value);
+	};
+
+	React.useEffect(() => {
+			handleDate_Of_birth({
+				month: selectedMonth,
+				day: selectedDay,
+				year: selectedYear,
+			});
+	}, [selectedMonth, selectedDay, selectedYear]);
+
 	return (
 		<div className='d-flex justify-content-between'>
-			<MonthDropdown />
+			<MonthDropdown getMonth={getMonth} />
 			<div className='mx-4 w-100'>
-				<Days />
+				<Days getDay={getDay} />
 			</div>
-			<Years />
+			<Years getYear={getYear} />
 		</div>
 	);
 };
 
-const MonthDropdown = () => {
+const MonthDropdown = ({ getMonth } : any) => {
 	const months = [
 		'January',
 		'February',
@@ -32,6 +61,7 @@ const MonthDropdown = () => {
 
 	const handleMonthClick = (value: any) => {
 		setSelectedMonth(value);
+		getMonth(value);
 	};
 
 	return (
@@ -58,7 +88,7 @@ const MonthDropdown = () => {
 	);
 };
 
-const Days = () => {
+const Days = ({ getDay }:any) => {
 	const daysInMonth = (month: any, year: any) => {
 		return new Date(year, month, 0).getDate();
 	};
@@ -69,6 +99,7 @@ const Days = () => {
 
 	const handleDayClick = (day: any) => {
 		setSelectedDay(day);
+		getDay(day);
 	};
 
 	return (
@@ -95,12 +126,13 @@ const Days = () => {
 	);
 };
 
-const Years = () => {
+const Years = ({ getYear }:any) => {
 	const years = Array.from(Array(new Date().getFullYear() - 1969).keys());
 	const [year, setYear] = React.useState(null);
 
 	const handleChange = (value: any) => {
 		setYear(value);
+		getYear(value);
 	};
 
 	return (

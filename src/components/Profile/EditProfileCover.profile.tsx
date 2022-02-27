@@ -1,5 +1,24 @@
 import React from 'react';
-const EditProfileCover = () => {
+
+interface Iprops {
+	handleAvatar: (avatar: string) => void;
+}
+
+const EditProfileCover = ({ handleAvatar }: Iprops) => {
+	const [selectedAvatar, setSelectedAvatar] = React.useState<any>(null);
+
+	const handleAvatarChange = (e: any) => {
+		const file = e.target.files[0];
+		if (file) {
+			const reader = new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload = () => {
+				setSelectedAvatar(reader.result);
+				handleAvatar(file);
+			};
+		}
+	};
+
 	return (
 		<div className='position-relative'>
 			<div className='position-relative'>
@@ -18,14 +37,18 @@ const EditProfileCover = () => {
 			<div className='position-relative' style={{ marginTop: '-50px', zIndex: '2' }}>
 				<div className='position-relative rounded-circle h-122px w-122px '>
 					<img
-						src='https://pbs.twimg.com/profile_images/1151890543162646528/RG-t6m7R_400x400.jpg'
-						className=' border rounded-circle border-white w-100 h-100  border-4 '
+						src={selectedAvatar}
+						className='rounded-circle border-white w-100 h-100  border-4 bg-white'
 						alt=''
 					/>
-					<div className='bg-dark rounded-circle position-absolute w-100 top-0 h-100 bg-opacity-10'>
-						<button className='btn translate-center-middle  bg-secondary bg-opacity-25 w-50px h-50px center'>
-							<i className='fa-solid fa-image  fs-30'></i>
-						</button>
+					<div className='bg-dark center rounded-circle position-absolute w-100 top-0 h-100 bg-opacity-10'>
+						<label
+							className='btn bg-secondary bg-opacity-10 w-40px h-40px center'
+							style={{ zIndex: '0' }}
+						>
+							<i className='fa-solid fa-image  fs-20'></i>
+							<input type='file' className='d-none' onChange={handleAvatarChange} />
+						</label>
 					</div>
 				</div>
 			</div>
