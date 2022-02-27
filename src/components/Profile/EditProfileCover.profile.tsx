@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface Iprops {
-	handleAvatar: (avatar: string) => void;
+	handleAvatar: (avatar: any) => void;
 }
 
 const EditProfileCover = ({ handleAvatar }: Iprops) => {
@@ -9,12 +9,12 @@ const EditProfileCover = ({ handleAvatar }: Iprops) => {
 
 	const handleAvatarChange = (e: any) => {
 		const file = e.target.files[0];
+		handleAvatar(file);
 		if (file) {
 			const reader = new FileReader();
 			reader.readAsDataURL(file);
 			reader.onload = () => {
 				setSelectedAvatar(reader.result);
-				handleAvatar(file);
 			};
 		}
 	};

@@ -2,9 +2,18 @@ import React from 'react';
 import Calendar from '../common/Calendar';
 import EditProfileCover from './EditProfileCover.profile';
 import { toast } from 'react-toastify';
+import {
+	updateUser,
+	uploadAvatar,
+	updateUserStart,
+} from '../../store/actions/updateUser.action';
+import { useDispatch } from 'react-redux';
+
 
 const EditProfileModel = () => {
-	const [avatar, setAvatar] = React.useState('');
+	const dispatch = useDispatch();
+
+	const [avatar, setAvatar] = React.useState<any>({});
 	const [name, setName] = React.useState('');
 	const [bio, setBio] = React.useState('');
 	const [date_Of_birth, setDate_Of_birth] = React.useState<any>({
@@ -17,11 +26,16 @@ const EditProfileModel = () => {
 		setDate_Of_birth(date);
 	};
 
-	const handleAvatar = (avatar: string) => {
+	const handleAvatar = (avatar: any) => {
 		setAvatar(avatar);
 	};
 
-	const handleSubmit = () => {
+	const handleSubmit = async () => {
+		const data: any = {
+			name,
+			bio,
+		};
+
 		const date_Of_birth_is_empty = Object.values(date_Of_birth).some(
 			(value) => value !== null,
 		);
@@ -31,8 +45,17 @@ const EditProfileModel = () => {
 			if (!all_fields_are_empty) {
 				toast.error('Please fill all fields of date of birth');
 				return;
+			} else {
+				data.date_Of_birth = `${date_Of_birth.month}/${date_Of_birth.day}/${date_Of_birth.year}`;
 			}
 		}
+
+		dispatch(updateUserStart());
+
+		const avatarSrcUrl = await uploadAvatar(avatar);
+		avatarSrcUrl && (data.avatar = avatarSrcUrl.src);
+
+		dispatch(updateUser(data));
 	};
 
 	return (
