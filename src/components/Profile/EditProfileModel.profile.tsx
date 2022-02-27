@@ -10,9 +10,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../common/Spinner';
 
-
 const EditProfileModel = () => {
-
 	const model = React.useRef<any>(null);
 
 	const dispatch = useDispatch();
@@ -32,10 +30,7 @@ const EditProfileModel = () => {
 		setDate_Of_birth(date);
 	};
 
-	const handleAvatarAndCover = ({
-		state,
-		file,
-	}:any) => {
+	const handleAvatarAndCover = ({ state, file }: any) => {
 		if (state === 'avatar') {
 			setAvatar(file);
 		} else if (state === 'cover') {
@@ -66,18 +61,20 @@ const EditProfileModel = () => {
 		dispatch(updateUserStart());
 
 		const avatarSrcUrl = await uploadAvatar(avatar);
+		const coverSrcUrl = await uploadAvatar(cover);
 		avatarSrcUrl && (data.avatar = avatarSrcUrl.src);
+		coverSrcUrl && (data.cover = coverSrcUrl.src);
 
 		dispatch(updateUser(data));
 	};
 
-	React.useEffect(()=>{
-		if(isUserUpdated){
+	React.useEffect(() => {
+		if (isUserUpdated) {
 			model.current.style.display = 'none';
 			const modalBackdrop = document.querySelector('.modal-backdrop');
 			modalBackdrop && modalBackdrop.remove();
 		}
-	},[isUserUpdated])
+	}, [isUserUpdated]);
 
 	return (
 		<div

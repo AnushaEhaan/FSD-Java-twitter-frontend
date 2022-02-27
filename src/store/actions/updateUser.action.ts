@@ -23,7 +23,7 @@ export const uploadAvatar = async (image: any) => {
 	try {
 		const formData = new FormData();
 		formData.append('image', image);
-		const response = await axios.post('/user/uploadAvatar', formData, {
+		const response = await axios.post('/user/uploadAvatarOrCover', formData, {
 			headers: {
 				'Content-Type': 'multipart/form-data',
 			},
