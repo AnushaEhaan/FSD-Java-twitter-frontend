@@ -24,7 +24,7 @@ const Dashboard = () => {
 				) : tweets.length > 0 ? (
 					tweets.map((tweet: any) => <Tweet key={tweet._id} tweet={tweet} />)
 				) : (
-					<p className='text-center'>No tweets yet</p>
+					<p className='text-center mt-7'>No tweets yet</p>
 				)}
 			</section>
 		</div>
