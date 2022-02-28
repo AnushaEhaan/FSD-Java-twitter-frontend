@@ -17,7 +17,7 @@ const Home = () => {
 					</aside>
 
 					<main className='col-xl-6 col-lg-7  col-md-7 col-12'>
-						<div className='border px-4 min-vh-100 py-lg-0 py-9'>
+						<div className='border-md px- min-vh-100 my-lg-0 my-9'>
 							<Outlet />
 						</div>
 					</main>

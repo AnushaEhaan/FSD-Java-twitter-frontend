@@ -8,7 +8,7 @@ import Cookies from 'js-cookie';
 const Nav = () => {
 	const userId = Cookies.get('user_Id');
   return (
-		<section className='w-100 vh-lg-100 py-lg-0 py-3'>
+		<section className='w-100 vh-lg-100 py-lg-0 py-3 px-lg-0 px-4'>
 			<main className='d-flex flex-lg-column justify-content-between h-100'>
 				<ul className='nav py-lg-5 flex-lg-column'>
 					{navData.map((item, index) => {

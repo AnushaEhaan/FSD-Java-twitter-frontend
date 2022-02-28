@@ -1,41 +1,10 @@
 import React from 'react'
+import PostTweet from "../../components/dashboard/PostTweet.dashboard";
 
 const Dashboard = () => {
   return (
     <div>
-
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque maiores alias, tempora dolores dolorem magni aperiam aliquid ipsum laborum, amet rem consectetur reprehenderit quibusdam assumenda provident placeat molestiae reiciendis!
+        <PostTweet/>
     </div>
   )
 }

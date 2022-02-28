@@ -31,7 +31,7 @@ const Profile = () => {
 
 	return (
 		profileUser && (
-			<div>
+			<div className='px-md-4'>
 				<ProfileCover currentUser={currentUser} profileUser={profileUser} />
 				<ProfileInfo user={profileUser} />
 				<EditProfileModel user={profileUser} />
