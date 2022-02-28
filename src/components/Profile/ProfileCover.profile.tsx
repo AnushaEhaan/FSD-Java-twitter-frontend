@@ -1,15 +1,20 @@
 import React from 'react';
 
 interface Iprops {
-	user: any;
+	profileUser: any;
+	currentUser: any;
 }
 
-const ProfileCover = ({ user }: Iprops) => {
+const ProfileCover = ({ profileUser, currentUser }: Iprops) => {
 	return (
 		<div className='position-relative'>
 			<div>
-				{user.cover ? (
-					<img src={user.cover} className='w-100 h-sm bg-secondary object-cover' alt='' />
+				{profileUser.cover ? (
+					<img
+						src={profileUser.cover}
+						className='w-100 h-sm bg-secondary object-cover'
+						alt=''
+					/>
 				) : (
 					<div className='w-100 h-sm bg-secondary'></div>
 				)}
@@ -17,9 +22,9 @@ const ProfileCover = ({ user }: Iprops) => {
 
 			<div className='position-relative' style={{ marginTop: '-50px', zIndex: '2' }}>
 				<div>
-					{user.avatar ? (
+					{profileUser.avatar ? (
 						<img
-							src={user.avatar}
+							src={profileUser.avatar}
 							className='h-122px border border-white   border-4 w-122px rounded-circle'
 							alt=''
 						/>
@@ -28,14 +33,16 @@ const ProfileCover = ({ user }: Iprops) => {
 					)}
 				</div>
 
-				<button
-					className='btn btn-outline-secondary text-dark  float-end'
-					style={{ marginTop: '-62px', marginRight: '20px' }}
-					data-bs-toggle='modal'
-					data-bs-target='#exampleModal'
-				>
-					Edit Profile
-				</button>
+				{currentUser && currentUser._id === profileUser._id && (
+					<button
+						className='btn btn-outline-secondary text-dark  float-end'
+						style={{ marginTop: '-62px', marginRight: '20px' }}
+						data-bs-toggle='modal'
+						data-bs-target='#exampleModal'
+					>
+						Edit Profile
+					</button>
+				)}
 			</div>
 		</div>
 	);

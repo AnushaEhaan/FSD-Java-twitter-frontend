@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import formJson from '../../JSON/loginForm.json';
-import { authLogin } from "../../store/actions/auth.action" 
+import { userLogin } from "../../store/actions/user.action" 
 import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../../components/common/Spinner';
 import { useNavigate } from "react-router-dom";
@@ -10,7 +10,7 @@ const Login = () => {
 	const navigate = useNavigate();
 
 	const dispatch = useDispatch();
-	const { user, loading, error } = useSelector((state: any) => state.auth);
+	const { currentUser, loading, error } = useSelector((state: any) => state.user);
 
 	const initialFormState:any = {}
 	formJson.forEach(form => {
@@ -20,16 +20,16 @@ const Login = () => {
 	const [form, setForm] = React.useState<any>(initialFormState);
 	const handleSubmit = (e:any) => {
 		e.preventDefault();
-		dispatch(authLogin(form))
+		dispatch(userLogin(form))
 	}
 
 	React.useEffect(() => {
-		if (user) {
-			navigate('/')
+		if (currentUser) {
+			navigate('/');
 		} else if (error) {
-			console.log(error)
+			console.log(error);
 		}
-	}, [user, error])
+	}, [currentUser, error]);
 
 
 	return (

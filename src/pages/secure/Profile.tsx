@@ -12,6 +12,7 @@ const Profile = () => {
 
 	const dispatch = useDispatch();
 	const { profileUser, loading, error } = useSelector((state: any) => state.profileUser);
+	const { currentUser } = useSelector((state: any) => state.user);
 
 	React.useEffect(() => {
 		dispatch(getProfileUser(id));
@@ -25,10 +26,13 @@ const Profile = () => {
 		return <div className='vh-50 center'>{error}</div>;
 	}
 
+	console.log('currentUser', currentUser);
+	console.log('profileUser', profileUser);
+
 	return (
 		profileUser && (
 			<div>
-				<ProfileCover user={profileUser} />
+				<ProfileCover currentUser={currentUser} profileUser={profileUser} />
 				<ProfileInfo user={profileUser} />
 				<EditProfileModel user={profileUser} />
 			</div>
