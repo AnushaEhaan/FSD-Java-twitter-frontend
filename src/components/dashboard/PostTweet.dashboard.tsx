@@ -50,7 +50,7 @@ const PostTweet = () => {
 			setLoading(true);
 			const formData: any = {
 				content,
-				userId,
+				user:userId,
 				is_public: isPublic,
 			};
 			console.log(formData);

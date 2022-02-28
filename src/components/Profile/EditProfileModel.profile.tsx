@@ -77,7 +77,7 @@ const EditProfileModel = ({ user }: Iprops) => {
 			coverSrcUrl && (data.cover = coverSrcUrl.src);
 			setCover(null);
 		}
-
+		
 		dispatch(updateUser(data));
 	};
 

@@ -5,7 +5,7 @@ const TweetDropDownMenu = () => {
 		<div>
 			<div className='dropdown'>
 				<button
-					className='btn btn-outline-secondary text-dark h-33px w-33px center'
+					className='btn btn-outline-secondary border-0 text-dark text-opacity-75  h-33px w-33px center'
 					type='button'
 					id='dropdownMenuButton1'
 					data-bs-toggle='dropdown'

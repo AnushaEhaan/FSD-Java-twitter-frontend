@@ -45,6 +45,8 @@ export const findCurrentUser = (id:string) => async (dispatch: any) => {
     } catch (error:any) {
         dispatch(userLoginFailure(error?.response.data.message));
         location.href = '/';
+        Cookies.remove('token');
+        Cookies.remove('user_Id');
         toast.error(error?.response.data.message);
     }
 };
