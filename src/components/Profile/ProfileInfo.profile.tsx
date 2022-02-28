@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+import moment from 'moment'; 
 
 
 interface Iprops {
-	user: any
+	user: any;
 }
 
 const ProfileInfo = ({ user }: Iprops) => {
@@ -12,30 +13,40 @@ const ProfileInfo = ({ user }: Iprops) => {
 				<h3>{user?.name}</h3>
 				<p>{user?.bio}</p>
 				<section className='d-flex flex-wrap mt-4'>
-					<div className='me-6 mb-4'>
-						<i className='fa-solid fa-location-pin me-2'></i>
-						<span>Pakistan</span>
-					</div>
-					<div className='me-6 mb-4'>
-						<i className='fa-solid fa-link me-2'></i>
-						<span>www.safdarazeem.com</span>
-					</div>
-					<div className='me-6 mb-4'>
-						<i className='fa-solid fa-clock me-2'></i>
-						<span>Born August 14, 1985</span>
-					</div>
-					<div className='me-6 mb-4'>
-						<i className='fa-solid fa-calendar-days me-2'></i>
-						<span>Joined May 2012</span>
-					</div>
+					{user.location && (
+						<div className='me-6 mb-4'>
+							<i className='fa-solid fa-location-pin me-2'></i>
+							<span>{user?.location}</span>
+						</div>
+					)}
+					{user?.website && (
+						<div className='me-6 mb-4'>
+							<i className='fa-solid fa-link me-2'></i>
+							<a href={user?.website} target='_blank'>
+								{user?.website}
+							</a>
+						</div>
+					)}
+					{user?.date_Of_birth && (
+						<div className='me-6 mb-4'>
+							<i className='fa-solid fa-clock me-2'></i>
+							<span>Born {moment(user?.date_Of_birth).format('LL')}</span>
+						</div>
+					)}
+					{user?.date_Created && (
+						<div className='me-6 mb-4'>
+							<i className='fa-solid fa-calendar-days me-2'></i>
+							<span>Joined {moment(user?.date_Created).format('MMM YYYY')}</span>
+						</div>
+					)}
 				</section>
 
 				<section>
 					<span className='me-3'>
-						<b>185</b> Following
+						<b>{user?.total_Following}</b> Following
 					</span>
 					<span>
-						<b>185</b> Followers
+						<b>{user?.total_Followers}</b> Followers
 					</span>
 				</section>
 			</div>
@@ -43,4 +54,4 @@ const ProfileInfo = ({ user }: Iprops) => {
 	);
 };
 
-export default ProfileInfo
+export default ProfileInfo;
