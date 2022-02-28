@@ -3,8 +3,10 @@ import navData from "../../JSON/navigation.json";
 import CustomLink from "../Nav/CustomLink.nav";
 import LogOutBtn from '../Nav/LogOutBtn.nav';
 import DropDownMenu from '../Nav/DropDownMenu.nav';
+import Cookies from 'js-cookie';
 
 const Nav = () => {
+	const userId = Cookies.get('user_Id');
   return (
 		<section className='w-100 vh-lg-100 py-lg-0 py-3'>
 			<main className='d-flex flex-lg-column justify-content-between h-100'>
@@ -20,7 +22,7 @@ const Nav = () => {
 								} `}
 							>
 								<CustomLink
-									to={item.url}
+									to={item.url == '/profile' ? item.url + '/' + userId : item.url}
 									active_icon={item.active_icon}
 									icon={item.icon}
 									hideOnMd={item.hideOnMd}
