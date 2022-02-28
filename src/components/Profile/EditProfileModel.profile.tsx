@@ -1,43 +1,35 @@
 import React from 'react';
-import Calendar from '../common/Calendar';
-import EditProfileCover from './EditProfileCover.profile';
-import { toast } from 'react-toastify';
-import {
-	updateUser,
-	uploadAvatar,
-	updateUserStart,
-} from '../../store/actions/updateUser.action';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import updateProfileJson from '../../JSON/updateProfileForm.json';
+import {
+	updateUser, updateUserStart, uploadAvatar
+} from '../../store/actions/updateUser.action';
+import Calendar from '../common/Calendar';
 import Spinner from '../common/Spinner';
+import EditProfileCover from './EditProfileCover.profile';
 
 interface Iprops {
 	user: any;
 }
 
-const EditProfileModel = ({user}:any) => {
+const EditProfileModel = ({ user }: Iprops) => {
 	const model = React.useRef<any>(null);
 
 	const dispatch = useDispatch();
 	const { loading, isUserUpdated } = useSelector((state: any) => state.updateUser);
 
-	const [avatar, setAvatar] = React.useState<any>({});
-	const [cover, setCover] = React.useState<any>({});
-	const [name, setName] = React.useState(
-		user.name || '',
-	);
-	const [bio, setBio] = React.useState(
-		user.bio || '',
-	);
 	const [date_Of_birth, setDate_Of_birth] = React.useState<any>({
 		month: null,
 		day: null,
 		year: null,
 	});
-
 	const handleDate_Of_birth = (date: object) => {
 		setDate_Of_birth(date);
 	};
 
+	const [avatar, setAvatar] = React.useState<any>(null);
+	const [cover, setCover] = React.useState<any>(null);
 	const handleAvatarAndCover = ({ state, file }: any) => {
 		if (state === 'avatar') {
 			setAvatar(file);
@@ -46,10 +38,16 @@ const EditProfileModel = ({user}:any) => {
 		}
 	};
 
+	const [inputFormData, setInputFormData] = React.useState<any>({
+		name: user.name || '',
+		location: user.location || '',
+		website: user.website || '',
+		bio: user.bio || '',
+	});
+
 	const handleSubmit = async () => {
 		const data: any = {
-			name,
-			bio,
+			...inputFormData,
 		};
 
 		const date_Of_birth_is_empty = Object.values(date_Of_birth).some(
@@ -68,10 +66,17 @@ const EditProfileModel = ({user}:any) => {
 
 		dispatch(updateUserStart());
 
-		const avatarSrcUrl = await uploadAvatar(avatar);
-		const coverSrcUrl = await uploadAvatar(cover);
-		avatarSrcUrl && (data.avatar = avatarSrcUrl.src);
-		coverSrcUrl && (data.cover = coverSrcUrl.src);
+		if (avatar) {
+			const avatarSrcUrl = await uploadAvatar(avatar);
+			avatarSrcUrl && (data.avatar = avatarSrcUrl.src);
+			setAvatar(null);
+		}
+
+		if (cover) {
+			const coverSrcUrl = await uploadAvatar(cover);
+			coverSrcUrl && (data.cover = coverSrcUrl.src);
+			setCover(null);
+		}
 
 		dispatch(updateUser(data));
 	};
@@ -107,29 +112,44 @@ const EditProfileModel = ({user}:any) => {
 					</div>
 					<div className='modal-body'>
 						<EditProfileCover handleAvatar={handleAvatarAndCover} user={user} />
-						<div className='mb-3 mt-4'>
-							<label htmlFor='name' className='form-label'>
-								Name
-							</label>
-							<input
-								type='email'
-								className='form-control bg-white'
-								id='name'
-								value={name}
-								onChange={(e) => setName(e.target.value)}
-							/>
-						</div>
-						<div className='mb-4'>
-							<label htmlFor='exampleFormControlTextarea1' className='form-label'>
-								Bio
-							</label>
-							<textarea
-								className='form-control'
-								id='exampleFormControlTextarea1'
-								value={bio}
-								onChange={(e) => setBio(e.target.value)}
-							></textarea>
-						</div>
+
+						{updateProfileJson &&
+							updateProfileJson.map((item: any, index: number) => {
+								return (
+									<div className='mb-3 mt-4' key={index}>
+										<label htmlFor={item.name} className='form-label'>
+											{item.placeholder}
+										</label>
+										{item.type == 'textarea' ? (
+											<textarea
+												className='form-control'
+												id={item.name}
+												rows={5}
+												value={inputFormData[item.name]}
+												onChange={(e) => {
+													setInputFormData({
+														...inputFormData,
+														[item.name]: e.target.value,
+													});
+												}}
+											></textarea>
+										) : (
+											<input
+												type={item.type}
+												className='form-control bg-white'
+												id={item.name}
+												value={inputFormData[item.name]}
+												onChange={(e) => {
+													setInputFormData({
+														...inputFormData,
+														[item.name]: e.target.value,
+													});
+												}}
+											/>
+										)}
+									</div>
+								);
+							})}
 
 						<div className='mb-3'>
 							<label htmlFor='' className='form-label mb-3'>
@@ -138,6 +158,7 @@ const EditProfileModel = ({user}:any) => {
 							<Calendar handleDate_Of_birth={handleDate_Of_birth} />
 						</div>
 					</div>
+
 					<div className='modal-footer'>
 						<button type='button' className='btn btn-secondary' data-bs-dismiss='modal'>
 							Close

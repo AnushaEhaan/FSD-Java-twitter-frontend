@@ -1,9 +1,9 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
+import EditProfileModel from '../../components/Profile/EditProfileModel.profile';
 import ProfileCover from '../../components/Profile/ProfileCover.profile';
 import ProfileInfo from '../../components/Profile/ProfileInfo.profile';
-import EditProfileModel from '../../components/Profile/EditProfileModel.profile';
-import { useSelector, useDispatch } from 'react-redux';
 import { getProfileUser } from '../../store/actions/profileInfo.action';
 
 const Profile = () => {
@@ -17,7 +17,6 @@ const Profile = () => {
 		dispatch(getProfileUser(id));
 	}, []);
 
-	console.log(profileUser);
 
 	if (loading) {
 		return <div className='vh-50 center'>Loading...</div>;
