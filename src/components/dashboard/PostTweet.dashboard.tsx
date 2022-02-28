@@ -3,13 +3,18 @@ import axios from '../../common/axios/';
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 import Spinner from '../common/Spinner';
+import { updateTweets } from '../../store/actions/tweets.action';
+import { useDispatch, useSelector } from 'react-redux';
 
 const PostTweet = () => {
+	const dispatch = useDispatch();
+	const { currentUser } = useSelector((state:any) => state.user);
 	const [content, setConent] = React.useState('');
 	const [readableImage, setReadableImage] = React.useState<any>(null);
 	const [imageForUpload, setImageForUpload] = React.useState<any>(null);
 	const [loading, setLoading] = React.useState<boolean>(false);
 	const [isPublic, setIsPublic] = React.useState<boolean>(true);
+	
 
 	const handlePostImage = (e: any) => {
 		const file = e.target.files[0];
@@ -66,6 +71,13 @@ const PostTweet = () => {
 			setConent('');
 			handleCancelImage();
 			setIsPublic(true);
+
+			const tweet = {
+				...data.tweet,
+				user: currentUser,
+			};
+
+			dispatch(updateTweets(tweet));
 		} catch (error: any) {
 			toast.error(error?.response.data.message);
 			setLoading(false);

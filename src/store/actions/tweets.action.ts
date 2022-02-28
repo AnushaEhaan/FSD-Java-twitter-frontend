@@ -21,6 +21,11 @@ const getTweetsFailure = (error: any): TweetsAction => ({
 });
 
 
+export const updateTweets = (tweet: any): TweetsAction => ({
+    type: TweetsActionTypes.UPDATE_TWEETS,
+    payload: tweet,
+});
+
 export const getTweets = (userId:string) => async (dispatch: any) => {
     dispatch(getTweetsStart());
     try {
