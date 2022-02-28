@@ -30,7 +30,7 @@ const Profile = () => {
 		profileUser && (
 			<div>
 				<ProfileCover user={profileUser} />
-				<ProfileInfo />
+				<ProfileInfo user={profileUser} />
 				<EditProfileModel user={profileUser} />
 			</div>
 		)

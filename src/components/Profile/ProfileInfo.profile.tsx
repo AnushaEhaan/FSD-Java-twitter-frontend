@@ -1,14 +1,16 @@
 import React from 'react'
 
-const ProfileInfo= () => {
-  return (
+
+interface Iprops {
+	user: any
+}
+
+const ProfileInfo = ({ user }: Iprops) => {
+	return (
 		<div>
 			<div className='mt-4'>
-				<h3>Safdar Azeem</h3>
-				<p>
-					CEO (Haier & Ruba) Chairman (Peshawar Zalmi, Benoni Zalmi & Zalmi Foundation). Sitar
-					e Imtiaz.
-				</p>
+				<h3>{user?.name}</h3>
+				<p>{user?.bio}</p>
 				<section className='d-flex flex-wrap mt-4'>
 					<div className='me-6 mb-4'>
 						<i className='fa-solid fa-location-pin me-2'></i>
@@ -39,6 +41,6 @@ const ProfileInfo= () => {
 			</div>
 		</div>
 	);
-}
+};
 
 export default ProfileInfo
