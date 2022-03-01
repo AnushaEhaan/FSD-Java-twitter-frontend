@@ -1,6 +1,6 @@
 import React from 'react';
 import PostTweet from '../../components/dashboard/PostTweet.dashboard';
-import Tweet from '../../components/common/tweet/Tweet';
+import Tweet from '../../components/tweet/Tweet';
 import { getTweets } from '../../store/actions/tweets.action';
 import { useDispatch, useSelector } from 'react-redux';
 import Cookies from 'js-cookie';
