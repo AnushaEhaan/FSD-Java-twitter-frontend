@@ -9,7 +9,7 @@ interface Iprops {
 const Nav = ({ id }: Iprops) => {
 	return (
 		<div>
-			<ul className='nav mt-5 border-bottom justify-content-between'>
+			<ul className='nav mt-3 border-bottom justify-content-between'>
 				{profileNavJson.map((item, index) => {
 					const url = item.url.replace(':id', id);
 					return (

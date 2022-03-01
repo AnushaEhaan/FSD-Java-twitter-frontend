@@ -33,7 +33,9 @@ const Profile = (props: any) => {
 				<ProfileCover currentUser={currentUser} profileUser={profileUser} />
 				<ProfileInfo user={profileUser} />
 				<Nav id={id} />
-				<Outlet />
+				<div className='mt-4'>
+					<Outlet />
+				</div>
 				<EditProfileModel user={profileUser} />
 			</div>
 		)

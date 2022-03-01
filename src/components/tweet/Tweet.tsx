@@ -14,15 +14,20 @@ const Tweet = ({ tweet }: Iprops) => {
 					<img src={tweet.user.avatar} alt='' className='rounded-circle w-40px h-40px me-3' />
 					<div>
 						<p className='fw-bold fs-16 mb-0'>{tweet.user.name}</p>
-						<span className='fs-12 text-dark text-opacity-75'>
+						<span className='fs-13 text-dark text-opacity-75 me-2'>
 							{moment(tweet.createdAt).fromNow()}
 						</span>
+						<i
+							className={`fa-solid ${
+								tweet.is_public ? ' fa-globe' : ' fa-lock'
+							}  fs-12 text-dark text-opacity-50 `}
+						></i>
 					</div>
 				</div>
 				<TweetDropDownMenu />
 			</header>
 
-			<main className='px-1 my-4'>
+			<main className='px-1 my-3'>
 				<p>{tweet.content}</p>
 				{tweet.photo && <img src={tweet.photo} className='w-100 rounded mt-1 h-md2' alt='' />}
 			</main>

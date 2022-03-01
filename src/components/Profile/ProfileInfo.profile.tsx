@@ -41,12 +41,12 @@ const ProfileInfo = ({ user }: Iprops) => {
 					)}
 				</section>
 
-				<section>
+				<section className='mt-2'>
 					<span className='me-3'>
-						<b>{user?.total_Following}</b> Following
+						<b>{user?.following.length}</b> Following
 					</span>
 					<span>
-						<b>{user?.total_Followers}</b> Followers
+						<b>{user?.followers.length}</b> Followers
 					</span>
 				</section>
 			</div>
