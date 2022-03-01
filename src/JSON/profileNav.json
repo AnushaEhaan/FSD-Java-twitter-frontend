@@ -1,14 +1,14 @@
 [
     {
         "title": "Tweets",
-        "url": "/"
+        "url": "/profile/:id"
     },
     {
         "title": "Media",
-        "url": "/media"
+        "url": "/profile/:id/media"
     },
     {
         "title": "Likes",
-        "url": "/likes"
+        "url": "/profile/:id/likes"
     }
 ]

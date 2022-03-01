@@ -32,7 +32,7 @@ const Profile = (props: any) => {
 			<div className='px-md-4'>
 				<ProfileCover currentUser={currentUser} profileUser={profileUser} />
 				<ProfileInfo user={profileUser} />
-				<Nav />
+				<Nav id={id} />
 				<Outlet />
 				<EditProfileModel user={profileUser} />
 			</div>
