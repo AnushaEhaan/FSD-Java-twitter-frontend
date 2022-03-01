@@ -13,6 +13,20 @@ export const secureRoutes: IRoute[] = [
 			{
 				path: Routes.Profile,
 				element: lazy(() => import('../pages/secure/Profile')),
+				childrens: [
+					{
+						path: '/',
+						element: lazy(() => import('../components/Profile/ProfileTweets.profile')),
+					},
+					{
+						path: Routes.ProfileMedia,
+						element: lazy(() => import('../components/Profile/ProfileMedia.profile')),
+					},
+					{
+						path: Routes.ProfileLikes,
+						element: lazy(() => import('../components/Profile/ProfileLikes.profile')),
+					},
+				],
 			},
 		],
 	},
