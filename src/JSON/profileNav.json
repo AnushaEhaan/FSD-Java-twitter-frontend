@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Tweets",
+        "url": "/"
+    },
+    {
+        "title": "Media",
+        "url": "/media"
+    },
+    {
+        "title": "Likes",
+        "url": "/likes"
+    }
+]
