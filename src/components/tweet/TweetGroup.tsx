@@ -10,7 +10,7 @@ interface Iprops {
 const TweetGroup = ({ tweets, loading }: Iprops) => {
 	return (
 		<div>
-			<section className='mx-md-4 mt-2'>
+			<section>
 				{loading ? (
 					<Spinner size='sm' />
 				) : tweets.length > 0 ? (

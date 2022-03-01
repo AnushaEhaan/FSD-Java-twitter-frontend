@@ -4,7 +4,9 @@ import { useParams } from 'react-router';
 import EditProfileModel from '../../components/Profile/EditProfileModel.profile';
 import ProfileCover from '../../components/Profile/ProfileCover.profile';
 import ProfileInfo from '../../components/Profile/ProfileInfo.profile';
+import TweetGroup from '../../components/tweet/TweetGroup';
 import { getProfileUser } from '../../store/actions/profileInfo.action';
+import { getUserTweets } from '../../store/actions/tweets.action';
 
 const Profile = () => {
 	const params = useParams();
@@ -12,10 +14,12 @@ const Profile = () => {
 
 	const dispatch = useDispatch();
 	const { profileUser, loading, error } = useSelector((state: any) => state.profileUser);
+	const { tweets, loading:tweetLoading } = useSelector((state: any) => state.tweets);
 	const { currentUser } = useSelector((state: any) => state.user);
 
 	React.useEffect(() => {
 		dispatch(getProfileUser(id));
+		dispatch(getUserTweets(id));
 	}, []);
 
 
@@ -34,6 +38,9 @@ const Profile = () => {
 			<div className='px-md-4'>
 				<ProfileCover currentUser={currentUser} profileUser={profileUser} />
 				<ProfileInfo user={profileUser} />
+				<div className='mt-4'>
+					<TweetGroup tweets={tweets} loading={tweetLoading} />
+				</div>
 				<EditProfileModel user={profileUser} />
 			</div>
 		)
