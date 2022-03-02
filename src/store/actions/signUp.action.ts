@@ -1,5 +1,5 @@
 import { SignUpActionTypes, SignUpAction } from '../../interfaces/store/signUp.store.types';
-import axios from '../../common/axios';
+import axios from '../../config/axios';
 import { toast } from 'react-toastify';
 
 const signUpStart = (): SignUpAction => ({

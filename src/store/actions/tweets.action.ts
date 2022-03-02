@@ -1,5 +1,5 @@
 import { TweetsActionTypes, TweetsAction } from '../../interfaces/store/tweets.types';
-import axios from '../../common/axios';
+import axios from '../../config/axios';
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 

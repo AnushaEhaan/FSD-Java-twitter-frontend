@@ -2,7 +2,7 @@ import {
 	UpdateUserActionTypes,
 	UpdateUserAction,
 } from '../../interfaces/store/updateUser.types';
-import axios from '../../common/axios';
+import axios from '../../config/axios';
 import { toast } from 'react-toastify';
 import store from '../store';
 import {setProfileUser} from "./profileInfo.action"

@@ -1,5 +1,5 @@
 import { UserActionTypes, UserAction } from '../../interfaces/store/user.store.types';
-import axios from '../../common/axios';
+import axios from '../../config/axios';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 

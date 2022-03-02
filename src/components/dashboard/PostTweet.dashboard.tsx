@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from '../../common/axios/';
+import axios from '../../config/axios';
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 import Spinner from '../common/Spinner';
