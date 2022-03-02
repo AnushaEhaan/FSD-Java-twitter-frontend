@@ -5,6 +5,7 @@ import TweetDropDownMenu from './TweetDropDownMenu.tweet';
 import { likeTweet, retweet } from '../../store/actions/tweets.action';
 import { findUserById } from '../../store/actions/profileInfo.action';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 interface Iprops {
 	tweet: any;
@@ -24,6 +25,7 @@ const Tweet = ({ tweet }: Iprops) => {
 	};
 
 	React.useEffect(() => {
+		setWhoRetweeted('')
 		if (tweet.retweetedBy.length > 0) {
 			if (tweet.retweetedBy.includes(currentUserId)) {
 				setWhoRetweeted('You');
@@ -42,12 +44,20 @@ const Tweet = ({ tweet }: Iprops) => {
 		<section className='border-bottom py-4'>
 			<header className='d-flex justify-content-between align-items-start'>
 				<div className='d-flex'>
-					<img src={tweet.user.avatar} alt='' className='rounded-circle w-40px h-40px me-3' />
+					<Link to={`profile/${tweet.user._id}`}>
+						<img
+							src={tweet.user.avatar}
+							alt=''
+							className='rounded-circle w-40px h-40px me-3'
+						/>
+					</Link>
 					<div>
-						<div className='mb-3 d-flex'>
-							<p className='fw-bold me-3 fs-16 mb-0'>{tweet.user.name}</p>
+						<div className='mb-1px d-flex'>
+							<Link to={`profile/${tweet.user._id}`} className='fw-bold me-3 fs-16 mb-0'>
+								{tweet.user.name}
+							</Link>
 							{whoRetweeted && (
-								<div className='text-dark text-opacity-75'>
+								<div className='text-dark text-opacity-75 mt-2px'>
 									<i className='fa-solid fw-bold fa-retweet fs-13'></i>
 									<span className='fs-13 ms-1 fw-bold'>{whoRetweeted} Retweeted</span>
 								</div>
@@ -74,19 +84,21 @@ const Tweet = ({ tweet }: Iprops) => {
 			<footer className='d-flex  justify-content-between '>
 				<div className='d-flex align-items-center'>
 					<button className='btn btn-outline-secondary me-4 text-dark text-opacity-50 border-0 w-40px h-40px center'>
-						<i className='fa-regular fa-comment fs-19 '></i>
+						<i className='fa-regular fa-comment fs-18 '></i>
 					</button>
-						<button
-							className='btn btn-outline-secondary text-dark text-opacity-50 border-0 w-40px h-40px center'
-							onClick={() => handleRetweet(tweet._id)}
-						>
-							<i
-								className={`fa-solid  fa-retweet fs-19 ${
-									tweet.retweetedBy.includes(currentUserId) && 'text-success'
-								} `}
-							></i>
-						</button>
-						<span>{tweet.retweetedBy.length > 0 && tweet.retweetedBy.length}</span>
+					<button
+						className='btn btn-outline-secondary text-dark text-opacity-50 border-0 w-40px h-40px center'
+						onClick={() => handleRetweet(tweet._id)}
+					>
+						<i
+							className={`fa-solid  fa-retweet fs-18 ${
+								tweet.retweetedBy.includes(currentUserId) && 'text-success'
+							} `}
+						></i>
+					</button>
+					<span className={`${tweet.retweetedBy.includes(currentUserId) && 'text-success'}`}>
+						{tweet.retweetedBy.length > 0 && tweet.retweetedBy.length}
+					</span>
 					<button
 						className='btn btn-outline-secondary ms-4 text-dark text-opacity-50 border-0 w-40px h-40px center'
 						onClick={() => handleLike(tweet._id)}
@@ -94,13 +106,19 @@ const Tweet = ({ tweet }: Iprops) => {
 						<i
 							className={`fa-${
 								tweet.likes.includes(currentUserId) ? 'solid text-danger' : 'regular'
-							}  fa-heart fs-19`}
+							}  fa-heart fs-18`}
 						></i>
 					</button>
-					{tweet.likes.length > 0 && <span className='ms-1 mt-1'>{tweet.likes.length}</span>}
+					{tweet.likes.length > 0 && (
+						<span
+							className={`${tweet.likes.includes(currentUserId) && 'text-danger'} ms-1 mt-1`}
+						>
+							{tweet.likes.length}
+						</span>
+					)}
 				</div>
 				<button className='btn btn-outline-secondary text-dark text-opacity-50 border-0 w-40px h-40px center'>
-					<i className='fa-solid fa-arrow-up-from-bracket fs-19 '></i>
+					<i className='fa-solid fa-arrow-up-from-bracket fs-18 '></i>
 				</button>
 			</footer>
 		</section>
