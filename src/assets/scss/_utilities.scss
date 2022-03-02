@@ -178,7 +178,12 @@ $utilities: map-merge(
     "max-width": (
       property: max-width,
       class: mw,
-      values: (100: 100%)
+      values: (
+        md:500px,
+        lg:585px,
+        xl:620px,
+        100: 100%,
+        )
     ),
     "viewport-width": (
       property: width,
