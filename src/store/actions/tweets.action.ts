@@ -68,6 +68,18 @@ export const getOnlyMediaTweets = (userId: string) => async (dispatch: any) => {
 	}
 };
 
+export const getTweetsLikeByUser = (userId: string) => async (dispatch: any) => {
+	dispatch(getTweetsStart());
+	try {
+		const response = await axios.get(`/tweet/getTweetsLikeByUser/${userId}`);
+		const data = await response.data;
+		dispatch(getTweetsSuccess(data.tweets));
+	} catch (error: any) {
+		dispatch(getTweetsFailure(error?.response.data.message));
+		toast.error(error?.response.data.message);
+	}
+};
+
 export const likeTweet = (tweetId: string) => async (dispatch: any) => {
 	try {
 		const userId = Cookies.get('user_Id');
