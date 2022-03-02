@@ -5,6 +5,7 @@ import {
 import axios from '../../config/axios';
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
+import { updateTweet } from "./tweets.action"
 
 const getCommentsStart = (): CommentsAction => ({
     type: CommentsActionTypes.GET_COMMENTS_START,
@@ -41,6 +42,7 @@ export const addComment = (commentData: any) => async (dispatch: any) => {
 		const response = await axios.post(`/comment/add`, commentData);
 		const data = await response.data;
 		dispatch(addCommentType(data));
+        dispatch(updateTweet(data.comment.tweet));
         return true;
 	} catch (error: any) {
 		dispatch(getCommentsFailure(error?.response.data.message));

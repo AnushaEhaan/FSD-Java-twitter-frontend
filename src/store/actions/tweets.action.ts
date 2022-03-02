@@ -22,7 +22,7 @@ export const updateTweets = (tweet: any): TweetsAction => ({
 	payload: tweet,
 });
 
-const updateTweet = (tweet: any): TweetsAction => ({
+export const updateTweet = (tweet: any): TweetsAction => ({
 	type: TweetsActionTypes.UPDATE_TWEET,
 	payload: tweet,
 });
