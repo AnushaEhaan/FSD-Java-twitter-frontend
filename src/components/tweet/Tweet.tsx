@@ -83,13 +83,14 @@ const Tweet = ({ tweet,handleTweet }: Iprops) => {
 				<footer className='d-flex  justify-content-between '>
 					<div className='d-flex align-items-center'>
 						<button
-							className='btn btn-outline-secondary me-4 text-dark text-opacity-50 border-0 w-40px h-40px center'
+							className='btn btn-outline-secondary text-dark text-opacity-50 border-0 me-1px w-40px h-40px center'
 							onClick={() => handleTweet(tweet)}
 						>
 							<i className='fa-regular fa-comment fs-18 '></i>
 						</button>
+						<span>{tweet.comments.length > 0 && tweet.comments.length}</span>
 						<button
-							className='btn btn-outline-secondary text-dark text-opacity-50 border-0 w-40px h-40px center'
+							className='btn btn-outline-secondary text-dark text-opacity-50 ms-4 me-2px border-0 w-40px h-40px center'
 							onClick={() => handleRetweet(tweet._id)}
 						>
 							<i
