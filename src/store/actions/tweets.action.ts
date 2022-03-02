@@ -22,9 +22,9 @@ export const updateTweets = (tweet: any): TweetsAction => ({
 	payload: tweet,
 });
 
-const setLikeTweet = (obj: any): TweetsAction => ({
-	type: TweetsActionTypes.LIKE_TWEET,
-	payload: obj,
+const updateTweet = (tweet: any): TweetsAction => ({
+	type: TweetsActionTypes.UPDATE_TWEET,
+	payload: tweet,
 });
 
 const setRetweet = (obj: any): TweetsAction => ({
@@ -86,10 +86,7 @@ export const likeTweet = (tweetId: string) => async (dispatch: any) => {
 		const response = await axios.post(`/tweet/likeTweet/${tweetId}/${userId}`);
 		const data = await response.data;
 		dispatch(
-			setLikeTweet({
-				_id: data.tweet._id,
-				likes: data.tweet.likes,
-			}),
+			updateTweet(data.tweet),
 		);
 	} catch (error: any) {
 		toast.error(error?.response.data.message);

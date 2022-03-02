@@ -34,11 +34,11 @@ const tweetsReducer = (
 				...state,
 				tweets: [action.payload, ...state.tweets],
 			};
-		case TweetsActionTypes.LIKE_TWEET:
+		case TweetsActionTypes.UPDATE_TWEET:
 			return {
 				...state,
 				tweets: state.tweets.map((tweet: any) =>
-					tweet._id === action.payload._id ? { ...tweet, likes: action.payload.likes } : tweet,
+					tweet._id === action.payload._id ? action.payload : tweet,
 				),
 			};
 
