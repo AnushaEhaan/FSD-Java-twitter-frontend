@@ -1,31 +1,34 @@
-import React from 'react'
-import { LinkProps, useResolvedPath, useMatch, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 interface Iprops {
-	to: string;
-	children: any;
-	active_icon: string;
-	icon: string;
-	hideOnMd: boolean;
+	link: any;
 }
 
+const CustomLink = ({ link }: Iprops) => {
+	const userId = Cookies.get('user_Id');
+	const [isLinkActive, setIsLinkActive] = useState(false);
+	const to = link.url == '/profile' ? link.url + '/' + userId : link.url;
 
-const CustomLink = ({ children, to, active_icon, icon, hideOnMd }: Iprops) => {
-	let resolved = useResolvedPath(to);
-	let match = useMatch({ path: resolved.pathname, end: true });
 	return (
 		<div>
-			<Link
+			<NavLink
 				to={to}
-				className={`nav-link ${match ? 'active' : ''} ${
-					hideOnMd ? 'text-xl-start text-lg-center' : ' text-xl-start text-center'
-				} `}
+				className={({ isActive }) => {
+					setIsLinkActive(isActive);
+					let className = 'nav-link ';
+					className += link.hideOnMd
+						? ' text-xl-start text-lg-center '
+						: ' text-xl-start text-center ';
+					return isActive ? className + ' active ' : className;
+				}}
 			>
-				<i className={`${match ? `${active_icon}` : `${icon}`} fs-21`}></i>
-				<span className={`fs-18 ms-4 d-xl-inline ${hideOnMd ? 'd-lg-none' : 'd-none'}  `}>
-					{children}
+				<i className={`${isLinkActive ? `${link.active_icon}` : `${link.icon}`} fs-21`}></i>
+				<span className={`fs-18 ms-4 d-xl-inline ${link.hideOnMd ? 'd-lg-none' : 'd-none'}  `}>
+					{link.title}
 				</span>
-			</Link>
+			</NavLink>
 		</div>
 	);
 };

@@ -18,7 +18,7 @@ const Profile = (props: any) => {
 
 	React.useEffect(() => {
 		dispatch(getProfileUser(id));
-	}, []);
+	}, [id]);
 
 	if (loading) {
 		return <div className='vh-50 center'>Loading...</div>;

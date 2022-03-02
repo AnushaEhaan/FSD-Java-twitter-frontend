@@ -21,14 +21,7 @@ const DropDownMenu = () => {
 					.map((item, index) => {
 						return (
 							<li key={index} className='dropdown-item'>
-								<CustomLink
-									to={item.url}
-									active_icon={item.active_icon}
-									icon={item.icon}
-									hideOnMd={item.hideOnMd}
-								>
-									{item.title}
-								</CustomLink>
+								<CustomLink link={item}/>
 							</li>
 						);
 					})}
