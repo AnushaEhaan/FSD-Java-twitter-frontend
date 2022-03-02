@@ -9,13 +9,12 @@ interface Iprops {
 
 const TweetForComment = ({ tweet }: Iprops) => {
 	return (
-		<header className='d-flex justify-content-between align-items-start'>
-			<div className='d-flex'>
+			<div className='d-flex w-100'>
 				<div className='center flex-column me-3'>
 					<img src={tweet.user.avatar} alt='' className='rounded-circle w-40px h-40px' />
 					<div className='border w-2px rounded  h-100 mt-2'></div>
 				</div>
-				<div>
+				<div className='w-100'>
 					<div className='mb-1px d-flex'>
 						<p className='fw-bold me-3 fs-16 mb-0'>{tweet.user.name}</p>
 					</div>
@@ -30,7 +29,6 @@ const TweetForComment = ({ tweet }: Iprops) => {
 					<TweetContent tweet={tweet} />
 				</div>
 			</div>
-		</header>
 	);
 };
 

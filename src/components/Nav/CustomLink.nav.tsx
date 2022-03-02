@@ -24,8 +24,8 @@ const CustomLink = ({ link }: Iprops) => {
 					return isActive ? className + ' active ' : className;
 				}}
 			>
-				<i className={`${isLinkActive ? `${link.active_icon}` : `${link.icon}`} fs-21`}></i>
-				<span className={`fs-18 ms-4 d-xl-inline ${link.hideOnMd ? 'd-lg-none' : 'd-none'}  `}>
+				<i className={`${isLinkActive ? `${link.active_icon}` : `${link.icon}`} fs-20`}></i>
+				<span className={`fs-17 ms-4 d-xl-inline ${link.hideOnMd ? 'd-lg-none' : 'd-none'}  `}>
 					{link.title}
 				</span>
 			</NavLink>
