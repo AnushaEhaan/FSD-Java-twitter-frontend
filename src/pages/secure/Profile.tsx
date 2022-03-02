@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import Nav from '../../components/Profile/Nav.profile';
-import EditProfileModel from '../../components/Profile/EditProfileModel.profile';
 import ProfileCover from '../../components/Profile/ProfileCover.profile';
 import ProfileInfo from '../../components/Profile/ProfileInfo.profile';
 import { getProfileUser } from '../../store/actions/profileInfo.action';
@@ -36,7 +35,6 @@ const Profile = (props: any) => {
 				<div className='mt-4'>
 					<Outlet />
 				</div>
-				<EditProfileModel user={profileUser} />
 			</div>
 		)
 	);

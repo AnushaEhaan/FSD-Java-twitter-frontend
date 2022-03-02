@@ -8,14 +8,15 @@ import {
 import Calendar from '../common/Calendar';
 import Spinner from '../common/Spinner';
 import EditProfileCover from './EditProfileCover.profile';
+import { Button, Modal } from 'react-bootstrap';
 
 interface Iprops {
 	user: any;
+	handleClose: any;
+	show: boolean
 }
 
-const EditProfileModel = ({ user }: Iprops) => {
-	const model = React.useRef<any>(null);
-
+const EditProfileModel = ({ user, handleClose, show }: Iprops) => {
 	const dispatch = useDispatch();
 	const { loading, isUserUpdated } = useSelector((state: any) => state.updateUser);
 
@@ -77,99 +78,77 @@ const EditProfileModel = ({ user }: Iprops) => {
 			coverSrcUrl && (data.cover = coverSrcUrl.src);
 			setCover(null);
 		}
-		
+
 		dispatch(updateUser(data));
 	};
 
 	React.useEffect(() => {
 		if (isUserUpdated) {
-			model.current.style.display = 'none';
-			const modalBackdrop = document.querySelector('.modal-backdrop');
-			modalBackdrop && modalBackdrop.remove();
+			handleClose();
 		}
-	}, [isUserUpdated]);
+	} , [isUserUpdated]);
 
 	return (
-		<div
-			className='modal fade'
-			id='exampleModal'
-			ref={model}
-			aria-labelledby='exampleModalLabel'
-			aria-hidden='true'
-		>
-			<div className='modal-dialog'>
-				<div className='modal-content'>
-					<div className='modal-header'>
-						<h5 className='modal-title' id='exampleModalLabel'>
-							Edit profile
-						</h5>
-						<button
-							type='button'
-							className='btn-close'
-							data-bs-dismiss='modal'
-							aria-label='Close'
-						></button>
-					</div>
-					<div className='modal-body'>
-						<EditProfileCover handleAvatar={handleAvatarAndCover} user={user} />
+		<Modal show={show} onHide={handleClose}>
+			<Modal.Header closeButton>
+				<Modal.Title>Modal heading</Modal.Title>
+			</Modal.Header>
+			<Modal.Body>
+				<EditProfileCover handleAvatar={handleAvatarAndCover} user={user} />
+				{updateProfileJson &&
+					updateProfileJson.map((item: any, index: number) => {
+						return (
+							<div className='mb-3 mt-4' key={index}>
+								<label htmlFor={item.name} className='form-label'>
+									{item.placeholder}
+								</label>
+								{item.type == 'textarea' ? (
+									<textarea
+										className='form-control'
+										id={item.name}
+										rows={5}
+										value={inputFormData[item.name]}
+										onChange={(e) => {
+											setInputFormData({
+												...inputFormData,
+												[item.name]: e.target.value,
+											});
+										}}
+									></textarea>
+								) : (
+									<input
+										type={item.type}
+										className='form-control bg-white'
+										id={item.name}
+										value={inputFormData[item.name]}
+										onChange={(e) => {
+											setInputFormData({
+												...inputFormData,
+												[item.name]: e.target.value,
+											});
+										}}
+									/>
+								)}
+							</div>
+						);
+					})}
 
-						{updateProfileJson &&
-							updateProfileJson.map((item: any, index: number) => {
-								return (
-									<div className='mb-3 mt-4' key={index}>
-										<label htmlFor={item.name} className='form-label'>
-											{item.placeholder}
-										</label>
-										{item.type == 'textarea' ? (
-											<textarea
-												className='form-control'
-												id={item.name}
-												rows={5}
-												value={inputFormData[item.name]}
-												onChange={(e) => {
-													setInputFormData({
-														...inputFormData,
-														[item.name]: e.target.value,
-													});
-												}}
-											></textarea>
-										) : (
-											<input
-												type={item.type}
-												className='form-control bg-white'
-												id={item.name}
-												value={inputFormData[item.name]}
-												onChange={(e) => {
-													setInputFormData({
-														...inputFormData,
-														[item.name]: e.target.value,
-													});
-												}}
-											/>
-										)}
-									</div>
-								);
-							})}
-
-						<div className='mb-3'>
-							<label htmlFor='' className='form-label mb-3'>
-								Date of birth
-							</label>
-							<Calendar handleDate_Of_birth={handleDate_Of_birth} />
-						</div>
-					</div>
-
-					<div className='modal-footer'>
-						<button type='button' className='btn btn-secondary' data-bs-dismiss='modal'>
-							Close
-						</button>
-						<button type='button' className='btn btn-dark editProfile' onClick={handleSubmit}>
-							{loading ? <Spinner size='sm' /> : 'Save changes'}
-						</button>
-					</div>
+				<div className='mb-3'>
+					<label htmlFor='' className='form-label mb-3'>
+						Date of birth
+					</label>
+					<Calendar handleDate_Of_birth={handleDate_Of_birth} />
 				</div>
-			</div>
-		</div>
+			</Modal.Body>
+			<Modal.Footer>
+				<Button variant='secondary' onClick={handleClose}>
+					Close
+				</Button>
+				<Button variant='dark' onClick={handleSubmit}  disabled={loading}>
+					{loading ? <Spinner size='sm' /> : 'Save changes'}
+				</Button>
+			</Modal.Footer>
+		</Modal>
 	);
 };
 
