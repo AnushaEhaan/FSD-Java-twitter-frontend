@@ -27,11 +27,20 @@ export const setProfileUser = (profileUser: any): ProfileUserAction => ({
 });
 
 
-export const getProfileUser = (userId: string) => async (dispatch: any) => {
-    dispatch(getProfileUserStart());
+export const findUserById = async (userId: string) => {
     try {
         const response = await axios.get(`/user/getUserById/${userId}`);
         const data = await response.data;
+        return data;
+    } catch (error:any) {
+       return error;
+    }   
+};
+
+export const getProfileUser = (userId: string) => async (dispatch: any) => {
+    dispatch(getProfileUserStart());
+    try {
+        const data = await findUserById(userId);
         dispatch(getProfileUserSuccess(data.user));
     } catch (error:any) {
         dispatch(getProfileUserFailure(error?.response.data.message));

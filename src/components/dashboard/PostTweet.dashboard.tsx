@@ -56,7 +56,7 @@ const PostTweet = () => {
 			const formData: any = {
 				content,
 				user:userId,
-				is_public: isPublic,
+				is_Public: isPublic,
 			};
 			console.log(formData);
 			if (imageForUpload) {
