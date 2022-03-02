@@ -1,4 +1,6 @@
 import React from 'react';
+import { followUser } from "../../store/actions/profileInfo.action"
+import { useDispatch, useSelector } from 'react-redux';
 
 interface Iprops {
 	profileUser: any;
@@ -6,6 +8,13 @@ interface Iprops {
 }
 
 const ProfileCover = ({ profileUser, currentUser }: Iprops) => {
+	const dispatch = useDispatch();
+
+	const handleFollowUser = (id:string) => {
+		dispatch(followUser(id));
+	}
+
+
 	return (
 		<div className='position-relative'>
 			<div>
@@ -33,14 +42,24 @@ const ProfileCover = ({ profileUser, currentUser }: Iprops) => {
 					)}
 				</div>
 
-				{currentUser && currentUser._id === profileUser._id && (
+				{currentUser && currentUser._id === profileUser._id ? (
 					<button
 						className='btn btn-outline-secondary text-dark  float-end'
-						style={{ marginTop: '-62px', marginRight: '20px' }}
+						style={{ marginTop: '-55px', marginRight: '20px' }}
 						data-bs-toggle='modal'
 						data-bs-target='#exampleModal'
 					>
 						Edit Profile
+					</button>
+				) : (
+					<button
+						className={`${
+							profileUser.followers.includes(currentUser._id) ? 'btn-outline-secondary text-dark' : 'btn-dark text-white'
+						} btn px-4  float-end `}
+						style={{ marginTop: '-55px', marginRight: '20px' }}
+						onClick={() => handleFollowUser(profileUser._id)}
+					>
+						{profileUser.followers.includes(currentUser._id) ? 'Unfollow' : 'Follow'}
 					</button>
 				)}
 			</div>

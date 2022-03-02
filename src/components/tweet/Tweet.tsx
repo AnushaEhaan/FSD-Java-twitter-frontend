@@ -44,7 +44,7 @@ const Tweet = ({ tweet }: Iprops) => {
 		<section className='border-bottom py-4'>
 			<header className='d-flex justify-content-between align-items-start'>
 				<div className='d-flex'>
-					<Link to={`profile/${tweet.user._id}`}>
+					<Link to={`/profile/${tweet.user._id}`}>
 						<img
 							src={tweet.user.avatar}
 							alt=''
@@ -53,7 +53,7 @@ const Tweet = ({ tweet }: Iprops) => {
 					</Link>
 					<div>
 						<div className='mb-1px d-flex'>
-							<Link to={`profile/${tweet.user._id}`} className='fw-bold me-3 fs-16 mb-0'>
+							<Link to={`/profile/${tweet.user._id}`} className='fw-bold me-3 fs-16 mb-0'>
 								{tweet.user.name}
 							</Link>
 							{whoRetweeted && (

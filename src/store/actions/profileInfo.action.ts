@@ -4,6 +4,7 @@ import {
 } from '../../interfaces/store/profileInfo.types';
 import axios from '../../config/axios';
 import { toast } from 'react-toastify';
+import Cookies from 'js-cookie';
 
 
 const getProfileUserStart = (): ProfileUserAction => ({
@@ -47,3 +48,15 @@ export const getProfileUser = (userId: string) => async (dispatch: any) => {
         toast.error(error?.response.data.message);
     }
 };
+
+export const followUser = (followingId: string) => async (dispatch: any) => {
+    try {
+        const userId = Cookies.get('user_Id')
+        const response = await axios.put(`user/followUser/${userId}/${followingId}`);
+        const data = await response.data;
+        dispatch(setProfileUser(data.userToFollow));
+        return data;
+    } catch (error:any) {
+        return error;
+    }
+}
