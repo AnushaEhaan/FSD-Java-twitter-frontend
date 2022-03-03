@@ -7,19 +7,12 @@ import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 import { updateTweet } from "./tweets.action"
 
-const getCommentsStart = (): CommentsAction => ({
-    type: CommentsActionTypes.GET_COMMENTS_START,
+
+export const getComments = (comments: any): CommentsAction => ({
+	type: CommentsActionTypes.GET_COMMENTS,
+	payload: comments,
 });
 
-const getCommentsSuccess = (comments: any): CommentsAction => ({
-    type: CommentsActionTypes.GET_COMMENTS_SUCCESS,
-    payload: comments,
-});
-
-const getCommentsFailure = (error: string): CommentsAction => ({
-    type: CommentsActionTypes.GET_COMMENTS_FAILURE,
-    payload: error,
-});
 
 const addCommentType = (comment: any): CommentsAction => ({
     type: CommentsActionTypes.ADD_COMMENT,
@@ -41,11 +34,10 @@ export const addComment = (commentData: any) => async (dispatch: any) => {
 	try {
 		const response = await axios.post(`/comment/add`, commentData);
 		const data = await response.data;
-		dispatch(addCommentType(data));
+		dispatch(addCommentType(data.comment));
         dispatch(updateTweet(data.comment.tweet));
         return true;
 	} catch (error: any) {
-		dispatch(getCommentsFailure(error?.response.data.message));
 		toast.error(error?.response.data.message);
         return false
 	}

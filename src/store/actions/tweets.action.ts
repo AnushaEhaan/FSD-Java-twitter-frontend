@@ -2,7 +2,7 @@ import { TweetsActionTypes, TweetsAction } from '../../interfaces/store/tweets.t
 import axios from '../../config/axios';
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
-
+import { getComments } from "./comment.action"
 const getTweetsStart = (): TweetsAction => ({
 	type: TweetsActionTypes.GET_TWEETS_START,
 });
@@ -121,6 +121,7 @@ export const findTweetById = (tweetId: string) => async (dispatch: any) => {
 		const response = await axios.get(`/tweet/getTweetById/${tweetId}`);
 		const data = await response.data;
 		dispatch(getTweet(data.tweet));
+		dispatch(getComments(data.tweet.comments));
 		return true;
 	} catch (error: any) {
 		return false

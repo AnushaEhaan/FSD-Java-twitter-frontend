@@ -11,25 +11,12 @@ const commentsReducer = (
     action: CommentsAction,
 ): CommentsState => {
     switch (action.type) {
-        case CommentsActionTypes.GET_COMMENTS_START:
-            return {
-                ...state,
-                loading: true,
-                error: null,
-            };
-        case CommentsActionTypes.GET_COMMENTS_SUCCESS:
+        case CommentsActionTypes.GET_COMMENTS :
             return {
                 ...state,
                 loading: false,
                 comments: action.payload,
             };
-        case CommentsActionTypes.GET_COMMENTS_FAILURE:
-            return {
-                ...state,
-                loading: false,
-                error: action.payload,
-            };
-
         case CommentsActionTypes.ADD_COMMENT:
             return {
                 ...state,
