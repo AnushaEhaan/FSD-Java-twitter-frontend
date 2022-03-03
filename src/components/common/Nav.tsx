@@ -20,7 +20,7 @@ const Nav = () => {
 											: 'w-lg-auto h-lg-auto w-47px me-lg-0 me-3 h-47px d-lg-inline d-flex justify-content-center align-items-center '
 									} `}
 								>
-									{<CustomLink link={item} />}
+									{<CustomLink iconSize='fs-20' link={item} />}
 								</li>
 							);
 						})}
