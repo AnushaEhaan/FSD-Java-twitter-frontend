@@ -33,9 +33,9 @@ const Tweet = () => {
 
   return (
 		<div className='px-md-4'>
-			{tweet && <TweetContent tweet={tweet} />}
+			{tweet && <TweetContent tweet={tweet} hideCommentBtn={true} />}
 			<footer className='mt-3'>
-					<TweetModelForm />
+				<TweetModelForm />
 				<div className='d-flex justify-content-end  pb-4 mb-5 mt-4 border-bottom'>
 					<div>
 						<button className='btn ms-4 btn-dark'>Comment</button>

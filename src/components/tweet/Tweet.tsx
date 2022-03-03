@@ -12,10 +12,11 @@ import Avatar from "../common/Avatar"
 interface Iprops {
 	tweet: any;
 	handleTweet?: any;
+	hideCommentBtn?: boolean;
 }
 
-const Tweet = ({ tweet,handleTweet }: Iprops) => {
-	const params = useParams()
+const Tweet = ({ tweet, handleTweet, hideCommentBtn }: Iprops) => {
+	const params = useParams();
 	const currentUserId = Cookies.get('user_Id');
 	const { currentUser } = useSelector((state: any) => state.user);
 	const [whoRetweeted, setWhoRetweeted] = useState('');
@@ -29,7 +30,7 @@ const Tweet = ({ tweet,handleTweet }: Iprops) => {
 	};
 
 	React.useEffect(() => {
-		setWhoRetweeted('')
+		setWhoRetweeted('');
 		if (tweet.retweetedBy.length > 0) {
 			if (tweet.retweetedBy.includes(currentUserId)) {
 				setWhoRetweeted('You');
@@ -78,22 +79,24 @@ const Tweet = ({ tweet,handleTweet }: Iprops) => {
 					</div>
 					<TweetDropDownMenu />
 				</header>
-				<Link
-					to={`/tweet/${tweet._id}`}
-				>
+				<Link to={`/tweet/${tweet._id}`}>
 					<TweetContent tweet={tweet} />
 				</Link>
 				<footer className='d-flex  justify-content-between '>
 					<div className='d-flex align-items-center'>
+						{!hideCommentBtn && (
+							<div className='me-4 d-flex align-items-center'>
+								<button
+									className='btn btn-outline-secondary text-dark text-opacity-50 border-0 me-1px w-40px h-40px center'
+									onClick={() => handleTweet(tweet)}
+								>
+									<i className='fa-regular fa-comment fs-18 '></i>
+								</button>
+								<span>{tweet.comments.length > 0 && tweet.comments.length}</span>
+							</div>
+						)}
 						<button
-							className='btn btn-outline-secondary text-dark text-opacity-50 border-0 me-1px w-40px h-40px center'
-							onClick={() => handleTweet(tweet)}
-						>
-							<i className='fa-regular fa-comment fs-18 '></i>
-						</button>
-						<span>{tweet.comments.length > 0 && tweet.comments.length}</span>
-						<button
-							className='btn btn-outline-secondary text-dark text-opacity-50 ms-4 me-2px border-0 w-40px h-40px center'
+							className='btn btn-outline-secondary text-dark text-opacity-50  me-2px border-0 w-40px h-40px center'
 							onClick={() => handleRetweet(tweet._id)}
 						>
 							<i

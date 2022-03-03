@@ -45,6 +45,10 @@ const tweetsReducer = (
 				tweets: state.tweets.map((tweet: any) =>
 					tweet._id === action.payload._id ? action.payload : tweet,
 				),
+				tweet: {
+					...action.payload,
+					comments : state.tweet.comments
+				},
 			};
 
 		case TweetsActionTypes.RETWEET:
@@ -66,6 +70,10 @@ const tweetsReducer = (
 					tweets: state.tweets.map((tweet: any) =>
 						tweet._id === action.payload.tweet._id ? action.payload.tweet : tweet,
 					),
+					tweet: {
+						...action.payload.tweet,
+						comments: state.tweet.comments,
+					},
 				};
 			} else {
 				return {
@@ -73,6 +81,10 @@ const tweetsReducer = (
 					tweets: state.tweets.map((tweet: any) =>
 						tweet._id === action.payload.tweet._id ? action.payload.tweet : tweet,
 					),
+					tweet: {
+						...action.payload.tweet,
+						comments: state.tweet.comments,
+					},
 				};
 			}
 		default:
