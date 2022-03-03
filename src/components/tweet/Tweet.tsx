@@ -5,7 +5,7 @@ import TweetDropDownMenu from './TweetDropDownMenu.tweet';
 import { likeTweet, retweet } from '../../store/actions/tweets.action';
 import { findUserById } from '../../store/actions/profileInfo.action';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import TweetContent from './TweetContent';
 import Avatar from "../common/Avatar"
 
@@ -15,6 +15,7 @@ interface Iprops {
 }
 
 const Tweet = ({ tweet,handleTweet }: Iprops) => {
+	const params = useParams()
 	const currentUserId = Cookies.get('user_Id');
 	const { currentUser } = useSelector((state: any) => state.user);
 	const [whoRetweeted, setWhoRetweeted] = useState('');
@@ -77,9 +78,11 @@ const Tweet = ({ tweet,handleTweet }: Iprops) => {
 					</div>
 					<TweetDropDownMenu />
 				</header>
-
-				<TweetContent tweet={tweet} />
-
+				<Link
+					to={`/tweet/${tweet._id}`}
+				>
+					<TweetContent tweet={tweet} />
+				</Link>
 				<footer className='d-flex  justify-content-between '>
 					<div className='d-flex align-items-center'>
 						<button

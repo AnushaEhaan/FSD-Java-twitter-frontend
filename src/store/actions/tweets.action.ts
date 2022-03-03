@@ -17,8 +17,13 @@ const getTweetsFailure = (error: any): TweetsAction => ({
 	payload: error,
 });
 
-export const updateTweets = (tweet: any): TweetsAction => ({
-	type: TweetsActionTypes.UPDATE_TWEETS,
+const getTweet = (tweet: any): TweetsAction => ({
+	type: TweetsActionTypes.GET_TWEET,
+	payload : tweet
+});
+
+export const addTweet = (tweet: any): TweetsAction => ({
+	type: TweetsActionTypes.ADD_TWEET,
 	payload: tweet,
 });
 
@@ -109,3 +114,15 @@ export const retweet = (tweetId: string) => async (dispatch: any) => {
 		toast.error(error?.response.data.message);
 	}
 };
+
+
+export const findTweetById = (tweetId: string) => async (dispatch: any) => {
+	try {
+		const response = await axios.get(`/tweet/getTweetById/${tweetId}`);
+		const data = await response.data;
+		dispatch(getTweet(data.tweet));
+		return true;
+	} catch (error: any) {
+		return false
+	}
+}

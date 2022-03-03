@@ -43,7 +43,9 @@ const ProfileCover = ({ profileUser, currentUser }: Iprops) => {
 								alt=''
 							/>
 						) : (
-							<div className='h-122px border border-white bg-secondary  border-4 w-122px rounded-circle'></div>
+							<div className='h-122px border border-white bg-secondary center text-dark text-opacity-50 border-4 w-122px rounded-circle'>
+								<i className='fa-solid fa-user fs-30'></i>
+							</div>
 						)}
 					</div>
 

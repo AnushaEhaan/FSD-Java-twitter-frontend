@@ -10,7 +10,8 @@ export enum Routes {
 	Login = '/login',
 	SignUp = '/signup',
 	Dashboard = '/dashboard',
-	Profile = '/profile/:id/*',
+	Profile = '/profile/:id/',
 	ProfileMedia = '/media',
 	ProfileLikes = '/likes',
+	Tweet = '/tweet/:id',
 }

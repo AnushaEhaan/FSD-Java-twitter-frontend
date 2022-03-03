@@ -29,17 +29,15 @@ const TweetGroup = ({ tweets, loading }: Iprops) => {
 					<Spinner size='sm' />
 				) : tweets.length > 0 ? (
 					tweets.map((tweet: any) => (
-						<Tweet
-							key={tweet._id}
-							tweet={tweet}
-							handleTweet={handleTweet}
-						/>
+						<Tweet key={tweet._id} tweet={tweet} handleTweet={handleTweet} />
 					))
 				) : (
-					<p className='text-center mt-7'>No tweets yet</p>
+					<p className='text-center mt-7 alert alert-primary w-md mx-auto'>No tweets yet</p>
 				)}
 			</section>
-			{ tweet && <TweetCommentModel tweet={tweet} show={show} handleModelClose={handleModelClose} />}
+			{tweet && (
+				<TweetCommentModel tweet={tweet} show={show} handleModelClose={handleModelClose} />
+			)}
 		</div>
 	);
 };

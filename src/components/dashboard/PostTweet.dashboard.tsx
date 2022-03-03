@@ -3,7 +3,7 @@ import axios from '../../config/axios';
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 import Spinner from '../common/Spinner';
-import { updateTweets } from '../../store/actions/tweets.action';
+import { addTweet } from '../../store/actions/tweets.action';
 import { useDispatch, useSelector } from 'react-redux';
 
 const PostTweet = () => {
@@ -77,7 +77,7 @@ const PostTweet = () => {
 				user: currentUser,
 			};
 
-			dispatch(updateTweets(tweet));
+			dispatch(addTweet(tweet));
 		} catch (error: any) {
 			toast.error(error?.response.data.message);
 			setLoading(false);

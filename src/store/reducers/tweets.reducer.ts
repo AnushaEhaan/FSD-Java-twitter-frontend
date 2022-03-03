@@ -28,8 +28,13 @@ const tweetsReducer = (
 				loading: false,
 				error: action.payload,
 			};
+		case TweetsActionTypes.GET_TWEET :
+			return {
+				...state,
+				tweet : action.payload
+			}
 
-		case TweetsActionTypes.UPDATE_TWEETS:
+		case TweetsActionTypes.ADD_TWEET:
 			return {
 				...state,
 				tweets: [action.payload, ...state.tweets],
