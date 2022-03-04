@@ -139,7 +139,6 @@ const Tweet = ({ tweet, handleTweet, hideCommentBtn }: Iprops) => {
 						onClick={() => handleBookmark(tweet._id)}
 						disabled={loadingOnBookMark}
 					>
-						{tweet.bookmarks.length}
 						{loadingOnBookMark ? (
 							<Spinner size='sm' />
 						) : (
