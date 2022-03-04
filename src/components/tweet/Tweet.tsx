@@ -2,12 +2,13 @@ import Cookies from 'js-cookie';
 import moment from 'moment';
 import React, { useState } from 'react';
 import TweetDropDownMenu from './TweetDropDownMenu.tweet';
-import { likeTweet, retweet } from '../../store/actions/tweets.action';
+import { likeTweet, retweet, addBookmark } from '../../store/actions/tweets.action';
 import { findUserById } from '../../store/actions/profileInfo.action';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import TweetContent from './TweetContent';
-import Avatar from "../common/Avatar"
+import Avatar from '../common/Avatar';
+import Spinner from '../common/Spinner';
 
 interface Iprops {
 	tweet: any;
@@ -20,6 +21,7 @@ const Tweet = ({ tweet, handleTweet, hideCommentBtn }: Iprops) => {
 	const currentUserId = Cookies.get('user_Id');
 	const { currentUser } = useSelector((state: any) => state.user);
 	const [whoRetweeted, setWhoRetweeted] = useState('');
+	const [loadingOnBookMark, setLoadingOnBookMark] = useState(false);
 	const dispatch = useDispatch();
 	const handleLike = (tweetId: string) => {
 		dispatch(likeTweet(tweetId));
@@ -27,6 +29,12 @@ const Tweet = ({ tweet, handleTweet, hideCommentBtn }: Iprops) => {
 
 	const handleRetweet = (tweetId: string) => {
 		dispatch(retweet(tweetId));
+	};
+
+	const handleBookmark = async (tweetId: string) => {
+		setLoadingOnBookMark(true);
+		const isBookmarked = await dispatch(addBookmark(tweetId));
+		setLoadingOnBookMark(false);
 	};
 
 	React.useEffect(() => {
@@ -126,8 +134,21 @@ const Tweet = ({ tweet, handleTweet, hideCommentBtn }: Iprops) => {
 							</span>
 						)}
 					</div>
-					<button className='btn btn-outline-secondary text-dark text-opacity-50 border-0 w-40px h-40px center'>
-						<i className='fa-solid fa-arrow-up-from-bracket fs-18 '></i>
+					<button
+						className='btn btn-outline-secondary text-dark text-opacity-50 border-0 w-40px h-40px center'
+						onClick={() => handleBookmark(tweet._id)}
+						disabled={loadingOnBookMark}
+					>
+						{tweet.bookmarks.length}
+						{loadingOnBookMark ? (
+							<Spinner size='sm' />
+						) : (
+							<i
+								className={`fa-${
+									tweet.bookmarks.includes(currentUserId) ? 'solid' : 'regular'
+								} fa-bookmark fs-18 `}
+							></i>
+						)}
 					</button>
 				</footer>
 			</main>

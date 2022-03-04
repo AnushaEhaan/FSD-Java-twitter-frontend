@@ -47,9 +47,11 @@ const tweetsReducer = (
 				),
 				tweet: {
 					...action.payload,
-					comments : state.tweet.comments
+					comments : state.tweet?.comments
 				},
 			};
+
+		
 
 		case TweetsActionTypes.RETWEET:
 			const path = window.location.pathname;
@@ -72,7 +74,7 @@ const tweetsReducer = (
 					),
 					tweet: {
 						...action.payload.tweet,
-						comments: state.tweet.comments,
+						comments: state.tweet?.comments,
 					},
 				};
 			} else {
@@ -83,7 +85,7 @@ const tweetsReducer = (
 					),
 					tweet: {
 						...action.payload.tweet,
-						comments: state.tweet.comments,
+						comments: state.tweet?.comments,
 					},
 				};
 			}

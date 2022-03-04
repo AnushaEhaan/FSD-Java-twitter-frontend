@@ -127,3 +127,17 @@ export const findTweetById = (tweetId: string) => async (dispatch: any) => {
 		return false
 	}
 }
+
+export const addBookmark = (tweetId: string) => async (dispatch: any) => {
+	try {
+		const userId = Cookies.get('user_Id');
+		const response = await axios.post(`bookmar/add/${userId}/${tweetId}`);
+		const data = await response.data;
+		console.log(data);
+		dispatch(updateTweet(data.tweet));
+		return true;
+	} catch (error: any) {
+		toast.error(error?.response.data.message);
+		return false;
+	}
+}

@@ -35,7 +35,7 @@ export const addComment = (commentData: any) => async (dispatch: any) => {
 		const response = await axios.post(`/comment/add`, commentData);
 		const data = await response.data;
 		dispatch(addCommentType(data.comment));
-        dispatch(updateTweet(data.comment.tweet));
+        dispatch(updateTweet(data?.comment?.tweet));
         return true;
 	} catch (error: any) {
 		toast.error(error?.response.data.message);
