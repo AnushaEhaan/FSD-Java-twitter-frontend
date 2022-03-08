@@ -32,6 +32,11 @@ export const updateTweet = (tweet: any): TweetsAction => ({
 	payload: tweet,
 });
 
+export const deleteTweetType = (tweetId: any): TweetsAction => ({
+	type: TweetsActionTypes.DELTE_TWEET,
+	payload: tweetId,
+});
+
 const setRetweet = (obj: any): TweetsAction => ({
 	type: TweetsActionTypes.RETWEET,
 	payload: obj,
@@ -135,6 +140,18 @@ export const addBookmark = (tweetId: string) => async (dispatch: any) => {
 		const data = await response.data;
 		console.log(data);
 		dispatch(updateTweet(data.tweet));
+		return true;
+	} catch (error: any) {
+		toast.error(error?.response.data.message);
+		return false;
+	}
+}
+
+export const deleteTweet = (tweetId: string) => async (dispatch: any) => {
+	try {
+		const response = await axios.delete(`/tweet/delete/${tweetId}`);
+		const data = await response.data;
+		dispatch(deleteTweetType(tweetId));
 		return true;
 	} catch (error: any) {
 		toast.error(error?.response.data.message);

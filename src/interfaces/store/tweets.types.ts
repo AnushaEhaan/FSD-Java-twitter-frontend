@@ -25,4 +25,5 @@ export enum TweetsActionTypes {
 	UPDATE_TWEET = 'UPDATE_TWEET',
 	RETWEET = 'RETWEET',
 	GET_TWEET = 'GET_TWEET',
+	DELTE_TWEET = 'DELTE_TWEET',
 }

@@ -1,7 +1,25 @@
+import Cookies from 'js-cookie';
 import React from 'react'
+import { Link } from 'react-router-dom';
+import { deleteTweet } from '../../store/actions/tweets.action';
+import { useDispatch, useSelector } from "react-redux"
+import Spinner from '../common/Spinner';
 
-const TweetDropDownMenu = () => {
-  return (
+interface Iprops {
+	userId: string;
+	userName: string;
+	tweetId: string;
+}
+
+const TweetDropDownMenu = ({ userId, userName, tweetId }: Iprops) => {
+	const currentUserId = Cookies.get('user_Id');
+	const dispatch = useDispatch();
+
+	const handleDelete = async (tweetId: string) => {
+		await dispatch(deleteTweet(tweetId));
+	};
+	
+	return (
 		<div>
 			<div className='dropdown'>
 				<button
@@ -14,25 +32,20 @@ const TweetDropDownMenu = () => {
 					<i className='fa-solid fa-ellipsis-vertical fs-17'></i>
 				</button>
 				<ul className='dropdown-menu dropdown-menu-end' aria-labelledby='dropdownMenuButton1'>
-					<li>
-						<a className='dropdown-item' href='#'>
-							Action
-						</a>
-					</li>
-					<li>
-						<a className='dropdown-item' href='#'>
-							Another action
-						</a>
-					</li>
-					<li>
-						<a className='dropdown-item' href='#'>
-							Something else here
-						</a>
-					</li>
+					{currentUserId === userId && (
+						<li className='dropdown-item py-2 cursor' onClick={() => handleDelete(tweetId)}>
+							<i className='fa-solid fa-trash me-3 fs-16'></i>
+							Delete
+						</li>
+					)}
+					<Link className='dropdown-item py-2 cursor' to={`/profile/${userId}`}>
+						<i className='fa-solid fa-user me-3 fs-18'></i>
+						{userName.split(' ')[0]}
+					</Link>
 				</ul>
 			</div>
 		</div>
 	);
-}
+};
 
 export default TweetDropDownMenu

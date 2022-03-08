@@ -85,7 +85,7 @@ const Tweet = ({ tweet, handleTweet, hideCommentBtn }: Iprops) => {
 							></i>
 						</div>
 					</div>
-					<TweetDropDownMenu />
+					<TweetDropDownMenu userId={tweet.user._id} userName={tweet.user.name} tweetId={tweet._id}  />
 				</header>
 				<Link to={`/tweet/${tweet._id}`}>
 					<TweetContent tweet={tweet} />

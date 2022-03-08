@@ -28,11 +28,11 @@ const tweetsReducer = (
 				loading: false,
 				error: action.payload,
 			};
-		case TweetsActionTypes.GET_TWEET :
+		case TweetsActionTypes.GET_TWEET:
 			return {
 				...state,
-				tweet : action.payload
-			}
+				tweet: action.payload,
+			};
 
 		case TweetsActionTypes.ADD_TWEET:
 			return {
@@ -47,11 +47,9 @@ const tweetsReducer = (
 				),
 				tweet: {
 					...action.payload,
-					comments : state.tweet?.comments
+					comments: state.tweet?.comments,
 				},
 			};
-
-		
 
 		case TweetsActionTypes.RETWEET:
 			const path = window.location.pathname;
@@ -89,6 +87,13 @@ const tweetsReducer = (
 					},
 				};
 			}
+		case TweetsActionTypes.DELTE_TWEET:
+			return {
+				...state,
+				tweets: state.tweets.filter(
+					(tweet: any) => tweet._id !== action.payload,
+				),
+			};
 		default:
 			return state;
 	}
