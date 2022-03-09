@@ -7,6 +7,7 @@ import updateUser from './reducers/updateUser.reducer';
 import profileUser from './reducers/profileInfo.reducer';
 import tweets from './reducers/tweets.reducer';
 import comments from './reducers/comments.reducer';
+import trends from './reducers/trends.reducer';
 
 const rootReducer = combineReducers({
 	signUp,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
 	profileUser,
 	tweets,
 	comments,
+	trends
 });
 
 const store = createStore(rootReducer, {}, applyMiddleware(thunk));
