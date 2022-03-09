@@ -50,6 +50,17 @@ const PostTweet = () => {
 		}
 	};
 
+	const uploadTrend = async (trend: any) => {
+		try {
+			const response = await axios.post('/trend/add', { name: trend });
+			const data = await response.data;
+			return data.trend._id;
+		} catch (error) {
+			return error;
+		}
+	};
+
+
 	const uploadTweet = async () => {
 		const userId = Cookies.get('user_Id');
 		try {
@@ -58,11 +69,18 @@ const PostTweet = () => {
 				content,
 				user: userId,
 				is_Public: isPublic,
-				trends: stringUtils.extractTrends(content),
 			};
 			if (imageForUpload) {
 				const data = await uploadPhoto(imageForUpload);
 				data.src && (formData.photo = data.src);
+			}
+
+			if (stringUtils.extractTrends(content).length > 0) {
+				const data = await stringUtils.extractTrends(content).map(async (trend: any) => {
+					const id = await uploadTrend(trend);
+					return id;
+				})
+				formData.trends = await Promise.all(data);
 			}
 
 			const response = await axios.post('/tweet/upload', formData);
