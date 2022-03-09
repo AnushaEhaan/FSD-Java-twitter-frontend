@@ -6,6 +6,7 @@ import Spinner from '../common/Spinner';
 import { addTweet } from '../../store/actions/tweets.action';
 import { useDispatch, useSelector } from 'react-redux';
 import stringUtils from "../../utils/string.utils";
+import Avatar from '../common/Avatar';
 
 const PostTweet = () => {
 	const dispatch = useDispatch();
@@ -104,14 +105,10 @@ const PostTweet = () => {
 	};
 
 	return (
-		<section className='border-bottom p-3 mt-2 position-relative'>
+		<section className='border-bottom px-3 py-4 mt-1 position-relative'>
 			<header className='d-flex  pb2 align-items-start'>
 				<div>
-					<img
-						src='https://pbs.twimg.com/profile_images/1151890543162646528/RG-t6m7R_400x400.jpg'
-						alt=''
-						className='w-45px h-45px rounded-circle'
-					/>
+					<Avatar avatar={currentUser.avatar}/>
 				</div>
 				<div className='w-100 ms-1'>
 					<textarea
@@ -120,6 +117,7 @@ const PostTweet = () => {
 						value={content}
 						onChange={(e) => setConent(e.target.value)}
 						maxLength={140}
+						style={{ resize: 'none' }}
 					></textarea>
 					{readableImage && (
 						<div className='position-relative'>
@@ -132,7 +130,7 @@ const PostTweet = () => {
 							</button>
 						</div>
 					)}
-					<footer className='d-flex justify-content-between align-items-center mt-5'>
+					<footer className='d-flex justify-content-between align-items-center mt-4'>
 						<section className='d-flex'>
 							<label className='btn border center py-2 me-3'>
 								<i className='fa-solid fs-19 fa-image'></i>
