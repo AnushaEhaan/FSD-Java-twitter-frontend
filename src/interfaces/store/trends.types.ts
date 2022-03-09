@@ -1,7 +1,7 @@
 export interface TrendsState {
 	loading: boolean;
 	error: null | string;
-	topTrends: any;
+	topTrends: any[];
 }
 
 export interface TrendsAction {
@@ -12,7 +12,7 @@ export interface TrendsAction {
 export const initialState: TrendsState = {
 	loading: false,
 	error: null,
-	topTrends: null,
+	topTrends: [],
 };
 
 export enum TrendsActionTypes {

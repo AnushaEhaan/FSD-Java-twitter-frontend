@@ -23,6 +23,7 @@ export const getTopTrends = () => async (dispatch: any) => {
         const response = await axios.get('/trend/getTop');
         const data = await response.data;
         dispatch(getTrendsType(data.trends));
+        return data;
     } catch (error:any) {
         toast.error(error?.response.data.message);
         return false

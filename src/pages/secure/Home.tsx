@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Nav from '../../components/common/Nav';
-import SideBar from "../../components/common/SideBar";
+import SideBar from "../../components/sidebar/SideBar";
 
 const Home = () => {
   return (
@@ -23,7 +23,7 @@ const Home = () => {
 					</main>
 
 					<aside className='col-xl-4 col-lg-4 col-md-5 col-12'>
-						<div className='d-md-fle d-none '>
+						<div className='d-md-fle'>
 							<SideBar />
 						</div>
 					</aside>
