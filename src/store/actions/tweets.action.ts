@@ -147,6 +147,22 @@ export const addBookmark = (tweetId: string) => async (dispatch: any) => {
 	}
 }
 
+
+export const getBookmarks = () => async (dispatch: any) => {
+	const userId = Cookies.get('user_Id');
+	try {
+		const response = await axios.get(`bookmar/get/${userId}`);
+		const data = await response.data;
+		console.log(data);
+		dispatch(getTweetsSuccess(data.bookmarks));
+		return true;
+	} catch (error: any) {
+		toast.error(error?.response.data.message);
+		return false;
+	}
+}
+
+
 export const deleteTweet = (tweetId: string) => async (dispatch: any) => {
 	try {
 		const response = await axios.delete(`/tweet/delete/${tweetId}`);

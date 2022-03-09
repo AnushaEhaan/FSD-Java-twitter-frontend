@@ -14,4 +14,5 @@ export enum Routes {
 	ProfileMedia = '/media',
 	ProfileLikes = '/likes',
 	Tweet = '/tweet/:id',
+	Bookmarks = '/Bookmarks',
 }

@@ -32,6 +32,10 @@ export const secureRoutes: IRoute[] = [
 				path: Routes.Tweet,
 				element: lazy(() => import('../pages/secure/Tweet')),
 			},
+			{
+				path: Routes.Bookmarks,
+				element: lazy(() => import('../pages/secure/Bookmarks')),
+			},
 		],
 	},
 ];
