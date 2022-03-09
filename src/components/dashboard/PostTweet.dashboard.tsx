@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import Spinner from '../common/Spinner';
 import { addTweet } from '../../store/actions/tweets.action';
 import { useDispatch, useSelector } from 'react-redux';
+import stringUtils from "../../utils/string.utils";
 
 const PostTweet = () => {
 	const dispatch = useDispatch();
@@ -55,10 +56,10 @@ const PostTweet = () => {
 			setLoading(true);
 			const formData: any = {
 				content,
-				user:userId,
+				user: userId,
 				is_Public: isPublic,
+				trends: stringUtils.extractTrends(content),
 			};
-			console.log(formData);
 			if (imageForUpload) {
 				const data = await uploadPhoto(imageForUpload);
 				data.src && (formData.photo = data.src);
