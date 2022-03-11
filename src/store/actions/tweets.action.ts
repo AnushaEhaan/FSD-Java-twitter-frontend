@@ -152,6 +152,7 @@ export const addBookmark = (tweetId: string) => async (dispatch: any) => {
 export const getBookmarks = () => async (dispatch: any) => {
 	const userId = Cookies.get('user_Id');
 	try {
+		dispatch(getTweetsStart());
 		const response = await axios.get(`bookmar/get/${userId}`);
 		const data = await response.data;
 		console.log(data);

@@ -27,14 +27,14 @@ const TweetGroup = ({ tweets, loading, error }: Iprops) => {
 		<div>
 			<section>
 				{loading ? (
-					<Spinner size='sm' />
+					<Spinner size='sm' height="20vh" />
 				) : tweets.length > 0 ? (
 					tweets.map((tweet: any) => (
 						<Tweet key={tweet._id} tweet={tweet} handleTweet={handleTweet} />
 					))
 				) : (
 					<p className='text-center mt-7 alert alert-primary w-md mx-auto'>
-						{ error ? error : 'No Tweets yet'}
+						{error ? error : 'No Tweets yet'}
 					</p>
 				)}
 			</section>
