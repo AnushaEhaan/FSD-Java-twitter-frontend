@@ -8,7 +8,7 @@ interface Iprops {
 const Trend = ({ trend }: Iprops) => {
 	return (
 		<Link
-			to={`/trend/${trend.name}`}
+			to={`/trends/${trend.name}`}
 			className='d-flex  justify-content-between hover-bg-secondary py-3 px-2 rounded'
 		>
 			<h6 className='mb-0 fs-15'>{trend.name}</h6>

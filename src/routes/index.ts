@@ -36,6 +36,10 @@ export const secureRoutes: IRoute[] = [
 				path: Routes.Bookmarks,
 				element: lazy(() => import('../pages/secure/Bookmarks')),
 			},
+			{
+				path: Routes.Trends,
+				element: lazy(() => import('../pages/secure/Trends')),
+			},
 		],
 	},
 ];

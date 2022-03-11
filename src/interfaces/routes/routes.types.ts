@@ -15,4 +15,5 @@ export enum Routes {
 	ProfileLikes = '/likes',
 	Tweet = '/tweet/:id',
 	Bookmarks = '/Bookmarks',
+	Trends = '/trends/:slug',
 }
