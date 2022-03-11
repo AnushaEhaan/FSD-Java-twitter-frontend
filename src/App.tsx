@@ -7,10 +7,11 @@ import { findCurrentUser } from './store/actions/user.action';
 import Cookies from 'js-cookie'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Spinner from './components/common/Spinner';
 
 const App = () => {
 	const dispatch = useDispatch();
-	const { isAuthenticated } = useSelector((state: any) => state.user);
+	const { isAuthenticated, loading } = useSelector((state: any) => state.user);
 
 	React.useEffect(() => {
 		const token = Cookies.get('token');
@@ -20,6 +21,7 @@ const App = () => {
 		}
 	}, [])
 
+	if (loading) return <Spinner height='80vh'></Spinner>;
 
   	return (
 			<>

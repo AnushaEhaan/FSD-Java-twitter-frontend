@@ -37,6 +37,7 @@ export const userLogin = (form:any) => async (dispatch: any) => {
 
 export const findCurrentUser = (id:string) => async (dispatch: any) => {
     try {
+        dispatch(userLoginStart());
         const response = await axios.get(`/user/getUserById/${id}`);
         const data = await response.data;
         dispatch(userLoginSuccess(data));
