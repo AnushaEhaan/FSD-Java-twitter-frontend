@@ -1,27 +1,36 @@
 import React from 'react'
 
-const SearchTrends = () => {
-  return (
+interface Iprops {
+	search: string | undefined;
+	handleSearch: (value: any) => void;
+	handleSubmit: (e: any) => void;
+}
+
+const SearchTrends = ({ search, handleSearch, handleSubmit }: Iprops) => {
+	return (
 		<div>
-			<form>
-				<div className='input-group mb-3 px-4'>
+			<form onSubmit={handleSubmit}>
+				<div className='input-group px-md-4'>
 					<input
 						type='text'
 						className='form-control'
 						placeholder='Search tweets by hashtag'
 						aria-label="Recipient's username"
 						aria-describedby='basic-addon2'
+						value={search}
+						onChange={handleSearch}
 					/>
-					<span
-						className='input-group-text border border-dark bg-dark text-white'
+					<button
+						className='btn rounded-end input-group-text border border-dark bg-dark text-white'
 						id='basic-addon2'
+						type='submit'
 					>
-						<i className='fa-solid fa-magnifying-glass'></i>
-					</span>
+						<i className='fa-solid fa-magnifying-glass fs-15'></i>
+					</button>
 				</div>
 			</form>
 		</div>
 	);
-}
+};
 
 export default SearchTrends

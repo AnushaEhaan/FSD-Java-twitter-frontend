@@ -3,11 +3,12 @@ import axios from '../../config/axios';
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 import { getComments } from "./comment.action"
-const getTweetsStart = (): TweetsAction => ({
+
+export const getTweetsStart = (): TweetsAction => ({
 	type: TweetsActionTypes.GET_TWEETS_START,
 });
 
-const getTweetsSuccess = (tweets: any): TweetsAction => ({
+export const getTweetsSuccess = (tweets: any): TweetsAction => ({
 	type: TweetsActionTypes.GET_TWEETS_SUCCESS,
 	payload: tweets,
 });

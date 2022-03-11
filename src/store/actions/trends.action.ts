@@ -1,12 +1,8 @@
-import {
-	TrendsState,
-	TrendsActionTypes,
-	TrendsAction,
-	initialState,
-} from '../../interfaces/store/trends.types';
+import { TrendsActionTypes, TrendsAction} from '../../interfaces/store/trends.types';
 import axios from '../../config/axios';
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
+import { getTweetsSuccess, getTweetsStart } from './tweets.action';
 
 
 const getTrendsType = (data = []): TrendsAction => {
@@ -26,6 +22,21 @@ export const getTopTrends = () => async (dispatch: any) => {
         return data;
     } catch (error:any) {
         toast.error(error?.response.data.message);
+        return false
+    }
+};
+
+
+export const findTrends = (search: string) => async (dispatch: any) => {
+    try {
+        dispatch(getTweetsStart());
+        const userId = Cookies.get('user_Id');
+        const response = await axios.get(`/trend/find/${search}/${userId}`);
+        const data = await response.data;
+        dispatch(getTweetsSuccess(data.trend.tweets));
+        return data;
+    } catch (error:any) {
+        dispatch(getTweetsSuccess([]));
         return false
     }
 };
