@@ -51,9 +51,9 @@ const PostTweet = () => {
 		}
 	};
 
-	const uploadTrend = async (trend: any) => {
+	const uploadTrend = async(trend:any, tweetId:String) => {
 		try {
-			const response = await axios.post('/trend/add', { name: trend });
+			const response = await axios.post('/trend/add', { name: trend, tweetId });
 			const data = await response.data;
 			return data.trend._id;
 		} catch (error) {
@@ -75,15 +75,6 @@ const PostTweet = () => {
 				const data = await uploadPhoto(imageForUpload);
 				data.src && (formData.photo = data.src);
 			}
-
-			if (stringUtils.extractTrends(content).length > 0) {
-				const data = await stringUtils.extractTrends(content).map(async (trend: any) => {
-					const id = await uploadTrend(trend);
-					return id;
-				})
-				formData.trends = await Promise.all(data);
-			}
-
 			const response = await axios.post('/tweet/upload', formData);
 			const data = await response.data;
 			data.status == 200 && toast.success(data.message);
@@ -98,6 +89,14 @@ const PostTweet = () => {
 			};
 
 			dispatch(addTweet(tweet));
+
+			if (stringUtils.extractTrends(content).length > 0) {
+				stringUtils.extractTrends(content).forEach(async (trend: any) => {
+				 		await uploadTrend(trend, data.tweet._id);
+				});
+			}
+
+
 		} catch (error: any) {
 			toast.error(error?.response.data.message);
 			setLoading(false);
