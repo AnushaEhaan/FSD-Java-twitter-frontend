@@ -9,6 +9,7 @@ import tweets from './reducers/tweets.reducer';
 import comments from './reducers/comments.reducer';
 import trends from './reducers/trends.reducer';
 import suggestedUsers from './reducers/suggestedUsers.reducer';
+import userFollwersOrFollowing from './reducers/userFollwersAndFollowing.reducer';
 
 const rootReducer = combineReducers({
 	signUp,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
 	comments,
 	trends,
 	suggestedUsers,
+	userFollwersOrFollowing,
 });
 
 const store = createStore(rootReducer, {}, applyMiddleware(thunk));

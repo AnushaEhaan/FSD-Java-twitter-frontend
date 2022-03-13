@@ -20,7 +20,7 @@ const getUserFollwersOrFollowingFailure = (error: string): userFollwersOrFollowi
     payload: error,
 });
 
-const setUserFollwersOrFollowing = (payload: any): userFollwersOrFollowingAction => ({
+export const setUserFollwersOrFollowing = (payload: any): userFollwersOrFollowingAction => ({
     type: userFollwersOrFollowingActionTypes.SET_USER_FOLLOWERS_OR_FOLLOWING,
     payload,
 });
