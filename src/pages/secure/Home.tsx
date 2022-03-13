@@ -23,7 +23,7 @@ const Home = () => {
 					</main>
 
 					<aside className='col-xl-4 col-lg-4 col-md-5 col-12'>
-						<div className='d-md-fle'>
+						<div className='d-md-block d-none'>
 							<SideBar />
 						</div>
 					</aside>
