@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import moment from 'moment'; 
-
+import FollwersOrFollowingModel from "./FollwersOrFollowingModel.profile";
+import { getUserFollwersOrFollowing } from "../../store/actions/userFollwersOrFollowing.action"
+import { useDispatch } from 'react-redux';
 
 interface Iprops {
 	user: any;
 }
 
 const ProfileInfo = ({ user }: Iprops) => {
+	const dispatch = useDispatch();
+	const [show, setShow] = useState(false);
+	const [type, setType] = useState('');
+
+	const handleClose = () => setShow(false);
+	const handleShow = (type:string) => {
+		setType(type);
+		dispatch(getUserFollwersOrFollowing(user._id, type, 1, 5));
+		setShow(true);
+	};
+
 	return (
 		<div>
 			<div className='mt-4'>
@@ -42,14 +55,20 @@ const ProfileInfo = ({ user }: Iprops) => {
 				</section>
 
 				<section className='mt-2'>
-					<span className='me-3'>
+					<span className='me-3' onClick={() => handleShow('following')}>
 						<b>{user?.following.length}</b> Following
 					</span>
-					<span>
+					<span onClick={() => handleShow('followers')}>
 						<b>{user?.followers.length}</b> Followers
 					</span>
 				</section>
 			</div>
+			<FollwersOrFollowingModel
+				type={type}
+				handleClose={handleClose}
+				show={show}
+				user={user}
+			/>
 		</div>
 	);
 };
