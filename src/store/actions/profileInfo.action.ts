@@ -5,7 +5,7 @@ import {
 import axios from '../../config/axios';
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
-
+import {setSuggestedUsers} from "./suggestedUsers.action"
 
 const getProfileUserStart = (): ProfileUserAction => ({
     type: ProfileUserActionTypes.GET_PROFILE_USER_START,
@@ -55,6 +55,7 @@ export const followUser = (followingId: string) => async (dispatch: any) => {
         const response = await axios.put(`user/followUser/${userId}/${followingId}`);
         const data = await response.data;
         dispatch(setProfileUser(data.userToFollow));
+        dispatch(setSuggestedUsers(data.userToFollow));
         return data;
     } catch (error:any) {
         return error;

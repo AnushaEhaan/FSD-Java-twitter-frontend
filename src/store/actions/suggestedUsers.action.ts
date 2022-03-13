@@ -20,6 +20,11 @@ const getSuggestedUsersFailure = (error: any): suggestedUsersAction => ({
 	payload: error,
 });
 
+export const setSuggestedUsers = (suggestedUser: any): suggestedUsersAction => ({
+	type: suggestedUsersActionTypes.SET_SUGGESTED_USER,
+	payload: suggestedUser,
+});
+
 export const getSuggestedUsers = (limit: number, page: number) => async (dispatch: any) => {
 	dispatch(getSuggestedUsersStart());
 	const userId = Cookies.get('user_Id');
@@ -34,3 +39,4 @@ export const getSuggestedUsers = (limit: number, page: number) => async (dispatc
 		return false;
 	}
 };
+

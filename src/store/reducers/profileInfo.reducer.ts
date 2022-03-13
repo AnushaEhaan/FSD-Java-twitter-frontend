@@ -32,7 +32,7 @@ const profileUserReducer = (
         case ProfileUserActionTypes.SET_PROFILE_USER:
             return {
                 ...state,
-                profileUser: action.payload,
+                profileUser: state.profileUser._id === action.payload._id ? action.payload : state.profileUser,
             };
 
         default:
