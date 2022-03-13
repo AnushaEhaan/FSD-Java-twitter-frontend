@@ -20,11 +20,11 @@ const Trends = () => {
 
 	return (
 		<div className='bg-secondary bg-opacity-25 rounded py-4	 px-lg-3 px-2'>
-			<div className='px-2'>
-				<h5>Trends for you</h5>
+			<div className='ms-2'>
+				<h5 className='fs-19'>Trends for you</h5>
 			</div>
 
-			<main className='mt-4'>
+			<main className='mt-3'>
 				{loading && (
 					<div className='mt-5'>
 						<Spinner size='sm' />
@@ -34,7 +34,7 @@ const Trends = () => {
 					topTrends.map((trend: any) => <Trend trend={trend} key={trend._id} />)}
 
 				{topTrends.length === 0 && !loading && (
-					<div className='mt-5 text-center'>
+					<div className='mt-6 text-center'>
 						<p>No trends found</p>
 					</div>
 				)}

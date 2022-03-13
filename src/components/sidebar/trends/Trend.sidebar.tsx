@@ -11,7 +11,7 @@ const Trend = ({ trend }: Iprops) => {
 			to={`/trends/${trend.name}`}
 			className='d-flex  justify-content-between hover-bg-secondary py-3 px-2 rounded'
 		>
-			<h6 className='mb-0 fs-15'>{trend.name}</h6>
+			<h6 className='mb-0' style={{fontSize:"14.5px"}} >{trend.name}</h6>
 			<small className='text-black-50 fs-14'>
 				{trend.count} Tweet{trend.count > 1 && 's'}
 			</small>
