@@ -24,12 +24,13 @@ export const getSuggestedUsers = (limit: number, page: number) => async (dispatc
 	dispatch(getSuggestedUsersStart());
 	const userId = Cookies.get('user_Id');
 	try {
-		const response = await axios.get(`user/suggestedUsers/${userId}?page=${page}&limit=${limit}`);
+		const response = await axios.get(`/user/suggestedUsers/${userId}?page=${page}&limit=${limit}`);
 		const data = await response.data;
 		dispatch(getSuggestedUsersSuccess(data.users));
 		return true;
-	} catch (error) {
-		dispatch(getSuggestedUsersFailure(error));
+	} catch (error:any) {
+		const message = error?.response?.data?.message;
+		dispatch(getSuggestedUsersFailure(message));
 		return false;
 	}
 };
