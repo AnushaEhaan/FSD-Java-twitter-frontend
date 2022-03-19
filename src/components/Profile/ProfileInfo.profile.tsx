@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import moment from 'moment'; 
 import FollwersOrFollowingModel from "./FollwersOrFollowingModel.profile";
-import { getUserFollwersOrFollowing } from "../../store/actions/userFollwersOrFollowing.action"
+import {
+	getUserFollwersOrFollowing,
+	clearUserFollwersOrFollowing,
+} from '../../store/actions/userFollwersOrFollowing.action';
 import { useDispatch } from 'react-redux';
 
 interface Iprops {
@@ -12,12 +15,37 @@ const ProfileInfo = ({ user }: Iprops) => {
 	const dispatch = useDispatch();
 	const [show, setShow] = useState(false);
 	const [type, setType] = useState('');
+	const [page, setPage] = useState(0);
+	const [totalPages, setTotalPages] = useState(0);
+	const limit = 5;
+	const handleGetFollwersOrFollowing = (type: string) => {
+		dispatch(getUserFollwersOrFollowing(user._id, type, page, limit));
+	};
 
-	const handleClose = () => setShow(false);
-	const handleShow = (type:string) => {
+	React.useEffect(() => {
+		page > 0 && handleGetFollwersOrFollowing(type);
+	}, [page, type]);
+
+
+	const nextPage = () => {
+		if (page < totalPages) {
+			setPage(page + 1);
+		}
+	};
+
+	const handleClose = () => {
+		setShow(false);
+		setType('');
+		setPage(0);
+		setTotalPages(0);
+		dispatch(clearUserFollwersOrFollowing());
+	};
+
+	const handleShow = (type: string) => {
 		setType(type);
-		dispatch(getUserFollwersOrFollowing(user._id, type, 1, 5));
 		setShow(true);
+		setTotalPages(Math.ceil(user[type].length / limit));
+		setPage(1);
 	};
 
 	return (
@@ -55,10 +83,10 @@ const ProfileInfo = ({ user }: Iprops) => {
 				</section>
 
 				<section className='mt-2'>
-					<span className='me-3' onClick={() => handleShow('following')}>
+					<span className='me-3 cursor' onClick={() => handleShow('following')}>
 						<b>{user?.following.length}</b> Following
 					</span>
-					<span onClick={() => handleShow('followers')}>
+					<span className='cursor' onClick={() => handleShow('followers')}>
 						<b>{user?.followers.length}</b> Followers
 					</span>
 				</section>
@@ -68,6 +96,9 @@ const ProfileInfo = ({ user }: Iprops) => {
 				handleClose={handleClose}
 				show={show}
 				user={user}
+				nextPage={nextPage}
+				totalPages={totalPages}
+				page={page}
 			/>
 		</div>
 	);

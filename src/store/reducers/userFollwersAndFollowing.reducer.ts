@@ -14,14 +14,13 @@ const userFollwersOrFollowingReducer = (
             return {
                 ...state,
                 loading: true,
-                userFollwersOrFollowing: [],
                 error: null,
             };
         case userFollwersOrFollowingActionTypes.GET_USER_FOLLOWERS_OR_FOLLOWING_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                userFollwersOrFollowing: action.payload,
+                userFollwersOrFollowing:[...state.userFollwersOrFollowing, ...action.payload],
             };
         case userFollwersOrFollowingActionTypes.GET_USER_FOLLOWERS_OR_FOLLOWING_FAILURE:
             return {
@@ -38,6 +37,11 @@ const userFollwersOrFollowingReducer = (
                     }
                     return user;
                 })
+            };
+        case userFollwersOrFollowingActionTypes.CLEAR_USER_FOLLOWERS_OR_FOLLOWING:
+            return {
+                ...state,
+                userFollwersOrFollowing: [],
             };
         default:
             return state;

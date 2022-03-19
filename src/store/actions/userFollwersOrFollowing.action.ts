@@ -25,6 +25,10 @@ export const setUserFollwersOrFollowing = (payload: any): userFollwersOrFollowin
     payload,
 });
 
+export const clearUserFollwersOrFollowing = (): userFollwersOrFollowingAction => ({
+    type: userFollwersOrFollowingActionTypes.CLEAR_USER_FOLLOWERS_OR_FOLLOWING,
+});
+
 export const getUserFollwersOrFollowing = (userId: string, type: string, page:number, limit:number) => async (dispatch: any) => {
     dispatch(getUserFollwersOrFollowingStart());
     try {
