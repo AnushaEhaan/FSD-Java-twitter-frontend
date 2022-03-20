@@ -10,6 +10,7 @@ import comments from './reducers/comments.reducer';
 import trends from './reducers/trends.reducer';
 import suggestedUsers from './reducers/suggestedUsers.reducer';
 import userFollwersOrFollowing from './reducers/userFollwersAndFollowing.reducer';
+import notifications from './reducers/notification.reducer';
 
 const rootReducer = combineReducers({
 	signUp,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
 	trends,
 	suggestedUsers,
 	userFollwersOrFollowing,
+	notifications,
 });
 
 const store = createStore(rootReducer, {}, applyMiddleware(thunk));
