@@ -2,6 +2,7 @@ export interface NotificationState {
 	loading: boolean;
 	error: string | null;
 	notifications: any;
+	totalUnreadNotifications: number;
 }
 
 export interface NotificationAction {
@@ -13,6 +14,7 @@ export const initialState: NotificationState = {
 	loading: false,
 	error: null,
 	notifications: [],
+	totalUnreadNotifications: 0,
 };
 
 export enum NotificationActionTypes {
@@ -22,4 +24,5 @@ export enum NotificationActionTypes {
     ADD_NOTIFICATION = 'ADD_NOTIFICATION',
     UPDATE_NOTIFICATION = 'UPDATE_NOTIFICATION',
     DELETE_NOTIFICATION = 'DELETE_NOTIFICATION',
+	COUNT_UNREAD_NOTIFICATIONS = 'COUNT_UNREAD_NOTIFICATIONS',
 }

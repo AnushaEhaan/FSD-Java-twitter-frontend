@@ -29,6 +29,12 @@ const reducer = (state = initialState, action: NotificationAction): Notification
 				...state,
 				notifications: [action.payload, ...state.notifications],
 			};
+		case NotificationActionTypes.COUNT_UNREAD_NOTIFICATIONS:
+			return {
+				...state,
+				totalUnreadNotifications: action.payload,
+			};
+
 		default:
 			return state;
 	}
