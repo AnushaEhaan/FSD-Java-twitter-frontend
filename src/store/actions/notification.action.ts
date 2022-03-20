@@ -21,6 +21,11 @@ const getNotificationsFailure = (error: any): NotificationAction => ({
     payload: error,
 });
 
+export const countUnreadNotificationsType = (count:number): NotificationAction => ({
+    type: NotificationActionTypes.COUNT_UNREAD_NOTIFICATIONS,
+    payload: count,
+});
+
 
 export const getNotifications = () => async (dispatch: any) => {
     const userId = Cookies.get('user_Id');
@@ -33,4 +38,16 @@ export const getNotifications = () => async (dispatch: any) => {
     } catch (error: any) {
 		toast.error(error?.response.data.message);
 	}
+}
+
+export const countUnreadNotifications = () => async (dispatch: any) => {
+    const userId = Cookies.get('user_Id');
+    try {
+        const res = await axios.get(`/notification/count/${userId}`);
+        const data = await res.data;
+        dispatch(countUnreadNotificationsType(data.count));
+        console.log(data.count);
+    } catch (error: any) {
+        toast.error(error?.response.data.message);
+    }
 }
