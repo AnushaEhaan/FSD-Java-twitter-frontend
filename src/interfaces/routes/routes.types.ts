@@ -16,4 +16,5 @@ export enum Routes {
 	Tweet = '/tweet/:id',
 	Bookmarks = '/Bookmarks',
 	Trends = '/trends/:slug',
+	Notfication = '/notifications',
 }
