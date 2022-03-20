@@ -1,11 +1,38 @@
-import React from 'react'
+import React from 'react';
+import {
+	getNotifications,
+	markAsSeenNotification,
+} from '../../store/actions/notification.action';
+import { useDispatch, useSelector } from 'react-redux';
+import Spinner from '../../components/common/Spinner';
+import NotificationListItem from '../../components/notifications/NotificationListItem';
 
 const Notification = () => {
-  return (
-    <div>
-        <h1>Notification</h1>
-    </div>
-  )
-}
+	const dispatch = useDispatch();
+	const {notifications, loading, error} = useSelector((state:any) => state.notifications);
+	const handleMarkAsSeenNotification = () => dispatch(markAsSeenNotification());
+	const handleGetNotifications = () => dispatch(getNotifications());
+	React.useEffect(() => {
+		handleMarkAsSeenNotification();
+		handleGetNotifications();
+	}, []);
 
-export default Notification
+	return (
+		<div className='py-4'>
+			<h3 className='ms-4'>Notification</h3>
+			<main>
+				{loading && <Spinner height='20vh' />}
+				{!loading && !error && notifications.length === 0 && <p className='text-center fs-17 mt-6'>
+					No notifications yet	
+				</p>}
+				{!loading && !error && notifications.length > 0 && <ul className='list-group'>
+					{notifications.map((notification:any) => (
+						<NotificationListItem key={notification._id} notification={notification} />
+					))}
+				</ul>}
+			</main>
+		</div>
+	);
+};
+
+export default Notification;
