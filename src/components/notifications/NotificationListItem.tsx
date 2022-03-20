@@ -48,7 +48,7 @@ const NotificationListItem = ({ notification } : Iprops ) => {
 						</div>
 						{notification.tweet && (
 							<div className='mt-4'>
-								{['like', 'reply', 'retweet', 'mention'].includes(notification?.type) && (
+								{['like', 'reply', 'retweet', 'mention', 'comment'].includes(notification?.type) && (
 									<div className='w-100 d-flex'>
 										{notification?.tweet.content && (
 											<p className='me-3 mb-2 fs-15'>{notification?.tweet.content}</p>
