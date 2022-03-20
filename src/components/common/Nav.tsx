@@ -3,8 +3,20 @@ import navData from '../../JSON/navigation.json';
 import LogOutBtn from '../Nav/LogOutBtn.nav';
 import DropDownMenu from '../Nav/DropDownMenu.nav';
 import CustomLink from '..//Nav/CustomLink.nav';
+import { countUnreadNotifications } from '../../store/actions/notification.action';
+import { useDispatch } from 'react-redux';
 
 const Nav = () => {
+	const dispatch = useDispatch();
+	const getNotificationsAction = () => dispatch(countUnreadNotifications());
+
+	React.useEffect(() => {
+		const interval = setInterval(() => {
+			getNotificationsAction();
+		}, 3000);
+		return () => clearInterval(interval);  
+	}, []);
+
 	return (
 		<section className='w-100 vh-lg-100 py-lg-0 py-3 px-lg-0 px-4'>
 			<main className='d-flex flex-lg-column justify-content-between h-100'>

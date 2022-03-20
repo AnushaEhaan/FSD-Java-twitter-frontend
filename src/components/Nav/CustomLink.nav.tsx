@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { useSelector } from 'react-redux';
 
 interface Iprops {
 	link: any;
@@ -11,6 +12,7 @@ const CustomLink = ({ link, iconSize }: Iprops) => {
 	const userId = Cookies.get('user_Id');
 	const [isLinkActive, setIsLinkActive] = useState(false);
 	const to = link.url == '/profile' ? link.url + '/' + userId : link.url;
+	const { totalUnreadNotifications } = useSelector((state: any) => state.notifications);
 
 	return (
 		<div>
@@ -27,13 +29,24 @@ const CustomLink = ({ link, iconSize }: Iprops) => {
 						: className;
 				}}
 			>
-				<i
-					className={`${isLinkActive ? `${link.active_icon}` : `${link.icon}`} ${iconSize}`}
-				></i>
+				<div className='d-inline position-relative '>
+					<i
+						className={`${
+							isLinkActive || (link.url == '/notifications' && totalUnreadNotifications > 0)
+								? `${link.active_icon}`
+								: `${link.icon}`
+						} ${iconSize}`}
+					></i>
+					{link.url == '/notifications' && totalUnreadNotifications > 0 && (
+						<span className='position-absolute fw-medium' style={{ top: '-11px' }}>
+							{totalUnreadNotifications}
+						</span>
+					)}
+				</div>
 				<span
-					className={`fs-17 ms-4 d-xl-inline ${
-						link.hideOnMd ? 'd-lg-none' : 'd-none'
-					} ${isLinkActive && 'fw-bolder'}  `}
+					className={`fs-17 ms-4 d-xl-inline ${link.hideOnMd ? 'd-lg-none' : 'd-none'} ${
+						isLinkActive && 'fw-bolder'
+					}  `}
 				>
 					{link.title}
 				</span>
