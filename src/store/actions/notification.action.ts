@@ -51,3 +51,15 @@ export const countUnreadNotifications = () => async (dispatch: any) => {
         toast.error(error?.response.data.message);
     }
 }
+
+export const markAsSeenNotification = () => async (dispatch: any) => {
+    const userId = Cookies.get('user_Id');
+    try {
+        const res = await axios.put(`/notification/markAsSeen/${userId}`);
+        const data = await res.data;
+        dispatch(countUnreadNotificationsType(0));
+        console.log(data);
+    } catch (error: any) {
+        toast.error(error?.response.data.message);
+    }
+}
