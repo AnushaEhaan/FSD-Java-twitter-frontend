@@ -26,6 +26,15 @@ export const countUnreadNotificationsType = (count:number): NotificationAction =
     payload: count,
 });
 
+export const update_notification_user_followers = (user: any): NotificationAction => ({
+    type: NotificationActionTypes.UPDATE_NOTIFICATION_USER_FOLLOWERS,
+    payload: user,
+}); 
+
+const markAsReadNotificationType = (notification: any): NotificationAction => ({
+    type: NotificationActionTypes.MARK_AS_READ_NOTIFICATION,
+    payload: notification,
+});
 
 export const getNotifications = () => async (dispatch: any) => {
     const userId = Cookies.get('user_Id');
@@ -59,6 +68,17 @@ export const markAsSeenNotification = () => async (dispatch: any) => {
         const data = await res.data;
         dispatch(countUnreadNotificationsType(0));
         console.log(data);
+    } catch (error: any) {
+        toast.error(error?.response.data.message);
+    }
+}
+
+export const markAsReadNotification = (notificationId:string) => async (dispatch: any) => {
+    const userId = Cookies.get('user_Id');
+    try {
+        const res = await axios.put(`/notification/markAsRead/${userId}/${notificationId}`);
+        const data = await res.data;
+        dispatch(markAsReadNotificationType(data.notification));
     } catch (error: any) {
         toast.error(error?.response.data.message);
     }

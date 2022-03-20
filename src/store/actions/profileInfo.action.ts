@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 import {setSuggestedUsers} from "./suggestedUsers.action"
 import { setUserFollwersOrFollowing } from './userFollwersOrFollowing.action';
+import { update_notification_user_followers } from './notification.action';
 
 const getProfileUserStart = (): ProfileUserAction => ({
     type: ProfileUserActionTypes.GET_PROFILE_USER_START,
@@ -56,6 +57,7 @@ export const followUser = (followingId: string) => async (dispatch: any) => {
         const response = await axios.put(`user/followUser/${userId}/${followingId}`);
         const data = await response.data;
         dispatch(setSuggestedUsers(data.userToFollow));
+        dispatch(update_notification_user_followers(data.userToFollow));
         dispatch(setProfileUser(data));
         dispatch(setUserFollwersOrFollowing(data.userToFollow));
         return data;

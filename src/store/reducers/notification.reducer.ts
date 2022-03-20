@@ -34,7 +34,24 @@ const reducer = (state = initialState, action: NotificationAction): Notification
 				...state,
 				totalUnreadNotifications: action.payload,
 			};
-
+		case NotificationActionTypes.UPDATE_NOTIFICATION_USER_FOLLOWERS:
+			console.log(action.payload)
+			console.log(state.notifications)
+			return {
+				...state,
+				notifications: state.notifications.map((notification:any) => {
+					if (notification.sender._id === action.payload._id) {
+						return {
+							...notification,
+							sender: {
+								...notification.sender,
+								followers: action.payload.followers,
+							},
+						};
+					} 
+					return notification;
+				}),
+			};
 		default:
 			return state;
 	}
