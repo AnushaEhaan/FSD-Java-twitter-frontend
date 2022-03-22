@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import stringUtils from '../../utils/string.utils';
 
 interface Iprops {
 	tweet: any;
@@ -13,7 +14,7 @@ const TweetExplore = ({ tweet }: Iprops) => {
 					<p
 						className={`fs-14 ${!tweet.photo ? 'bg-secondary bg-opacity-50 p-4 rounded-2':'mb-10px ps-5px'} `}
 					>
-						{tweet.content}
+						{stringUtils.heighLightTrends(tweet.content)}
 					</p>
 				)}
 				{tweet.photo && <img src={tweet.photo} className='w-100 h-sm rounded-2' alt='' />}
