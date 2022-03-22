@@ -18,8 +18,8 @@ const Notification = () => {
 	}, []);
 
 	return (
-		<div className='py-4'>
-			<h3 className='ms-4'>Notification</h3>
+		<div className='py-md-4 py-2'>
+			<h3 className='ms-md-4'>Notification</h3>
 			<main>
 				{loading && <Spinner height='20vh' />}
 				{!loading && !error && notifications.length === 0 && <p className='text-center fs-17 mt-6'>

@@ -2,7 +2,7 @@
     {
         "title": "Home",
         "url": "/",
-        "icon": "fa-regular fa-house",
+        "icon": "fa-solid fa-house",
         "active_icon": "fa-solid fa-house",
         "hideOnMd": false
     },

@@ -10,7 +10,7 @@ const Home = () => {
 				<div className='row gx-0'>
 					<aside className='col-xl-2 col-lg-1 col-12 '>
 						<div className='w-100 position-relative '>
-							<div className='position-fixed   w-lg-auto w-100 left-lg-0 bg-white ' style={{zIndex:"10"}}>
+							<div className='position-fixed  px-lg-0 px-md-4 px-2 w-lg-auto w-100 left-lg-0 bg-white ' style={{zIndex:"10"}}>
 								<Nav />
 							</div>
 						</div>

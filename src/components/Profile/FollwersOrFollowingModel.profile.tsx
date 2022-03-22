@@ -37,7 +37,7 @@ const FollwersOrFollowingModel = ({
 					{loading ? (
 						<Spinner height='15vh' />
 					) : userFollwersOrFollowing.length === 0 ? <p className='text-center my-4'>
-							{error ? error : `You don't have any ${type}`}
+							{error ? error : `No ${type} yet`}
 					</p> : (
 						<SuggestedUserSidebar users={userFollwersOrFollowing} />
 					)}

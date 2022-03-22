@@ -104,7 +104,7 @@ const PostTweet = () => {
 	};
 
 	return (
-		<section className='border-bottom px-md-4 px-1 py-4 mt-1 position-relative'>
+		<section className='border-bottom px-md-4 px-1 py-4 position-relative'>
 			<header className='d-flex  pb2 align-items-start'>
 				<div>
 					<Avatar avatar={currentUser.avatar}/>

@@ -25,7 +25,7 @@ const CustomLink = ({ link, iconSize }: Iprops) => {
 						? ' text-xl-start text-lg-center '
 						: ' text-xl-start text-center ';
 					return isActive
-						? className + 'border-dark border-lg-0 border-2 border-bottom active  py-2'
+						? className + 'border-dark border-lg-0 border-3 border-bottom active  py-2'
 						: className;
 				}}
 			>

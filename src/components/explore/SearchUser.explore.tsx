@@ -40,7 +40,7 @@ const SearchUserExplore = () => {
 	};
 
 	return (
-		<div className='mb-6 position-relative mx-md-3'>
+		<div className='mb-6  pt-md-0 pt-2 position-relative mx-md-3'>
 			<form className='position-relative'>
 				<span className='translate-left-middle start-14px'>
 					<i className='fa-solid fa-magnifying-glass fs-14 text-black-50'></i>
