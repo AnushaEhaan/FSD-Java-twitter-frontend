@@ -21,13 +21,6 @@
         "hideOnMd": false
     },
     {
-        "title": "Messages",
-        "url": "/messages",
-        "icon": "fa-regular fa-envelope",
-        "active_icon": "fa-solid fa-envelope",
-        "hideOnMd": false
-    },
-    {
         "title": "Bookmarks",
         "url": "/bookmarks",
         "icon": "fa-regular fa-bookmark",
