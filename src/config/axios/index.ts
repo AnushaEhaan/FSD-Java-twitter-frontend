@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-const baseURL = 'http://localhost:5050/api/v1';
+const baseURL = 'https://etwitter.herokuapp.com/api/v1';
 
 const api = axios.create({
     baseURL,
