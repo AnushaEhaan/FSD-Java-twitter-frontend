@@ -44,6 +44,10 @@ export const secureRoutes: IRoute[] = [
 				path: Routes.Notfication,
 				element: lazy(() => import('../pages/secure/Notification')),
 			},
+			{
+				path: Routes.Explore,
+				element: lazy(() => import('../pages/secure/Explore')),
+			},
 		],
 	},
 ];

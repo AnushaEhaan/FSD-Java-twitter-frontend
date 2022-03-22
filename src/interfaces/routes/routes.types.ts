@@ -17,4 +17,5 @@ export enum Routes {
 	Bookmarks = '/Bookmarks',
 	Trends = '/trends/:slug',
 	Notfication = '/notifications',
+	Explore = '/explore',
 }
