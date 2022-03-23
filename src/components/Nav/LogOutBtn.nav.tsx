@@ -21,7 +21,7 @@ const LogOutBtn = ({ displayInDropDown }: Iprops) => {
 		<div>
 			<button
 				className={` btn bg-secondary mb-lg-4 w-100 ${
-					displayInDropDown ? 'w-100 py-2 rounded-0 mt-1' : 'd-lg-flex d-none py-3'
+					displayInDropDown ? 'w-100 py-2 rounded-0 rounded-bottom mt-1' : 'd-lg-flex d-none py-3'
 				} justify-content-center align-items-center me-xl-2 btn-lg   me-1`}
 				onClick={handleLogOut}
 			>

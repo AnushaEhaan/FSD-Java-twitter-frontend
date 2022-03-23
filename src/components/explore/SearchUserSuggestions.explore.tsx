@@ -34,7 +34,7 @@ const SearchUserSuggestionsExplore = ({ users, error, loading }: Iprops) => {
 			overflowY: 'auto',
 		}}
 		>
-			{loading && <Spinner size='sm' height='10vh' />}
+			{(loading && users.length === 0 ) && <Spinner size='sm' height='10vh' />}
 			{users.length > 0 &&
 				users.map((user: any) => {
 					return <UserItem key={user._id} user={user} />;

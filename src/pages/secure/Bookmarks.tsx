@@ -16,11 +16,8 @@ const Bookmarks = () => {
     return (
 			<div>
 				<div className='mx-md-4'>
-					<TweetGroup
-						tweets={tweets}
-						loading={loading}
-						error='No Bookmarks yet'
-					/>
+					<h4 className='fs-21 mb-5 pt-1'>Bookmarks</h4>
+					<TweetGroup tweets={tweets} loading={loading} error='No Bookmarks yet' />
 				</div>
 			</div>
 		);

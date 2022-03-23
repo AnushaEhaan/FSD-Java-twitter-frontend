@@ -5,7 +5,7 @@ import SearchUserExplore from '../../components/explore/SearchUser.explore';
 const Explore = () => {
 
   return (
-		<div className='mx-md-4 mt-5'>
+		<div className='py-md-4 pt-1'>
 			<SearchUserExplore />
 			<TweetGroupExplore />
 		</div>

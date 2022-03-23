@@ -54,14 +54,12 @@ const Tweet = ({ tweet, handleTweet, hideCommentBtn }: Iprops) => {
 	}, [tweet]);
 
 	return (
-		<section className='border-bottom py-4 d-flex'>
-			<div>
+		<section className='border-bottom pb-4 mb-4'>
+			<div className='d-flex w-100'>
 				<Link to={`/profile/${tweet.user._id}`}>
 					<Avatar avatar={tweet.user.avatar} />
 				</Link>
-			</div>
-			<main className='w-100'>
-				<header className='d-flex justify-content-between align-items-start'>
+				<header className='d-flex w-100 justify-content-between align-items-start'>
 					<div className='d-flex'>
 						<div>
 							<div className='mb-1px d-flex'>
@@ -85,8 +83,14 @@ const Tweet = ({ tweet, handleTweet, hideCommentBtn }: Iprops) => {
 							></i>
 						</div>
 					</div>
-					<TweetDropDownMenu userId={tweet.user._id} userName={tweet.user.name} tweetId={tweet._id}  />
+					<TweetDropDownMenu
+						userId={tweet.user._id}
+						userName={tweet.user.name}
+						tweetId={tweet._id}
+					/>
 				</header>
+			</div>
+			<main className='w-100 ps-sm-7'>
 				<Link to={`/tweet/${tweet._id}`}>
 					<TweetContent tweet={tweet} />
 				</Link>

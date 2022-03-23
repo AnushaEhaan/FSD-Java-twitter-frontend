@@ -1,21 +1,25 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import navData from '../../JSON/navigation.json';
+import Avatar from '../common/Avatar';
 import CustomLink from './CustomLink.nav';
 import LogOutBtn from './LogOutBtn.nav';
 
 const DropDownMenu = () => {
+	const { currentUser } = useSelector((state: any) => state.user);
+	
 	return (
 		<div>
 			<button
-				className='btn btn-secondary rounded-circle h-42px w-42px center'
+				className='btn pt-3 h-42px w-42px center'
 				type='button'
 				id='dropdownMenuButton1'
 				data-bs-toggle='dropdown'
 				aria-expanded='false'
 			>
-				<i className='fa-solid fa-user mt-1 me-xl-3  fs-16 text-dark text-opacity-75'></i>
+				<Avatar avatar={currentUser.avatar} />
 			</button>
-			<ul className='dropdown-menu' aria-labelledby='dropdownMenuButton1'>
+			<ul className='dropdown-menu pb-0 top-10px' aria-labelledby='dropdownMenuButton1'>
 				{navData
 					.filter((item) => item.hideOnMd)
 					.map((item, index) => {

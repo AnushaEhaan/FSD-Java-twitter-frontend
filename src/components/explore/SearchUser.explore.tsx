@@ -40,7 +40,7 @@ const SearchUserExplore = () => {
 	};
 
 	return (
-		<div className='mb-6  pt-md-0 pt-2 position-relative mx-md-3'>
+		<div className='mb-5  position-relative mx-md-3'>
 			<form className='position-relative'>
 				<span className='translate-left-middle start-14px'>
 					<i className='fa-solid fa-magnifying-glass fs-14 text-black-50'></i>
@@ -62,7 +62,7 @@ const SearchUserExplore = () => {
 						<i className='fa-solid fa-close fs-15 text-black-50'></i>
 					</span>
 				)}
-				{loading && (
+				{loading  && (
 					<div className='translate-right-middle end-14px'>
 						<Spinner size='xsm' />
 					</div>

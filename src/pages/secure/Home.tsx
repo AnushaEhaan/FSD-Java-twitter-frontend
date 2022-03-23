@@ -10,14 +10,14 @@ const Home = () => {
 				<div className='row gx-0'>
 					<aside className='col-xl-2 col-lg-1 col-12 '>
 						<div className='w-100 position-relative '>
-							<div className='position-fixed  px-lg-0 px-md-4 px-2 w-lg-auto w-100 left-lg-0 bg-white ' style={{zIndex:"10"}}>
+							<div className='position-fixed borde  px-lg-0 px-md-4 px-2 w-lg-auto w-100 left-lg-0 bg-white ' style={{zIndex:"10"}}>
 								<Nav />
 							</div>
 						</div>
 					</aside>
 
 					<main className='col-xl-6 col-lg-7  col-md-7 col-12'>
-						<div className='border-md px- min-vh-100 my-lg-0 my-9'>
+						<div className='border-md rounded-3 rounded-lg-0 min-vh-100 my-lg-0 my-9'>
 							<Outlet />
 						</div>
 					</main>

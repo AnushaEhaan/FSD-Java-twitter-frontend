@@ -14,7 +14,7 @@ const ProfileTweets = () => {
 	}, []);
 
 	return (
-		<div>
+		<div className='mt-5'>
 			<div>
 				<TweetGroup tweets={tweets} loading={tweetLoading} />
 			</div>

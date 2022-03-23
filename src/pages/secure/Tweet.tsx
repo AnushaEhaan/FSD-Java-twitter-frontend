@@ -51,7 +51,7 @@ const Tweet = () => {
   if (error) return <div className='center mt-5 fs-17 alert alert-danger w-md mx-auto'>{error} ☹️</div>;
 
   return (
-		<div className='px-md-4'>
+		<div className='px-md-4 pt-lg-5 pt-md-3'>
 			{tweet && <TweetContent tweet={tweet} hideCommentBtn={true} />}
 			<footer className='mt-3'>
 				<TweetModelForm handleChange={handleChange} content={content} />

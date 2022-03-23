@@ -14,7 +14,7 @@ const ProfileMedia = () => {
 	}, []);
 
   return (
-		<div>
+		<div className='mt-5'>
 			  <TweetGroup tweets={tweets} loading={tweetLoading} />
 		</div>
 	);

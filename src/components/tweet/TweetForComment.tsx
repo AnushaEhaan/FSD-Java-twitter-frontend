@@ -1,6 +1,7 @@
 import React from 'react';
 import TweetContent from './TweetContent';
 import moment from 'moment';
+import Avatar from '../common/Avatar';
 
 
 interface Iprops {
@@ -11,7 +12,7 @@ const TweetForComment = ({ tweet }: Iprops) => {
 	return (
 			<div className='d-flex w-100'>
 				<div className='center flex-column me-3'>
-					<img src={tweet.user.avatar} alt='' className='rounded-circle w-40px h-40px' />
+					<Avatar avatar={tweet.user.avatar} />
 					<div className='border w-2px rounded  h-100 mt-2'></div>
 				</div>
 				<div className='w-100'>

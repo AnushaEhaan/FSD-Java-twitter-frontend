@@ -17,7 +17,7 @@ const Dashboard = () => {
 	return (
 		<div>
 			<PostTweet />
-			<div className='mx-md-4 mt-2'>
+			<div className='mx-md-4 mt-5'>
 				<TweetGroup tweets={tweets} loading={loading} />
 			</div>
 		</div>
