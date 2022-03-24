@@ -14,7 +14,7 @@ const Login = () => {
 
 	const initialFormState:any = {}
 	formJson.forEach(form => {
-		initialFormState[`${form.name}`] = '';
+		initialFormState[`${form.name}`] = form.value ;
 	});
 
 	const [form, setForm] = React.useState<any>(initialFormState);
