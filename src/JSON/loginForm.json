@@ -1,14 +1,14 @@
 [
     {
         "name": "email",
-        "value": "",
+        "value": "dummy@gmail.com",
         "type": "email",
         "placeholder": "Email address",
         "required": true
     },
     {
         "name": "password",
-        "value": "",
+        "value": "Create your account",
         "type": "password",
         "placeholder": "Password",
         "required": true
