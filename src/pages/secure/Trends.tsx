@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 const Trends = () => {
 	const { slug } = useParams();
-	const  navigate  = useNavigate();
+	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { tweets, loading } = useSelector((state: any) => state.tweets);
 
@@ -34,16 +34,16 @@ const Trends = () => {
 	}, [slug]);
 
 	return (
-		<div className='mx-md-4 mt-4'>
+		<div className='mx-md-4 mt-5'>
 			<header>
 				<SearchTrends
-					search={search}
-					handleSearch={handleSearch}
-					handleSubmit={handleSubmit}
+					search={ search }
+					handleSearch={ handleSearch }
+					handleSubmit={ handleSubmit }
 				/>
 			</header>
-			<div className='mt-3'>
-				<TweetGroup tweets={tweets} loading={loading} error='No tweets found for this trend' />
+			<div className='mt-6'>
+				<TweetGroup tweets={ tweets } loading={ loading } error='No tweets found for this trend' />
 			</div>
 		</div>
 	);

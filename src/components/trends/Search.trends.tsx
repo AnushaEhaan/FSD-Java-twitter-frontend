@@ -9,16 +9,16 @@ interface Iprops {
 const SearchTrends = ({ search, handleSearch, handleSubmit }: Iprops) => {
 	return (
 		<div>
-			<form onSubmit={handleSubmit}>
-				<div className='input-group px-md-4'>
+			<form onSubmit={ handleSubmit }>
+				<div className='input-group px-md-0'>
 					<input
 						type='text'
 						className='form-control'
 						placeholder='Search tweets by hashtag'
 						aria-label="Recipient's username"
 						aria-describedby='basic-addon2'
-						value={search}
-						onChange={handleSearch}
+						value={ search }
+						onChange={ handleSearch }
 					/>
 					<button
 						className='btn rounded-end input-group-text border border-dark bg-dark text-white'
