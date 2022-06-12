@@ -361,6 +361,26 @@ $abbrev in (margin: m, padding: p) {
     }
 }
 
+.overflow-y-auto {
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 2px;
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 17px;
+        background-color: $gray-300;
+        -webkit-border-radius: 17px;
+        -moz-border-radius: 17px;
+        -ms-border-radius: 17px;
+        -o-border-radius: 17px;
+    }
+
+}
+
 .cursor {
     cursor: pointer !important;
 }
