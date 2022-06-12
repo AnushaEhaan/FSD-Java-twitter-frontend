@@ -1,34 +1,33 @@
-import React from 'react';
+import React from 'react'
 
 interface IProps {
-	handleDate_Of_birth: (date: object) => void;
+	handleDate_Of_birth: (date: object) => void
 }
 
-const Calendar = ({ handleDate_Of_birth } : IProps ) => {
-
-	const [selectedMonth, setSelectedMonth] = React.useState(null);
-	const [selectedDay, setSelectedDay] = React.useState(null);
-	const [selectedYear, setSelectedYear] = React.useState(null);
+const Calendar = ({ handleDate_Of_birth }: IProps) => {
+	const [selectedMonth, setSelectedMonth] = React.useState(null)
+	const [selectedDay, setSelectedDay] = React.useState(null)
+	const [selectedYear, setSelectedYear] = React.useState(null)
 
 	const getMonth = (value: any) => {
-		setSelectedMonth(value);
-	};
+		setSelectedMonth(value)
+	}
 
-	const getDay= (value: any) => {
-		setSelectedDay(value);
-	};
+	const getDay = (value: any) => {
+		setSelectedDay(value)
+	}
 
 	const getYear = (value: any) => {
-		setSelectedYear(value);
-	};
+		setSelectedYear(value)
+	}
 
 	React.useEffect(() => {
-			handleDate_Of_birth({
-				month: selectedMonth,
-				day: selectedDay,
-				year: selectedYear,
-			});
-	}, [selectedMonth, selectedDay, selectedYear]);
+		handleDate_Of_birth({
+			month: selectedMonth,
+			day: selectedDay,
+			year: selectedYear,
+		})
+	}, [selectedMonth, selectedDay, selectedYear])
 
 	return (
 		<div className='d-flex justify-content-between'>
@@ -38,10 +37,10 @@ const Calendar = ({ handleDate_Of_birth } : IProps ) => {
 			</div>
 			<Years getYear={getYear} />
 		</div>
-	);
-};
+	)
+}
 
-const MonthDropdown = ({ getMonth } : any) => {
+const MonthDropdown = ({ getMonth }: any) => {
 	const months = [
 		'January',
 		'February',
@@ -55,14 +54,14 @@ const MonthDropdown = ({ getMonth } : any) => {
 		'October',
 		'November',
 		'December',
-	];
+	]
 
-	const [selectedMonth, setSelectedMonth] = React.useState(null);
+	const [selectedMonth, setSelectedMonth] = React.useState(null)
 
 	const handleMonthClick = (value: any) => {
-		setSelectedMonth(value);
-		getMonth(value);
-	};
+		setSelectedMonth(value)
+		getMonth(value)
+	}
 
 	return (
 		<div className='dropdown w-100'>
@@ -71,36 +70,46 @@ const MonthDropdown = ({ getMonth } : any) => {
 				type='button'
 				id='months'
 				data-bs-toggle='dropdown'
-				aria-expanded='false'
-			>
+				aria-expanded='false'>
 				{selectedMonth || 'Month'}
 			</button>
-			<ul className='dropdown-menu' aria-labelledby='months'>
+			<ul
+				className='dropdown-menu overflow-y-auto'
+				aria-labelledby='months'
+				style={{
+					maxHeight: '200px',
+				}}>
 				{months.map((month, index) => {
 					return (
-						<li key={index} className='dropdown-item' onClick={() => handleMonthClick(month)}>
+						<li
+							key={index}
+							className='dropdown-item'
+							onClick={() => handleMonthClick(month)}>
 							{month}
 						</li>
-					);
+					)
 				})}
 			</ul>
 		</div>
-	);
-};
+	)
+}
 
-const Days = ({ getDay }:any) => {
+const Days = ({ getDay }: any) => {
 	const daysInMonth = (month: any, year: any) => {
-		return new Date(year, month, 0).getDate();
-	};
-	const howManyDaysInMonth = daysInMonth(new Date().getMonth(), new Date().getFullYear());
-	const days = Array.from(Array(howManyDaysInMonth).keys());
+		return new Date(year, month, 0).getDate()
+	}
+	const howManyDaysInMonth = daysInMonth(
+		new Date().getMonth(),
+		new Date().getFullYear()
+	)
+	const days = Array.from(Array(howManyDaysInMonth).keys())
 
-	const [selectedDay, setSelectedDay] = React.useState(null);
+	const [selectedDay, setSelectedDay] = React.useState(null)
 
 	const handleDayClick = (day: any) => {
-		setSelectedDay(day);
-		getDay(day);
-	};
+		setSelectedDay(day)
+		getDay(day)
+	}
 
 	return (
 		<div className='dropdown w-100'>
@@ -109,31 +118,38 @@ const Days = ({ getDay }:any) => {
 				type='button'
 				id='Day'
 				data-bs-toggle='dropdown'
-				aria-expanded='false'
-			>
+				aria-expanded='false'>
 				{selectedDay || 'Day'}
 			</button>
-			<ul className='dropdown-menu' aria-labelledby='Day'>
+			<ul
+				className='dropdown-menu overflow-y-auto'
+				aria-labelledby='Day'
+				style={{
+					maxHeight: '200px',
+				}}>
 				{days.map((day, index) => {
 					return (
-						<li key={index} className='dropdown-item' onClick={() => handleDayClick(day + 1)}>
+						<li
+							key={index}
+							className='dropdown-item'
+							onClick={() => handleDayClick(day + 1)}>
 							{day + 1}
 						</li>
-					);
+					)
 				})}
 			</ul>
 		</div>
-	);
-};
+	)
+}
 
-const Years = ({ getYear }:any) => {
-	const years = Array.from(Array(new Date().getFullYear() - 1969).keys());
-	const [year, setYear] = React.useState(null);
+const Years = ({ getYear }: any) => {
+	const years = Array.from(Array(new Date().getFullYear() - 1969).keys())
+	const [year, setYear] = React.useState(null)
 
 	const handleChange = (value: any) => {
-		setYear(value);
-		getYear(value);
-	};
+		setYear(value)
+		getYear(value)
+	}
 
 	return (
 		<div className='dropdown w-100'>
@@ -142,22 +158,29 @@ const Years = ({ getYear }:any) => {
 				type='button'
 				id='Day'
 				data-bs-toggle='dropdown'
-				aria-expanded='false'
-			>
+				aria-expanded='false'>
 				{year || 'Year'}
 			</button>
-			<ul className='dropdown-menu' aria-labelledby='Day'>
+			<ul
+				className='dropdown-menu overflow-y-auto'
+				aria-labelledby='Day'
+				style={{
+					maxHeight: '200px',
+				}}>
 				{years.map((year, index) => {
-					const yearNew = new Date().getFullYear() - year;
+					const yearNew = new Date().getFullYear() - year
 					return (
-						<li key={index} className='dropdown-item' onClick={() => handleChange(yearNew)}>
+						<li
+							key={index}
+							className='dropdown-item'
+							onClick={() => handleChange(yearNew)}>
 							{yearNew}
 						</li>
-					);
+					)
 				})}
 			</ul>
 		</div>
-	);
-};
+	)
+}
 
-export default Calendar;
+export default Calendar
