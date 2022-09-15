@@ -1,6 +1,5 @@
 import Cookies from 'js-cookie'
 import moment from 'moment'
-import React from 'react'
 import { Link } from 'react-router-dom'
 import Avatar from '../reusable/Avatar'
 
@@ -8,7 +7,7 @@ interface Iprops {
 	comment: any
 }
 
-const Comment = ({ comment }: Iprops) => {
+const TweetComment = ({ comment }: Iprops) => {
 	const currentUserId = Cookies.get('user_Id')
 	return (
 		<div className='d-flex py-3  border-bottom'>
@@ -67,4 +66,4 @@ const Comment = ({ comment }: Iprops) => {
 	)
 }
 
-export default Comment
+export default TweetComment

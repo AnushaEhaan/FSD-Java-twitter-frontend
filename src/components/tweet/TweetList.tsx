@@ -1,0 +1,59 @@
+import React from 'react'
+import Spinner from '../reusable/Spinner'
+import Tweet from './Tweet'
+import TweetCommentModal from './TweetCommentModal'
+
+interface Iprops {
+	tweets: any
+	loading: boolean
+	error?: string
+}
+
+const TweetList = ({ tweets, loading, error }: Iprops) => {
+	const [showCommentModel, setShowCommentModel] = React.useState(false)
+	const [tweet, setTweet] = React.useState(null)
+
+	const handleModelClose = () => {
+		setShowCommentModel(false)
+		setTweet(null)
+	}
+
+	const handleSetTweet = (tweet: any) => {
+		setTweet(tweet)
+		setShowCommentModel(true)
+	}
+
+	return (
+		<div>
+			<section>
+				{loading ? (
+					<Spinner
+						size='sm'
+						height='20vh'
+					/>
+				) : tweets.length > 0 ? (
+					tweets.map((tweet: any) => (
+						<Tweet
+							key={tweet._id}
+							tweet={tweet}
+							handleSetTweet={handleSetTweet}
+						/>
+					))
+				) : (
+					<p className='text-center mt-7 alert alert-primary w-md mx-auto'>
+						{error ? error : 'No Tweets yet'}
+					</p>
+				)}
+			</section>
+			{tweet && (
+				<TweetCommentModal
+					tweet={tweet}
+					showCommentModel={showCommentModel}
+					handleModelClose={handleModelClose}
+				/>
+			)}
+		</div>
+	)
+}
+
+export default TweetList

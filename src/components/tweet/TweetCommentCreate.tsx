@@ -1,4 +1,3 @@
-import React from 'react'
 import { useSelector } from 'react-redux'
 import Avatar from '../reusable/Avatar'
 
@@ -7,7 +6,7 @@ interface Iprops {
 	content?: string
 }
 
-const TweetModelForm = ({ handleChange, content }: Iprops) => {
+const TweetCommentCreate = ({ handleChange, content }: Iprops) => {
 	const { currentUser } = useSelector((state: any) => state.user)
 	return (
 		<div className='d-flex align-items-start mt-3'>
@@ -21,4 +20,4 @@ const TweetModelForm = ({ handleChange, content }: Iprops) => {
 	)
 }
 
-export default TweetModelForm
+export default TweetCommentCreate

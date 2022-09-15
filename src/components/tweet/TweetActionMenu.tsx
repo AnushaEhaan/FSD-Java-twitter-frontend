@@ -1,9 +1,7 @@
 import Cookies from 'js-cookie'
-import React from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { deleteTweet } from '../../store/actions/tweets.action'
-import { useDispatch, useSelector } from 'react-redux'
-import Spinner from '../reusable/Spinner'
 
 interface Iprops {
 	userId: string
@@ -11,11 +9,11 @@ interface Iprops {
 	tweetId: string
 }
 
-const TweetDropDownMenu = ({ userId, userName, tweetId }: Iprops) => {
+const TweetActionMenu = ({ userId, userName, tweetId }: Iprops) => {
 	const currentUserId = Cookies.get('user_Id')
 	const dispatch = useDispatch()
 
-	const handleDelete = async (tweetId: string) => {
+	const handleTweetDelete = async (tweetId: string) => {
 		await dispatch(deleteTweet(tweetId))
 	}
 
@@ -36,7 +34,7 @@ const TweetDropDownMenu = ({ userId, userName, tweetId }: Iprops) => {
 					{currentUserId === userId && (
 						<li
 							className='dropdown-item py-2 cursor'
-							onClick={() => handleDelete(tweetId)}>
+							onClick={() => handleTweetDelete(tweetId)}>
 							<i className='fa-solid fa-trash me-3 fs-16'></i>
 							Delete
 						</li>
@@ -53,4 +51,4 @@ const TweetDropDownMenu = ({ userId, userName, tweetId }: Iprops) => {
 	)
 }
 
-export default TweetDropDownMenu
+export default TweetActionMenu

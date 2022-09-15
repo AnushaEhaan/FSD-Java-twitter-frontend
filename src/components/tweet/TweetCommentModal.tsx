@@ -1,24 +1,28 @@
+import Cookies from 'js-cookie'
 import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
-import TweetForComment from './TweetForComment'
-import TweetModelForm from './TweetModelForm'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addComment } from '../../store/actions/comment.action'
-import Cookies from 'js-cookie'
 import Spinner from '../reusable/Spinner'
+import Tweet from './Tweet'
+import TweetCommentCreate from './TweetCommentCreate'
 
 interface Iprops {
 	tweet: any
-	show: boolean
+	showCommentModel: boolean
 	handleModelClose: any
 }
 
-const TweetCommentModel = ({ tweet, show, handleModelClose }: Iprops) => {
+const TweetCommentModal = ({
+	tweet,
+	showCommentModel,
+	handleModelClose,
+}: Iprops) => {
 	const dispatch = useDispatch()
 	const userID = Cookies.get('user_Id')
 	const [loading, setLoading] = React.useState(false)
-
 	const [content, setContent] = React.useState('')
+
 	const handleChange = (e: any) => {
 		setContent(e.target.value)
 	}
@@ -30,8 +34,7 @@ const TweetCommentModel = ({ tweet, show, handleModelClose }: Iprops) => {
 			tweetId: tweet._id,
 			userId: userID,
 		}
-		const isAdded = await dispatch(addComment(data))
-		console.log(isAdded)
+		await dispatch(addComment(data))
 		setContent('')
 		setLoading(false)
 		handleModelClose()
@@ -40,15 +43,15 @@ const TweetCommentModel = ({ tweet, show, handleModelClose }: Iprops) => {
 	return (
 		<div>
 			<Modal
-				show={show}
+				show={showCommentModel}
 				onHide={handleModelClose}
 				dialogClassName='mw-lg'>
 				<Modal.Header closeButton>
 					<Modal.Title>Comment</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<TweetForComment tweet={tweet} />
-					<TweetModelForm
+					<Tweet tweet={tweet} />
+					<TweetCommentCreate
 						handleChange={handleChange}
 						content={content}
 					/>
@@ -71,4 +74,4 @@ const TweetCommentModel = ({ tweet, show, handleModelClose }: Iprops) => {
 	)
 }
 
-export default TweetCommentModel
+export default TweetCommentModal

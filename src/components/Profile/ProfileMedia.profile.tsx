@@ -1,23 +1,28 @@
 import React from 'react'
-import {getOnlyMediaTweets} from "../../store/actions/tweets.action"
-import { useDispatch, useSelector } from 'react-redux';
-import TweetGroup from '../../components/tweet/TweetGroup';
-import { useParams } from 'react-router';
+import { getOnlyMediaTweets } from '../../store/actions/tweets.action'
+import { useDispatch, useSelector } from 'react-redux'
+import TweetList from '../tweet/TweetList'
+import { useParams } from 'react-router'
 
 const ProfileMedia = () => {
-  const params = useParams();
-	const { id }: any = params;
-	const dispatch = useDispatch();
-	const { tweets, loading: tweetLoading } = useSelector((state: any) => state.tweets);
+	const params = useParams()
+	const { id }: any = params
+	const dispatch = useDispatch()
+	const { tweets, loading: tweetLoading } = useSelector(
+		(state: any) => state.tweets
+	)
 	React.useEffect(() => {
-		dispatch(getOnlyMediaTweets(id));
-	}, []);
+		dispatch(getOnlyMediaTweets(id))
+	}, [])
 
-  return (
+	return (
 		<div className='mt-5'>
-			  <TweetGroup tweets={tweets} loading={tweetLoading} />
+			<TweetList
+				tweets={tweets}
+				loading={tweetLoading}
+			/>
 		</div>
-	);
+	)
 }
 
 export default ProfileMedia
