@@ -11,7 +11,7 @@ interface Iprops {
 	user: any
 }
 
-const ProfileInfo = ({ user }: Iprops) => {
+const UserInformation = ({ user }: Iprops) => {
 	const dispatch = useDispatch()
 	const [show, setShow] = useState(false)
 	const [type, setType] = useState('')
@@ -114,4 +114,4 @@ const ProfileInfo = ({ user }: Iprops) => {
 	)
 }
 
-export default ProfileInfo
+export default UserInformation
