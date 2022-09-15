@@ -1,113 +1,114 @@
-import React from 'react';
-import axios from '../../config/axios';
-import { toast } from 'react-toastify';
-import Cookies from 'js-cookie';
-import Spinner from '../common/Spinner';
-import { addTweet } from '../../store/actions/tweets.action';
-import { useDispatch, useSelector } from 'react-redux';
-import stringUtils from "../../utils/string.utils";
-import Avatar from '../common/Avatar';
+import React from 'react'
+import axios from '../../config/axios'
+import { toast } from 'react-toastify'
+import Cookies from 'js-cookie'
+import Spinner from '../reusable/Spinner'
+import { addTweet } from '../../store/actions/tweets.action'
+import { useDispatch, useSelector } from 'react-redux'
+import stringUtils from '../../utils/string.utils'
+import Avatar from '../reusable/Avatar'
 
 const PostTweet = () => {
-	const dispatch = useDispatch();
-	const { currentUser } = useSelector((state:any) => state.user);
-	const [content, setConent] = React.useState('');
-	const [readableImage, setReadableImage] = React.useState<any>(null);
-	const [imageForUpload, setImageForUpload] = React.useState<any>(null);
-	const [loading, setLoading] = React.useState<boolean>(false);
-	const [isPublic, setIsPublic] = React.useState<boolean>(true);
-	
+	const dispatch = useDispatch()
+	const { currentUser } = useSelector((state: any) => state.user)
+	const [content, setConent] = React.useState('')
+	const [readableImage, setReadableImage] = React.useState<any>(null)
+	const [imageForUpload, setImageForUpload] = React.useState<any>(null)
+	const [loading, setLoading] = React.useState<boolean>(false)
+	const [isPublic, setIsPublic] = React.useState<boolean>(true)
 
 	const handlePostImage = (e: any) => {
-		const file = e.target.files[0];
-		setImageForUpload(file);
+		const file = e.target.files[0]
+		setImageForUpload(file)
 		if (file) {
-			const reader = new FileReader();
-			reader.readAsDataURL(file);
+			const reader = new FileReader()
+			reader.readAsDataURL(file)
 			reader.onload = () => {
-				setReadableImage(reader.result);
-			};
+				setReadableImage(reader.result)
+			}
 		}
-	};
+	}
 
 	const handleCancelImage = () => {
-		setReadableImage(null);
-		setImageForUpload(null);
-	};
+		setReadableImage(null)
+		setImageForUpload(null)
+	}
 
 	const uploadPhoto = async (postImage: any) => {
 		try {
-			const formData = new FormData();
-			formData.append('image', postImage);
+			const formData = new FormData()
+			formData.append('image', postImage)
 			const response = await axios.post('tweet/uploadPhoto', formData, {
 				headers: {
 					'Content-Type': 'multipart/form-data',
 				},
-			});
-			const data = await response.data;
-			return data;
+			})
+			const data = await response.data
+			return data
 		} catch (error) {
-			return error;
+			return error
 		}
-	};
+	}
 
-	const uploadTrend = async(trend:any, tweetId:String) => {
+	const uploadTrend = async (trend: any, tweetId: String) => {
 		try {
-			const response = await axios.post('/trend/add', { name: trend, tweetId });
-			const data = await response.data;
-			return data.trend._id;
+			const response = await axios.post('/trend/add', {
+				name: trend,
+				tweetId,
+			})
+			const data = await response.data
+			return data.trend._id
 		} catch (error) {
-			return error;
+			return error
 		}
-	};
-
+	}
 
 	const uploadTweet = async () => {
-		const userId = Cookies.get('user_Id');
+		const userId = Cookies.get('user_Id')
 		try {
-			setLoading(true);
+			setLoading(true)
 			const formData: any = {
 				content,
 				user: userId,
 				is_Public: isPublic,
-			};
-			if (imageForUpload) {
-				const data = await uploadPhoto(imageForUpload);
-				data.src && (formData.photo = data.src);
 			}
-			const response = await axios.post('/tweet/upload', formData);
-			const data = await response.data;
-			data.status == 200 && toast.success(data.message);
-			setLoading(false);
-			setConent('');
-			handleCancelImage();
-			setIsPublic(true);
+			if (imageForUpload) {
+				const data = await uploadPhoto(imageForUpload)
+				data.src && (formData.photo = data.src)
+			}
+			const response = await axios.post('/tweet/upload', formData)
+			const data = await response.data
+			data.status == 200 && toast.success(data.message)
+			setLoading(false)
+			setConent('')
+			handleCancelImage()
+			setIsPublic(true)
 
 			const tweet = {
 				...data.tweet,
 				user: currentUser,
-			};
-
-			dispatch(addTweet(tweet));
-
-			if (stringUtils.extractTrends(content).length > 0) {
-				stringUtils.extractTrends(content).forEach(async (trend: any) => {
-				 		await uploadTrend(trend, data.tweet._id);
-				});
 			}
 
+			dispatch(addTweet(tweet))
 
+			if (stringUtils.extractTrends(content).length > 0) {
+				stringUtils
+					.extractTrends(content)
+					.forEach(async (trend: any) => {
+						await uploadTrend(trend, data.tweet._id)
+					})
+			}
 		} catch (error: any) {
-			toast.error(error?.response.data.message);
-			setLoading(false);
+			toast.error(error?.response.data.message)
+			setLoading(false)
 		}
-	};
+	}
 
 	return (
 		<section className='border-bottom px-md-4 px-1 pt-md-4 pt-1 pb-4 position-relative'>
 			<header className='d-flex  pb2 align-items-start'>
 				<div>
-					<Avatar avatar={currentUser.avatar}/>
+					<Avatar avatar={currentUser.avatar} />
 				</div>
 				<div className='w-100 ms-1'>
 					<textarea
@@ -116,15 +117,17 @@ const PostTweet = () => {
 						value={content}
 						onChange={(e) => setConent(e.target.value)}
 						maxLength={140}
-						style={{ resize: 'none' }}
-					></textarea>
+						style={{ resize: 'none' }}></textarea>
 					{readableImage && (
 						<div className='position-relative'>
-							<img src={readableImage} className='w-100 h-md mt-4 rounded-3' alt='' />
+							<img
+								src={readableImage}
+								className='w-100 h-md mt-4 rounded-3'
+								alt=''
+							/>
 							<button
 								className='btn h-34px w-34px center bg-dark bg-opacity-75 text-white position-absolute start-5px top-24px'
-								onClick={handleCancelImage}
-							>
+								onClick={handleCancelImage}>
 								<i className='fa-solid fa-xmark fs-16'></i>
 							</button>
 						</div>
@@ -133,15 +136,18 @@ const PostTweet = () => {
 						<section className='d-flex'>
 							<label className='btn border center py-2 me-3'>
 								<i className='fa-solid fs-19 fa-image'></i>
-								<input type='file' className='d-none' onChange={handlePostImage} />
+								<input
+									type='file'
+									className='d-none'
+									onChange={handlePostImage}
+								/>
 							</label>
 							<PostDropdown setIsPublic={setIsPublic} />
 						</section>
 						<button
 							className='btn btn-dark text-white px-4 text-dark py-2'
 							disabled={loading || (!imageForUpload && !content)}
-							onClick={uploadTweet}
-						>
+							onClick={uploadTweet}>
 							{loading ? <Spinner size='sm' /> : 'Tweet'}
 						</button>
 					</footer>
@@ -151,15 +157,15 @@ const PostTweet = () => {
 				<div className='position-absolute bg-secondary bg-opacity-10 h-100 w-100 top-0 start-0'></div>
 			)}
 		</section>
-	);
-};
+	)
+}
 
 const PostDropdown = (props: any) => {
-	const [value, setValue] = React.useState(0);
+	const [value, setValue] = React.useState(0)
 
 	interface Option {
-		title: string;
-		icon: string;
+		title: string
+		icon: string
 	}
 
 	const options: Option[] = [
@@ -171,18 +177,18 @@ const PostDropdown = (props: any) => {
 			title: 'Only Me',
 			icon: 'fa-solid fa-lock',
 		},
-	];
+	]
 	const initialOptions = (option: Option) => (
 		<div>
 			<i className={`${option.icon} me-2`}></i>
 			<span>{option.title}</span>
 		</div>
-	);
+	)
 
 	const handleState = (index: number) => {
-		setValue(index);
-		props.setIsPublic(index === 0);
-	};
+		setValue(index)
+		props.setIsPublic(index === 0)
+	}
 
 	return (
 		<div className='dropdown px-0'>
@@ -191,24 +197,25 @@ const PostDropdown = (props: any) => {
 				type='button'
 				id='dropdownMenuButton1'
 				data-bs-toggle='dropdown'
-				aria-expanded='false'
-			>
+				aria-expanded='false'>
 				{initialOptions(options[value])}
 			</button>
 			<ul
 				className='dropdown-menu'
 				style={{ minWidth: '100px' }}
-				aria-labelledby='dropdownMenuButton1'
-			>
+				aria-labelledby='dropdownMenuButton1'>
 				{options.map((option: Option, index) => (
-					<li key={index} className='dropdown-item py-2' onClick={() => handleState(index)}>
+					<li
+						key={index}
+						className='dropdown-item py-2'
+						onClick={() => handleState(index)}>
 						<i className={`${option.icon} me-3`}></i>
 						<span>{option.title}</span>
 					</li>
 				))}
 			</ul>
 		</div>
-	);
-};
+	)
+}
 
-export default PostTweet;
+export default PostTweet

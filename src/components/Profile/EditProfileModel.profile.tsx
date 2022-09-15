@@ -7,8 +7,8 @@ import {
 	updateUserStart,
 	uploadAvatar,
 } from '../../store/actions/updateUser.action'
-import Calendar from '../common/Calendar'
-import Spinner from '../common/Spinner'
+import Calendar from '../reusable/Calendar'
+import Spinner from '../reusable/Spinner'
 import EditProfileCover from './EditProfileCover.profile'
 import { Button, Modal } from 'react-bootstrap'
 
@@ -95,7 +95,9 @@ const EditProfileModel = ({ user, handleClose, show }: Iprops) => {
 	}, [isUserUpdated])
 
 	return (
-		<Modal show={show} onHide={handleClose}>
+		<Modal
+			show={show}
+			onHide={handleClose}>
 			<Modal.Header closeButton>
 				<Modal.Title>Edit Profile</Modal.Title>
 			</Modal.Header>
@@ -107,7 +109,9 @@ const EditProfileModel = ({ user, handleClose, show }: Iprops) => {
 				{updateProfileJson &&
 					updateProfileJson.map((item: any, index: number) => {
 						return (
-							<div className='mb-3 mt-4' key={index}>
+							<div
+								className='mb-3 mt-4'
+								key={index}>
 								<label
 									htmlFor={item.name}
 									className='form-label'>
@@ -144,14 +148,18 @@ const EditProfileModel = ({ user, handleClose, show }: Iprops) => {
 					})}
 
 				<div className='mb-3'>
-					<label htmlFor='' className='form-label mb-3'>
+					<label
+						htmlFor=''
+						className='form-label mb-3'>
 						Date of birth
 					</label>
 					<Calendar handleDate_Of_birth={handleDate_Of_birth} />
 				</div>
 			</Modal.Body>
 			<Modal.Footer>
-				<Button variant='secondary' onClick={handleClose}>
+				<Button
+					variant='secondary'
+					onClick={handleClose}>
 					Close
 				</Button>
 				<Button

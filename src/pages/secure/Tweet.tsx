@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { findTweetById } from '../../store/actions/tweets.action';
 import { useParams } from 'react-router-dom';
 import TweetModelForm from '../../components/tweet/TweetModelForm';
-import Spinner from '../../components/common/Spinner';
+import Spinner from '../../components/reusable/Spinner';
 import Cookies from 'js-cookie';
 import { addComment } from '../../store/actions/comment.action';
 

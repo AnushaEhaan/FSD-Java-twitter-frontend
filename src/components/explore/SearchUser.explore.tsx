@@ -1,43 +1,43 @@
-import React from 'react';
-import SearchUserSuggestionsExplore from './SearchUserSuggestions.explore';
-import axios from '../../config/axios';
-import { toast } from 'react-toastify';
-import Spinner from '../common/Spinner';
+import React from 'react'
+import SearchUserSuggestionsExplore from './SearchUserSuggestions.explore'
+import axios from '../../config/axios'
+import { toast } from 'react-toastify'
+import Spinner from '../reusable/Spinner'
 
 const SearchUserExplore = () => {
-	const [users, setUsers] = React.useState([]);
-	const [loading, setLoading] = React.useState(false);
-	const [search, setSearch] = React.useState('');
-	const [error, setError] = React.useState('');
+	const [users, setUsers] = React.useState([])
+	const [loading, setLoading] = React.useState(false)
+	const [search, setSearch] = React.useState('')
+	const [error, setError] = React.useState('')
 
 	const findUsersByName = async (name: string) => {
 		try {
-			setLoading(true);
-			setError('');
-			const res = await axios.get(`/user/findUsersByName/${name}`);
-			const data = await res.data;
-			setUsers(data.users);
-			data.users.length === 0 && setError('No users found');
-			setLoading(false);
+			setLoading(true)
+			setError('')
+			const res = await axios.get(`/user/findUsersByName/${name}`)
+			const data = await res.data
+			setUsers(data.users)
+			data.users.length === 0 && setError('No users found')
+			setLoading(false)
 		} catch (err: any) {
-			setError('');
-			toast.error(err.response.data.message);
-			setLoading(false);
+			setError('')
+			toast.error(err.response.data.message)
+			setLoading(false)
 		}
-	};
+	}
 
 	const handleChange = (e: any) => {
-		const name = e.target.value;
+		const name = e.target.value
 		setTimeout(() => {
-			findUsersByName(name);
-		}, 100);
-		setSearch(name);
-	};
+			findUsersByName(name)
+		}, 100)
+		setSearch(name)
+	}
 
 	const handleClear = () => {
-		setSearch('');
-		setUsers([]);
-	};
+		setSearch('')
+		setUsers([])
+	}
 
 	return (
 		<div className='mb-5  position-relative mx-md-3'>
@@ -57,22 +57,25 @@ const SearchUserExplore = () => {
 				{(search || users.length > 0) && !loading && (
 					<span
 						className='translate-right-middle cursor px-3 py-2 end-7px'
-						onClick={handleClear}
-					>
+						onClick={handleClear}>
 						<i className='fa-solid fa-close fs-15 text-black-50'></i>
 					</span>
 				)}
-				{loading  && (
+				{loading && (
 					<div className='translate-right-middle end-14px'>
 						<Spinner size='xsm' />
 					</div>
 				)}
 			</form>
 			{(search || users.length > 0) && (
-				<SearchUserSuggestionsExplore users={users} error={error} loading={loading} />
+				<SearchUserSuggestionsExplore
+					users={users}
+					error={error}
+					loading={loading}
+				/>
 			)}
 		</div>
-	);
-};
+	)
+}
 
-export default SearchUserExplore;
+export default SearchUserExplore

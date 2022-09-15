@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Nav from '../../components/common/Nav';
+import Nav from '../../components/reusable/Nav';
 import SideBar from "../../components/sidebar/SideBar";
 
 const Home = () => {

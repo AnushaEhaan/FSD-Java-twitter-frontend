@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import formJson from '../../JSON/signUpForm.json';
 import { signUp } from '../../store/actions/signUp.action';
 import { useDispatch, useSelector } from 'react-redux';
-import Spinner from '../../components/common/Spinner';
+import Spinner from '../../components/reusable/Spinner';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 

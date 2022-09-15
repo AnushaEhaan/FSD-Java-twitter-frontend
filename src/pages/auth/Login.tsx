@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import formJson from '../../JSON/loginForm.json';
 import { userLogin } from "../../store/actions/user.action" 
 import { useDispatch, useSelector } from 'react-redux';
-import Spinner from '../../components/common/Spinner';
+import Spinner from '../../components/reusable/Spinner';
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {

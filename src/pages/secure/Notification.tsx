@@ -4,7 +4,7 @@ import {
 	markAsSeenNotification,
 } from '../../store/actions/notification.action';
 import { useDispatch, useSelector } from 'react-redux';
-import Spinner from '../../components/common/Spinner';
+import Spinner from '../../components/reusable/Spinner';
 import NotificationListItem from '../../components/notifications/NotificationListItem';
 
 const Notification = () => {

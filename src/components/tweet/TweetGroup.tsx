@@ -1,5 +1,5 @@
 import React from 'react';
-import Spinner from '../../components/common/Spinner';
+import Spinner from '../../components/reusable/Spinner';
 import Tweet from '../../components/tweet/Tweet';
 import TweetCommentModel from "./TweetCommentModel"
 interface Iprops {

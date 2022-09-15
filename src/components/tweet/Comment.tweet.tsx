@@ -1,15 +1,15 @@
-import Cookies from 'js-cookie';
-import moment from 'moment';
+import Cookies from 'js-cookie'
+import moment from 'moment'
 import React from 'react'
-import { Link } from 'react-router-dom';
-import Avatar from '../common/Avatar';
+import { Link } from 'react-router-dom'
+import Avatar from '../reusable/Avatar'
 
 interface Iprops {
-	comment: any;
+	comment: any
 }
 
 const Comment = ({ comment }: Iprops) => {
-  const currentUserId = Cookies.get('user_Id')
+	const currentUserId = Cookies.get('user_Id')
 	return (
 		<div className='d-flex py-3  border-bottom'>
 			<Link to={`/profile/${comment.user._id}`}>
@@ -19,7 +19,9 @@ const Comment = ({ comment }: Iprops) => {
 				<div className='d-flex'>
 					<div>
 						<div className='mb-1px d-flex'>
-							<Link to={`/profile/${comment.user._id}`} className='fw-bold me-3 fs-16 mb-0'>
+							<Link
+								to={`/profile/${comment.user._id}`}
+								className='fw-bold me-3 fs-16 mb-0'>
 								{comment.user.name}
 							</Link>
 						</div>
@@ -34,20 +36,24 @@ const Comment = ({ comment }: Iprops) => {
 						<button className='btn btn-outline-secondary text-dark text-opacity-50 border-0 me-1px w-40px h-40px center'>
 							<i className='fa-regular fa-comment fs-18 '></i>
 						</button>
-						<span>{comment.replies.length > 0 && comment.replies.length}</span>
+						<span>
+							{comment.replies.length > 0 &&
+								comment.replies.length}
+						</span>
 						<button className='btn btn-outline-secondary ms-4 text-dark text-opacity-50 border-0 w-40px h-40px center'>
 							<i
 								className={`fa-${
-									comment.likes.includes(currentUserId) ? 'solid text-danger' : 'regular'
-								}  fa-heart fs-18`}
-							></i>
+									comment.likes.includes(currentUserId)
+										? 'solid text-danger'
+										: 'regular'
+								}  fa-heart fs-18`}></i>
 						</button>
 						{comment.likes.length > 0 && (
 							<span
 								className={`${
-									comment.likes.includes(currentUserId) && 'text-danger'
-								} ms-1 mt-1`}
-							>
+									comment.likes.includes(currentUserId) &&
+									'text-danger'
+								} ms-1 mt-1`}>
 								{comment.likes.length}
 							</span>
 						)}
@@ -58,7 +64,7 @@ const Comment = ({ comment }: Iprops) => {
 				</footer>
 			</main>
 		</div>
-	);
-};
+	)
+}
 
 export default Comment

@@ -7,7 +7,7 @@ import { findCurrentUser } from './store/actions/user.action';
 import Cookies from 'js-cookie'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Spinner from './components/common/Spinner';
+import Spinner from './components/reusable/Spinner';
 
 const App = () => {
 	const dispatch = useDispatch();

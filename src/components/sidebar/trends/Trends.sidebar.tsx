@@ -1,22 +1,22 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getTopTrends } from '../../../store/actions/trends.action';
-import Spinner from '../../common/Spinner';
-import Trend from './Trend.sidebar';
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getTopTrends } from '../../../store/actions/trends.action'
+import Spinner from '../../reusable/Spinner'
+import Trend from './Trend.sidebar'
 
 const Trends = () => {
-	const dispatch = useDispatch();
-	const { topTrends } = useSelector((state: any) => state.trends);
+	const dispatch = useDispatch()
+	const { topTrends } = useSelector((state: any) => state.trends)
 
-	const [loading, setLoading] = React.useState(false);
+	const [loading, setLoading] = React.useState(false)
 	React.useEffect(() => {
 		const fetchData = async () => {
-			setLoading(true);
-			const data = await dispatch(getTopTrends());
-			setLoading(false);
-		};
-		fetchData();
-	}, [dispatch]);
+			setLoading(true)
+			const data = await dispatch(getTopTrends())
+			setLoading(false)
+		}
+		fetchData()
+	}, [dispatch])
 
 	return (
 		<div className='bg-secondary bg-opacity-25 rounded py-4	 px-lg-3 px-2'>
@@ -31,7 +31,12 @@ const Trends = () => {
 					</div>
 				)}
 				{topTrends.length > 0 &&
-					topTrends.map((trend: any) => <Trend trend={trend} key={trend._id} />)}
+					topTrends.map((trend: any) => (
+						<Trend
+							trend={trend}
+							key={trend._id}
+						/>
+					))}
 
 				{topTrends.length === 0 && !loading && (
 					<div className='mt-6 text-center'>
@@ -40,7 +45,7 @@ const Trends = () => {
 				)}
 			</main>
 		</div>
-	);
-};
+	)
+}
 
-export default Trends;
+export default Trends
