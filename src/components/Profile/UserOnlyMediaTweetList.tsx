@@ -1,10 +1,10 @@
 import React from 'react'
-import { getTweetsLikeByUser } from '../../store/actions/tweets.action'
+import { getOnlyMediaTweets } from '../../store/actions/tweets.action'
 import { useDispatch, useSelector } from 'react-redux'
 import TweetList from '../tweet/TweetList'
 import { useParams } from 'react-router'
 
-const ProfileLikes = () => {
+const UserOnlyMediaTweetList = () => {
 	const params = useParams()
 	const { id }: any = params
 	const dispatch = useDispatch()
@@ -12,7 +12,7 @@ const ProfileLikes = () => {
 		(state: any) => state.tweets
 	)
 	React.useEffect(() => {
-		dispatch(getTweetsLikeByUser(id))
+		dispatch(getOnlyMediaTweets(id))
 	}, [])
 
 	return (
@@ -25,4 +25,4 @@ const ProfileLikes = () => {
 	)
 }
 
-export default ProfileLikes
+export default UserOnlyMediaTweetList

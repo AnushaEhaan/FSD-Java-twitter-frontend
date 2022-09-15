@@ -1,9 +1,8 @@
-import React, { memo } from 'react'
-import { Modal, Button } from 'react-bootstrap'
-import { useSelector, useDispatch } from 'react-redux'
+import { memo } from 'react'
+import { Modal } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
 import Spinner from '../reusable/Spinner'
-import SuggestedUserSidebar from '../sidebar/suggestedUsers/UsersGroup'
-import { getUserFollwersOrFollowing } from '../../store/actions/userFollwersOrFollowing.action'
+import UserList from '../sidebar/suggestedUsers/UserList'
 
 interface Iprops {
 	show: boolean
@@ -15,7 +14,7 @@ interface Iprops {
 	page: number
 }
 
-const FollwersOrFollowingModel = ({
+const UserPeopleModel = ({
 	handleClose,
 	show,
 	totalPages,
@@ -23,9 +22,8 @@ const FollwersOrFollowingModel = ({
 	type,
 	nextPage,
 }: Iprops) => {
-	const dispatch = useDispatch()
-	const { userFollwersOrFollowing, loading, error } = useSelector(
-		(state: any) => state.userFollwersOrFollowing
+	const { userPeople, loading, error } = useSelector(
+		(state: any) => state.userPeople
 	)
 	return (
 		<div>
@@ -41,12 +39,12 @@ const FollwersOrFollowingModel = ({
 				<Modal.Body className='py-2'>
 					{loading ? (
 						<Spinner height='15vh' />
-					) : userFollwersOrFollowing.length === 0 ? (
+					) : userPeople.length === 0 ? (
 						<p className='text-center my-4'>
 							{error ? error : `No ${type} yet`}
 						</p>
 					) : (
-						<SuggestedUserSidebar users={userFollwersOrFollowing} />
+						<UserList users={userPeople} />
 					)}
 					{totalPages > 1 && totalPages !== page && (
 						<div
@@ -63,4 +61,4 @@ const FollwersOrFollowingModel = ({
 	)
 }
 
-export default memo(FollwersOrFollowingModel)
+export default memo(UserPeopleModel)

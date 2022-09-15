@@ -1,5 +1,5 @@
-import { lazy } from 'react';
-import { IRoute, Routes } from '../interfaces/routes/routes.types';
+import { lazy } from 'react'
+import { IRoute, Routes } from '../interfaces/routes/routes.types'
 
 export const secureRoutes: IRoute[] = [
 	{
@@ -16,15 +16,27 @@ export const secureRoutes: IRoute[] = [
 				childrens: [
 					{
 						path: '/',
-						element: lazy(() => import('../components/Profile/ProfileTweets.profile')),
+						element: lazy(
+							() => import('../components/Profile/UserTweetList')
+						),
 					},
 					{
-						path: Routes.ProfileMedia,
-						element: lazy(() => import('../components/Profile/ProfileMedia.profile')),
+						path: Routes.UserOnlyMediaTweetList,
+						element: lazy(
+							() =>
+								import(
+									'../components/Profile/UserOnlyMediaTweetList'
+								)
+						),
 					},
 					{
-						path: Routes.ProfileLikes,
-						element: lazy(() => import('../components/Profile/ProfileLikes.profile')),
+						path: Routes.UserOnlyLikeTweetList,
+						element: lazy(
+							() =>
+								import(
+									'../components/Profile/UserOnlyLikeTweetList'
+								)
+						),
 					},
 				],
 			},
@@ -50,7 +62,7 @@ export const secureRoutes: IRoute[] = [
 			},
 		],
 	},
-];
+]
 
 export const authRoutes: IRoute[] = [
 	{
@@ -67,4 +79,4 @@ export const authRoutes: IRoute[] = [
 			},
 		],
 	},
-];
+]

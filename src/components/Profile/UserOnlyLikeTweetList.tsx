@@ -1,10 +1,10 @@
 import React from 'react'
-import TweetList from '../tweet/TweetList'
-import { getUserTweets } from '../../store/actions/tweets.action'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
+import { getTweetsLikeByUser } from '../../store/actions/tweets.action'
+import TweetList from '../tweet/TweetList'
 
-const ProfileTweets = () => {
+const UserOnlyLikeTweetList = () => {
 	const params = useParams()
 	const { id }: any = params
 	const dispatch = useDispatch()
@@ -12,19 +12,17 @@ const ProfileTweets = () => {
 		(state: any) => state.tweets
 	)
 	React.useEffect(() => {
-		dispatch(getUserTweets(id))
+		dispatch(getTweetsLikeByUser(id))
 	}, [])
 
 	return (
 		<div className='mt-5'>
-			<div>
-				<TweetList
-					tweets={tweets}
-					loading={tweetLoading}
-				/>
-			</div>
+			<TweetList
+				tweets={tweets}
+				loading={tweetLoading}
+			/>
 		</div>
 	)
 }
 
-export default ProfileTweets
+export default UserOnlyLikeTweetList

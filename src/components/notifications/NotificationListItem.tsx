@@ -1,11 +1,10 @@
 import moment from 'moment'
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Avatar from '../reusable/Avatar'
-import FollowUnfollowBtn from '../sidebar/suggestedUsers/FollowUnfollowBtn'
-import NotificationTypeMessage from './NotificationTypeMessage'
-import { markAsReadNotification } from '../../store/actions/notification.action'
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { markAsReadNotification } from '../../store/actions/notification.action'
+import Avatar from '../reusable/Avatar'
+import UserFollowUnfollowBtn from '../sidebar/suggestedUsers/UserFollowUnfollowBtn'
+import NotificationTypeMessage from './NotificationTypeMessage'
 
 interface Iprops {
 	notification: any
@@ -80,7 +79,7 @@ const NotificationListItem = ({ notification }: Iprops) => {
 						)}
 					</section>
 					{notification.type === 'follow' && (
-						<FollowUnfollowBtn user={notification.sender} />
+						<UserFollowUnfollowBtn user={notification.sender} />
 					)}
 				</div>
 			</Link>

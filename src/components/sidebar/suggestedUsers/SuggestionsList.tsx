@@ -2,9 +2,9 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSuggestedUsers } from '../../../store/actions/suggestedUsers.action'
 import Spinner from '../../reusable/Spinner'
-import UsersGroup from './UsersGroup'
+import UserList from './UserList'
 
-const SuggestedUsersSidebar = () => {
+const SuggestionsList = () => {
 	const dispatch = useDispatch()
 	const { suggestedUsers, loading, error } = useSelector(
 		(state: any) => state.suggestedUsers
@@ -26,7 +26,7 @@ const SuggestedUsersSidebar = () => {
 						height='8vh'
 					/>
 				) : (
-					<UsersGroup users={suggestedUsers} />
+					<UserList users={suggestedUsers} />
 				)}
 				{suggestedUsers.length === 0 && !loading && (
 					<div className='mt-6 text-center'>
@@ -38,4 +38,4 @@ const SuggestedUsersSidebar = () => {
 	)
 }
 
-export default SuggestedUsersSidebar
+export default SuggestionsList

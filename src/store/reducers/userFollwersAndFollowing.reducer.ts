@@ -1,51 +1,51 @@
 import {
-	userFollwersOrFollowingState,
-	userFollwersOrFollowingActionTypes,
-	userFollwersOrFollowingAction,
+	userPeopleState,
+	userPeopleActionTypes,
+	userPeopleAction,
 	initialState,
-} from '../../interfaces/store/userFollwersOrFollowing.store.types';
+} from '../../interfaces/store/userPeople.store.types'
 
-const userFollwersOrFollowingReducer = (
-    state: userFollwersOrFollowingState = initialState,
-    action: userFollwersOrFollowingAction,
-): userFollwersOrFollowingState => {
-    switch (action.type) {
-        case userFollwersOrFollowingActionTypes.GET_USER_FOLLOWERS_OR_FOLLOWING_START:
-            return {
-                ...state,
-                loading: true,
-                error: null,
-            };
-        case userFollwersOrFollowingActionTypes.GET_USER_FOLLOWERS_OR_FOLLOWING_SUCCESS:
-            return {
-                ...state,
-                loading: false,
-                userFollwersOrFollowing:[...state.userFollwersOrFollowing, ...action.payload],
-            };
-        case userFollwersOrFollowingActionTypes.GET_USER_FOLLOWERS_OR_FOLLOWING_FAILURE:
-            return {
-                ...state,
-                loading: false,
-                error: action.payload,
-            };
-        case userFollwersOrFollowingActionTypes.SET_USER_FOLLOWERS_OR_FOLLOWING:
-            return {
-                ...state,
-                userFollwersOrFollowing: state.userFollwersOrFollowing.map((user) => {
-                    if (user._id === action.payload._id) {
-                        return action.payload;
-                    }
-                    return user;
-                })
-            };
-        case userFollwersOrFollowingActionTypes.CLEAR_USER_FOLLOWERS_OR_FOLLOWING:
-            return {
-                ...state,
-                userFollwersOrFollowing: [],
-            };
-        default:
-            return state;
-    }
+const userPeopleReducer = (
+	state: userPeopleState = initialState,
+	action: userPeopleAction
+): userPeopleState => {
+	switch (action.type) {
+		case userPeopleActionTypes.GET_USER_PEOPLE_START:
+			return {
+				...state,
+				loading: true,
+				error: null,
+			}
+		case userPeopleActionTypes.GET_USER_PEOPLE_SUCCESS:
+			return {
+				...state,
+				loading: false,
+				userPeople: [...state.userPeople, ...action.payload],
+			}
+		case userPeopleActionTypes.GET_USER_PEOPLE_FAILURE:
+			return {
+				...state,
+				loading: false,
+				error: action.payload,
+			}
+		case userPeopleActionTypes.SET_USER_PEOPLE:
+			return {
+				...state,
+				userPeople: state.userPeople.map((user) => {
+					if (user._id === action.payload._id) {
+						return action.payload
+					}
+					return user
+				}),
+			}
+		case userPeopleActionTypes.CLEAR_USER_PEOPLE:
+			return {
+				...state,
+				userPeople: [],
+			}
+		default:
+			return state
+	}
 }
 
-export default userFollwersOrFollowingReducer;
+export default userPeopleReducer
