@@ -1,10 +1,10 @@
 import React from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import TweetList from '../../components/tweet/TweetList'
-import SearchTrends from '../../components/trends/Search.trends'
-import { findTrends } from '../../store/actions/trends.action'
+import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import SearchTrends from '../../components/trends/SearchTrends'
+import TweetList from '../../components/tweet/TweetList'
+import { findTrends } from '../../store/actions/trends.action'
 
 const Trends = () => {
 	const { slug } = useParams()
