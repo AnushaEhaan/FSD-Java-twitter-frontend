@@ -1,15 +1,13 @@
-import React from 'react'
-
 interface Iprops {
-	search: string | undefined;
-	handleSearch: (value: any) => void;
-	handleSubmit: (e: any) => void;
+	search: string | undefined
+	handleSearch: (value: any) => void
+	handleSubmit: (e: any) => void
 }
 
 const SearchTrends = ({ search, handleSearch, handleSubmit }: Iprops) => {
 	return (
 		<div>
-			<form onSubmit={ handleSubmit }>
+			<form onSubmit={handleSubmit}>
 				<div className='input-group px-md-0'>
 					<input
 						type='text'
@@ -17,20 +15,19 @@ const SearchTrends = ({ search, handleSearch, handleSubmit }: Iprops) => {
 						placeholder='Search tweets by hashtag'
 						aria-label="Recipient's username"
 						aria-describedby='basic-addon2'
-						value={ search }
-						onChange={ handleSearch }
+						value={search}
+						onChange={handleSearch}
 					/>
 					<button
 						className='btn rounded-end input-group-text border border-dark bg-dark text-white'
 						id='basic-addon2'
-						type='submit'
-					>
+						type='submit'>
 						<i className='fa-solid fa-magnifying-glass fs-15'></i>
 					</button>
 				</div>
 			</form>
 		</div>
-	);
-};
+	)
+}
 
 export default SearchTrends

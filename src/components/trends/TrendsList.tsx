@@ -1,14 +1,14 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getTopTrends } from '../../../store/actions/trends.action'
-import Spinner from '../../reusable/Spinner'
-import Trend from './Trend.sidebar'
+import { getTopTrends } from '../../store/actions/trends.action'
+import Spinner from '../reusable/Spinner'
+import TrendItem from './TrendItem'
 
-const Trends = () => {
+const TrendsList = () => {
 	const dispatch = useDispatch()
 	const { topTrends } = useSelector((state: any) => state.trends)
-
 	const [loading, setLoading] = React.useState(false)
+
 	React.useEffect(() => {
 		const fetchData = async () => {
 			setLoading(true)
@@ -30,9 +30,10 @@ const Trends = () => {
 						<Spinner size='sm' />
 					</div>
 				)}
+
 				{topTrends.length > 0 &&
 					topTrends.map((trend: any) => (
-						<Trend
+						<TrendItem
 							trend={trend}
 							key={trend._id}
 						/>
@@ -48,4 +49,4 @@ const Trends = () => {
 	)
 }
 
-export default Trends
+export default TrendsList
