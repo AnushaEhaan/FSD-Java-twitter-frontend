@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import stringUtils from '../../utils/string.utils'
 import Avatar from '../reusable/Avatar'
 
-const PostTweet = () => {
+const TweetCreate = () => {
 	const dispatch = useDispatch()
 	const { currentUser } = useSelector((state: any) => state.user)
 	const [content, setConent] = React.useState('')
@@ -218,4 +218,4 @@ const PostDropdown = (props: any) => {
 	)
 }
 
-export default PostTweet
+export default TweetCreate
