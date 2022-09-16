@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { findUserById } from '../../store/actions/profileInfo.action'
+import { IRootState } from '../../types/store/IRootState.types'
 import Avatar from '../reusable/Avatar'
 import TweetActionMenu from './TweetActionMenu'
 import TweetActions from './TweetActions'
@@ -17,7 +18,7 @@ interface Iprops {
 
 const Tweet = ({ tweet, handleSetTweet, isCommentBtnHidden }: Iprops) => {
 	const currentUserId = Cookies.get('user_Id')
-	const { currentUser } = useSelector((state: any) => state.user)
+	const { currentUser } = useSelector((state: IRootState) => state.user)
 	const [whoRetweeted, setWhoRetweeted] = useState('')
 
 	React.useEffect(() => {

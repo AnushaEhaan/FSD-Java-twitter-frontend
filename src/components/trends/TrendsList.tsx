@@ -1,12 +1,13 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTopTrends } from '../../store/actions/trends.action'
+import { IRootState } from '../../types/store/IRootState.types'
 import Spinner from '../reusable/Spinner'
 import TrendItem from './TrendItem'
 
 const TrendsList = () => {
 	const dispatch = useDispatch()
-	const { topTrends } = useSelector((state: any) => state.trends)
+	const { topTrends } = useSelector((state: IRootState) => state.trends)
 	const [loading, setLoading] = React.useState(false)
 
 	React.useEffect(() => {

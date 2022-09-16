@@ -1,13 +1,14 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSuggestedUsers } from '../../store/actions/suggestedUsers.action'
+import { IRootState } from '../../types/store/IRootState.types'
 import Spinner from '../reusable/Spinner'
 import UserList from './UserList'
 
 const SuggestionsList = () => {
 	const dispatch = useDispatch()
 	const { suggestedUsers, loading, error } = useSelector(
-		(state: any) => state.suggestedUsers
+		(state: IRootState) => state.suggestedUsers
 	)
 
 	React.useEffect(() => {

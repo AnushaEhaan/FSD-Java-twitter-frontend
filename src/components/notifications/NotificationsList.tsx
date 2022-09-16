@@ -6,11 +6,12 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import Spinner from '../../components/reusable/Spinner'
 import NotificationItem from '../../components/notifications/NotificationItem'
+import { IRootState } from '../../types/store/IRootState.types'
 
 const NotificationsList = () => {
 	const dispatch = useDispatch()
 	const { notifications, loading, error } = useSelector(
-		(state: any) => state.notifications
+		(state: IRootState) => state.notifications
 	)
 	const handleMarkAsSeenNotification = () => {
 		dispatch(markAsSeenNotification())

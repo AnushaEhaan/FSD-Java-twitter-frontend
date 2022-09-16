@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import TweetCreate from '../../components/tweet/TweetCreate'
 import TweetList from '../../components/tweet/TweetList'
 import { getTweets } from '../../store/actions/tweets.action'
+import { IRootState } from '../../types/store/IRootState.types'
 
 const Dashboard = () => {
 	const dispatch = useDispatch()
-	const { tweets, loading } = useSelector((state: any) => state.tweets)
+	const { tweets, loading } = useSelector((state: IRootState) => state.tweets)
 
 	React.useEffect(() => {
 		const userId = Cookies.get('user_Id')

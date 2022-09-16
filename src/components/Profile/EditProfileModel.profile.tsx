@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button, Modal } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import updateProfileJson from '../../jsons/updateProfile.json'
@@ -7,10 +8,10 @@ import {
 	updateUserStart,
 	uploadAvatar,
 } from '../../store/actions/updateUser.action'
+import { IRootState } from '../../types/store/IRootState.types'
 import Calendar from '../reusable/Calendar'
 import Spinner from '../reusable/Spinner'
 import EditProfileCover from './EditProfileCover.profile'
-import { Button, Modal } from 'react-bootstrap'
 
 interface Iprops {
 	user: any
@@ -21,7 +22,7 @@ interface Iprops {
 const EditProfileModel = ({ user, handleClose, show }: Iprops) => {
 	const dispatch = useDispatch()
 	const { loading, isUserUpdated } = useSelector(
-		(state: any) => state.updateUser
+		(state: IRootState) => state.updateUser
 	)
 
 	const [date_Of_birth, setDate_Of_birth] = React.useState<any>({

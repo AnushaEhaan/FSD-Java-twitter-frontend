@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux'
 import TweetComment from './TweetComment'
+import { IRootState } from '../../types/store/IRootState.types'
 
 const TweetCommentList = () => {
-	const { comments } = useSelector((state: any) => state.comments)
+	const { comments } = useSelector((state: IRootState) => state.comments)
 	return (
 		<div>
 			<h4>Comments {comments.length} </h4>

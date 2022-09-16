@@ -8,6 +8,7 @@ import TweetCommentCreate from '../../components/tweet/TweetCommentCreate'
 import Spinner from '../../components/reusable/Spinner'
 import Cookies from 'js-cookie'
 import { addComment } from '../../store/actions/comment.action'
+import { IRootState } from '../../types/store/IRootState.types'
 
 const Tweet = () => {
 	const userId = Cookies.get('user_Id')
@@ -16,7 +17,7 @@ const Tweet = () => {
 	const [loading, setLoading] = useState(false)
 	const [addCommentLoading, setAddCommentLoading] = useState(false)
 	const [error, setError] = useState('')
-	const { tweet } = useSelector((state: any) => state.tweets)
+	const { tweet } = useSelector((state: IRootState) => state.tweets)
 	const [content, setContent] = useState('')
 
 	React.useEffect(() => {

@@ -2,6 +2,7 @@ import Cookies from 'js-cookie'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { IRootState } from '../../types/store/IRootState.types'
 
 interface Iprops {
 	link: any
@@ -13,7 +14,7 @@ const CustomLink = ({ link, iconSize }: Iprops) => {
 	const [isLinkActive, setIsLinkActive] = useState(false)
 	const to = link.url == '/profile' ? link.url + '/' + userId : link.url
 	const { totalUnreadNotifications } = useSelector(
-		(state: any) => state.notifications
+		(state: IRootState) => state.notifications
 	)
 
 	return (

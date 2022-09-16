@@ -7,10 +7,11 @@ import { addTweet } from '../../store/actions/tweets.action'
 import { useDispatch, useSelector } from 'react-redux'
 import stringUtils from '../../utils/string.utils'
 import Avatar from '../reusable/Avatar'
+import { IRootState } from '../../types/store/IRootState.types'
 
 const TweetCreate = () => {
 	const dispatch = useDispatch()
-	const { currentUser } = useSelector((state: any) => state.user)
+	const { currentUser } = useSelector((state: IRootState) => state.user)
 	const [content, setConent] = React.useState('')
 	const [readableImage, setReadableImage] = React.useState<any>(null)
 	const [imageForUpload, setImageForUpload] = React.useState<any>(null)

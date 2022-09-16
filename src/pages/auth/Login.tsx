@@ -1,17 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import Spinner from '../../components/reusable/Spinner'
 import loginJson from '../../jsons/login.json'
 import { userLogin } from '../../store/actions/user.action'
-import { useDispatch, useSelector } from 'react-redux'
-import Spinner from '../../components/reusable/Spinner'
-import { useNavigate } from 'react-router-dom'
+import { IRootState } from '../../types/store/IRootState.types'
 
 const Login = () => {
 	const navigate = useNavigate()
 
 	const dispatch = useDispatch()
 	const { currentUser, loading, error } = useSelector(
-		(state: any) => state.user
+		(state: IRootState) => state.user
 	)
 
 	const initialFormState: any = {}

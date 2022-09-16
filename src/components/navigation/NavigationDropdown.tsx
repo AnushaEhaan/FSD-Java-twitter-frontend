@@ -3,9 +3,10 @@ import navigationsJson from '../../jsons/navigations.json'
 import BtnLogOut from '../reusable/BtnLogOut'
 import Avatar from '../reusable/Avatar'
 import CustomLink from './CustomLink'
+import { IRootState } from '../../types/store/IRootState.types'
 
 const NavigationDropdown = () => {
-	const { currentUser } = useSelector((state: any) => state.user)
+	const { currentUser } = useSelector((state: IRootState) => state.user)
 
 	return (
 		<div>

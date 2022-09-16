@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import Avatar from '../reusable/Avatar'
+import { IRootState } from '../../types/store/IRootState.types'
 
 interface Iprops {
 	handleChange?: (e: any) => void
@@ -7,7 +8,7 @@ interface Iprops {
 }
 
 const TweetCommentCreate = ({ handleChange, content }: Iprops) => {
-	const { currentUser } = useSelector((state: any) => state.user)
+	const { currentUser } = useSelector((state: IRootState) => state.user)
 	return (
 		<div className='d-flex align-items-start mt-3'>
 			<Avatar avatar={currentUser.avatar} />

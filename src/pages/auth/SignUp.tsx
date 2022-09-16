@@ -1,17 +1,19 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import Spinner from '../../components/reusable/Spinner'
 import signupJson from '../../jsons/signup.json'
 import { signUp } from '../../store/actions/signUp.action'
-import { useDispatch, useSelector } from 'react-redux'
-import Spinner from '../../components/reusable/Spinner'
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import { IRootState } from '../../types/store/IRootState.types'
 
 const SingUp = () => {
 	const navigate = useNavigate()
 
 	const dispatch = useDispatch()
-	const { isSignUp, loading } = useSelector((state: any) => state.signUp)
+	const { isSignUp, loading } = useSelector(
+		(state: IRootState) => state.signUp
+	)
 
 	const initialFormState: any = {}
 	signupJson.forEach((form) => {

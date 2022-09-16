@@ -2,10 +2,11 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import TweetList from '../../components/tweet/TweetList'
 import { getBookmarks } from '../../store/actions/tweets.action'
+import { IRootState } from '../../types/store/IRootState.types'
 
 const Bookmarks = () => {
 	const dispatch = useDispatch()
-	const { tweets, loading } = useSelector((state: any) => state.tweets)
+	const { tweets, loading } = useSelector((state: IRootState) => state.tweets)
 
 	useEffect(() => {
 		dispatch(getBookmarks())

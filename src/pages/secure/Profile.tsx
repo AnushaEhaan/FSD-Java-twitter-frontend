@@ -6,6 +6,7 @@ import ProfileCover from '../../components/Profile/ProfileCover.profile'
 import UserInformation from '../../components/Profile/UserInformation.profile'
 import { getProfileUser } from '../../store/actions/profileInfo.action'
 import { Outlet } from 'react-router-dom'
+import { IRootState } from '../../types/store/IRootState.types'
 
 const Profile = (props: any) => {
 	const dispatch = useDispatch()
@@ -13,9 +14,9 @@ const Profile = (props: any) => {
 	const { id }: any = params
 
 	const { profileUser, loading, error } = useSelector(
-		(state: any) => state.profileUser
+		(state: IRootState) => state.profileUser
 	)
-	const { currentUser } = useSelector((state: any) => state.user)
+	const { currentUser } = useSelector((state: IRootState) => state.user)
 
 	React.useEffect(() => {
 		dispatch(getProfileUser(id))

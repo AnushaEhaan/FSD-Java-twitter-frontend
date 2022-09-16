@@ -5,12 +5,13 @@ import { toast } from 'react-toastify'
 import SearchTrends from '../../components/trends/SearchTrends'
 import TweetList from '../../components/tweet/TweetList'
 import { findTrends } from '../../store/actions/trends.action'
+import { IRootState } from '../../types/store/IRootState.types'
 
 const Trends = () => {
 	const { slug } = useParams()
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
-	const { tweets, loading } = useSelector((state: any) => state.tweets)
+	const { tweets, loading } = useSelector((state: IRootState) => state.tweets)
 
 	const [search, setSearch] = React.useState(slug)
 

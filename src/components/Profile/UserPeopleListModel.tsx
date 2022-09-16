@@ -3,6 +3,7 @@ import { Modal } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import Spinner from '../reusable/Spinner'
 import UserList from '../suggestions/UserList'
+import { IRootState } from '../../types/store/IRootState.types'
 
 interface Iprops {
 	show: boolean
@@ -23,7 +24,7 @@ const UserPeopleModel = ({
 	nextPage,
 }: Iprops) => {
 	const { userPeople, loading, error } = useSelector(
-		(state: any) => state.userPeople
+		(state: IRootState) => state.userPeople
 	)
 	return (
 		<div>
