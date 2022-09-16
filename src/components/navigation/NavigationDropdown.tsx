@@ -29,7 +29,7 @@ const NavigationDropdown = () => {
 								key={index}
 								className='dropdown-item fs-18 py-2px'>
 								<CustomLink
-									iconSize='fs-18'
+									iconSize='fs-17'
 									link={item}
 								/>
 							</li>
