@@ -66,7 +66,7 @@ const TweetCommentModal = ({
 						variant='dark'
 						onClick={handleAddComment}
 						className='ms-3'>
-						{loading ? <Spinner size='sm' /> : 'Add Comment'}
+						{loading ? <Spinner size='xsm' /> : 'Add Comment'}
 					</Button>
 				</Modal.Footer>
 			</Modal>
