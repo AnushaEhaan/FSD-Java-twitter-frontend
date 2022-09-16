@@ -14,7 +14,7 @@ const TweetCommentCreate = ({ handleChange, content }: Iprops) => {
 			<Avatar avatar={currentUser.avatar} />
 			<textarea
 				className='form-control mt-1 fs-17 border-0 ps-0 h-40px'
-				placeholder='Tweet your reply'
+				placeholder='Write a comment...'
 				onChange={handleChange}
 				value={content}></textarea>
 		</div>
