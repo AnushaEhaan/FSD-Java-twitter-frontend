@@ -8,10 +8,13 @@ import Cookies from 'js-cookie'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Spinner from './components/reusable/Spinner'
+import { IRootState } from './types/store/IRootState.types'
 
 const App = () => {
 	const dispatch = useDispatch()
-	const { isAuthenticated, loading } = useSelector((state: any) => state.user)
+	const { isAuthenticated, loading } = useSelector(
+		(state: IRootState) => state.user
+	)
 
 	React.useEffect(() => {
 		const token = Cookies.get('token')
