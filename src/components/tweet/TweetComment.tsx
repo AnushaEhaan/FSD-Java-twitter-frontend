@@ -30,7 +30,7 @@ const TweetComment = ({ comment }: Iprops) => {
 					</div>
 				</div>
 				<main className='py-3'>{comment.content}</main>
-				<footer className='d-flex  justify-content-between '>
+				{/* <footer className='d-flex  justify-content-between '>
 					<div className='d-flex align-items-center'>
 						<button className='btn btn-outline-secondary text-dark text-opacity-50 border-0 me-1px w-40px h-40px center'>
 							<i className='fa-regular fa-comment fs-18 '></i>
@@ -60,7 +60,7 @@ const TweetComment = ({ comment }: Iprops) => {
 					<button className='btn btn-outline-secondary text-dark text-opacity-50 border-0 w-40px h-40px center'>
 						<i className='fa-solid fa-arrow-up-from-bracket fs-18 '></i>
 					</button>
-				</footer>
+				</footer> */}
 			</main>
 		</div>
 	)
