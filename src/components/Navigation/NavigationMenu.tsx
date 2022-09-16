@@ -1,11 +1,10 @@
-import React from 'react'
 import { useSelector } from 'react-redux'
 import navData from '../../JSON/navigation.json'
+import BtnLogOut from '../reusable/BtnLogOut'
 import Avatar from '../reusable/Avatar'
 import CustomLink from './CustomLink.nav'
-import LogOutBtn from './LogOutBtn.nav'
 
-const DropDownMenu = () => {
+const NavigationMenu = () => {
 	const { currentUser } = useSelector((state: any) => state.user)
 
 	return (
@@ -35,10 +34,10 @@ const DropDownMenu = () => {
 							</li>
 						)
 					})}
-				<LogOutBtn displayInDropDown={true} />
+				<BtnLogOut displayInDropDown={true} />
 			</ul>
 		</div>
 	)
 }
 
-export default DropDownMenu
+export default NavigationMenu

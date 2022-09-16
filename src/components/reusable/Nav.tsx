@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import navData from '../../JSON/navigation.json';
-import LogOutBtn from '../Nav/LogOutBtn.nav';
-import DropDownMenu from '../Nav/DropDownMenu.nav';
-import CustomLink from '..//Nav/CustomLink.nav';
-import { countUnreadNotifications } from '../../store/actions/notification.action';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react'
+import navData from '../../JSON/navigation.json'
+import BtnLogOut from './BtnLogOut'
+import NavigationMenu from '../Navigation/NavigationMenu'
+import CustomLink from '../Navigation/CustomLink.nav'
+import { countUnreadNotifications } from '../../store/actions/notification.action'
+import { useDispatch } from 'react-redux'
 
 const Nav = () => {
-	const dispatch = useDispatch();
-	const getNotificationsAction = () => dispatch(countUnreadNotifications());
+	const dispatch = useDispatch()
+	const getNotificationsAction = () => dispatch(countUnreadNotifications())
 
 	React.useEffect(() => {
 		const interval = setInterval(() => {
-			getNotificationsAction();
-		}, 3000);
-		return () => clearInterval(interval);  
-	}, []);
+			getNotificationsAction()
+		}, 3000)
+		return () => clearInterval(interval)
+	}, [])
 
 	return (
 		<section className='w-100 vh-lg-100 py-lg-0 py-3 px-lg-0 px-4'>
@@ -30,20 +30,24 @@ const Nav = () => {
 										item.hideOnMd
 											? 'd-lg-inline d-none'
 											: 'w-lg-auto h-lg-auto w-47px me-lg-0 me-3 h-47px d-lg-inline d-flex justify-content-center align-items-center '
-									} `}
-								>
-									{<CustomLink iconSize='fs-20' link={item} />}
+									} `}>
+									{
+										<CustomLink
+											iconSize='fs-20'
+											link={item}
+										/>
+									}
 								</li>
-							);
+							)
 						})}
 				</ul>
-				<LogOutBtn />
+				<BtnLogOut />
 				<div className='dropdown d-lg-none d-inline'>
-					<DropDownMenu />
+					<NavigationMenu />
 				</div>
 			</main>
 		</section>
-	);
-};
+	)
+}
 
-export default Nav;
+export default Nav
