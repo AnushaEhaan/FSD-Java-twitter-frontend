@@ -35,14 +35,14 @@ const TweetActionMenu = ({ userId, userName, tweetId }: Iprops) => {
 						<li
 							className='dropdown-item py-2 cursor'
 							onClick={() => handleTweetDelete(tweetId)}>
-							<i className='fa-solid fa-trash me-3 fs-16'></i>
+							<i className='fa-solid fa-trash me-3 fs-13'></i>
 							Delete
 						</li>
 					)}
 					<Link
 						className='dropdown-item py-2 cursor'
 						to={`/profile/${userId}`}>
-						<i className='fa-solid fa-user me-3 fs-18'></i>
+						<i className='fa-solid fa-user me-3 fs-14'></i>
 						{userName.split(' ')[0]}
 					</Link>
 				</ul>
