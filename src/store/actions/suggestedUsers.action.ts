@@ -1,31 +1,31 @@
 import {
-	suggestedUsersAction,
-	suggestedUsersActionTypes,
+	SuggestedUsersAction,
+	SuggestedUsersActionTypes,
 } from '../../types/store/suggestedUsers.store.types'
 import axios from '../../config/axios.config'
 import { toast } from 'react-toastify'
 import Cookies from 'js-cookie'
 
-const getSuggestedUsersStart = (): suggestedUsersAction => ({
-	type: suggestedUsersActionTypes.SUGGESTED_USERS_START,
+const getSuggestedUsersStart = (): SuggestedUsersAction => ({
+	type: SuggestedUsersActionTypes.SUGGESTED_USERS_START,
 })
 
 const getSuggestedUsersSuccess = (
 	suggestedUsers: any
-): suggestedUsersAction => ({
-	type: suggestedUsersActionTypes.SUGGESTED_USERS_SUCCESS,
+): SuggestedUsersAction => ({
+	type: SuggestedUsersActionTypes.SUGGESTED_USERS_SUCCESS,
 	payload: suggestedUsers,
 })
 
-const getSuggestedUsersFailure = (error: any): suggestedUsersAction => ({
-	type: suggestedUsersActionTypes.SUGGESTED_USERS_FAILURE,
+const getSuggestedUsersFailure = (error: any): SuggestedUsersAction => ({
+	type: SuggestedUsersActionTypes.SUGGESTED_USERS_FAILURE,
 	payload: error,
 })
 
 export const setSuggestedUsers = (
 	suggestedUser: any
-): suggestedUsersAction => ({
-	type: suggestedUsersActionTypes.SET_SUGGESTED_USER,
+): SuggestedUsersAction => ({
+	type: SuggestedUsersActionTypes.SET_SUGGESTED_USER,
 	payload: suggestedUser,
 })
 

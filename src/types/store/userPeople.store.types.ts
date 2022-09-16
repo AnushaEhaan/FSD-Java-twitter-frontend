@@ -1,21 +1,21 @@
-export interface userPeopleState {
+export interface UserPeopleState {
 	loading: boolean
 	error: string | null
 	userPeople: any[]
 }
 
-export interface userPeopleAction {
+export interface UserPeopleAction {
 	type: string
 	payload?: any
 }
 
-export const initialState: userPeopleState = {
+export const initialState: UserPeopleState = {
 	loading: false,
 	error: null,
 	userPeople: [],
 }
 
-export enum userPeopleActionTypes {
+export enum UserPeopleActionTypes {
 	GET_USER_PEOPLE_START = 'GET_USER_PEOPLE_START',
 	GET_USER_PEOPLE_SUCCESS = 'GET_USER_PEOPLE_SUCCESS',
 	GET_USER_PEOPLE_FAILURE = 'GET_USER_PEOPLE_FAILURE',

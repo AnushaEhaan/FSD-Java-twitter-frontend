@@ -1,21 +1,21 @@
-export interface suggestedUsersState {
-	loading: boolean;
-	error: string | null;
-	suggestedUsers: any[];
+export interface SuggestedUsersState {
+	loading: boolean
+	error: string | null
+	suggestedUsers: any[]
 }
 
-export interface suggestedUsersAction {
-	type: string;
-	payload?: any;
+export interface SuggestedUsersAction {
+	type: string
+	payload?: any
 }
 
-export const initialState: suggestedUsersState = {
+export const initialState: SuggestedUsersState = {
 	suggestedUsers: [],
 	loading: false,
 	error: null,
-};
+}
 
-export enum suggestedUsersActionTypes {
+export enum SuggestedUsersActionTypes {
 	SUGGESTED_USERS_START = 'SUGGESTED_USERS_START',
 	SUGGESTED_USERS_SUCCESS = 'SUGGESTED_USERS_SUCCESS',
 	SUGGESTED_USERS_FAILURE = 'SUGGESTED_USERS_FAILURE',

@@ -1,31 +1,31 @@
 import { toast } from 'react-toastify'
 import axios from '../../config/axios.config'
 import {
-	userPeopleAction,
-	userPeopleActionTypes,
+	UserPeopleAction,
+	UserPeopleActionTypes,
 } from '../../types/store/userPeople.store.types'
 
-const getUserPeopleStart = (): userPeopleAction => ({
-	type: userPeopleActionTypes.GET_USER_PEOPLE_START,
+const getUserPeopleStart = (): UserPeopleAction => ({
+	type: UserPeopleActionTypes.GET_USER_PEOPLE_START,
 })
 
-const getUserPeopleSuccess = (payload: any[]): userPeopleAction => ({
-	type: userPeopleActionTypes.GET_USER_PEOPLE_SUCCESS,
+const getUserPeopleSuccess = (payload: any[]): UserPeopleAction => ({
+	type: UserPeopleActionTypes.GET_USER_PEOPLE_SUCCESS,
 	payload,
 })
 
-const getUserPeopleFailure = (error: string): userPeopleAction => ({
-	type: userPeopleActionTypes.GET_USER_PEOPLE_FAILURE,
+const getUserPeopleFailure = (error: string): UserPeopleAction => ({
+	type: UserPeopleActionTypes.GET_USER_PEOPLE_FAILURE,
 	payload: error,
 })
 
-export const setuserPeople = (payload: any): userPeopleAction => ({
-	type: userPeopleActionTypes.SET_USER_PEOPLE,
+export const setuserPeople = (payload: any): UserPeopleAction => ({
+	type: UserPeopleActionTypes.SET_USER_PEOPLE,
 	payload,
 })
 
-export const clearUserPeopleList = (): userPeopleAction => ({
-	type: userPeopleActionTypes.CLEAR_USER_PEOPLE,
+export const clearUserPeopleList = (): UserPeopleAction => ({
+	type: UserPeopleActionTypes.CLEAR_USER_PEOPLE,
 })
 
 export const getUserPeople =

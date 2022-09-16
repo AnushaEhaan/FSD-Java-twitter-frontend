@@ -1,34 +1,34 @@
 import {
-	userPeopleState,
-	userPeopleActionTypes,
-	userPeopleAction,
+	UserPeopleState,
+	UserPeopleActionTypes,
+	UserPeopleAction,
 	initialState,
 } from '../../types/store/userPeople.store.types'
 
 const userPeopleReducer = (
-	state: userPeopleState = initialState,
-	action: userPeopleAction
-): userPeopleState => {
+	state: UserPeopleState = initialState,
+	action: UserPeopleAction
+): UserPeopleState => {
 	switch (action.type) {
-		case userPeopleActionTypes.GET_USER_PEOPLE_START:
+		case UserPeopleActionTypes.GET_USER_PEOPLE_START:
 			return {
 				...state,
 				loading: true,
 				error: null,
 			}
-		case userPeopleActionTypes.GET_USER_PEOPLE_SUCCESS:
+		case UserPeopleActionTypes.GET_USER_PEOPLE_SUCCESS:
 			return {
 				...state,
 				loading: false,
 				userPeople: [...state.userPeople, ...action.payload],
 			}
-		case userPeopleActionTypes.GET_USER_PEOPLE_FAILURE:
+		case UserPeopleActionTypes.GET_USER_PEOPLE_FAILURE:
 			return {
 				...state,
 				loading: false,
 				error: action.payload,
 			}
-		case userPeopleActionTypes.SET_USER_PEOPLE:
+		case UserPeopleActionTypes.SET_USER_PEOPLE:
 			return {
 				...state,
 				userPeople: state.userPeople.map((user) => {
@@ -38,7 +38,7 @@ const userPeopleReducer = (
 					return user
 				}),
 			}
-		case userPeopleActionTypes.CLEAR_USER_PEOPLE:
+		case UserPeopleActionTypes.CLEAR_USER_PEOPLE:
 			return {
 				...state,
 				userPeople: [],
