@@ -65,6 +65,7 @@ const TweetCommentModal = ({
 					<Button
 						variant='dark'
 						onClick={handleAddComment}
+						disabled={loading || !content}
 						className='ms-3'>
 						{loading ? <Spinner size='xsm' /> : 'Add Comment'}
 					</Button>
