@@ -11,8 +11,9 @@ import trends from './reducers/trends.reducer'
 import suggestedUsers from './reducers/suggestedUsers.reducer'
 import userPeople from './reducers/userFollwersAndFollowing.reducer'
 import notifications from './reducers/notification.reducer'
+import { IRootState } from '../types/store/IRootState.types'
 
-const rootReducer = combineReducers({
+const rootReducer = combineReducers<IRootState>({
 	signUp,
 	user,
 	updateUser,
