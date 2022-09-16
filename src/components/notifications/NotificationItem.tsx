@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom'
 import { markAsReadNotification } from '../../store/actions/notification.action'
 import Avatar from '../reusable/Avatar'
 import UserFollowUnfollowBtn from '../sidebar/suggestedUsers/UserFollowUnfollowBtn'
-import NotificationTypeMessage from './NotificationTypeMessage'
+import NotificationMessageType from './NotificationMessageType'
 
 interface Iprops {
 	notification: any
 }
 
-const NotificationListItem = ({ notification }: Iprops) => {
+const NotificationItem = ({ notification }: Iprops) => {
 	const dispatch = useDispatch()
 	const handleMarkAsReadNotification = () =>
 		dispatch(markAsReadNotification(notification._id))
@@ -44,7 +44,7 @@ const NotificationListItem = ({ notification }: Iprops) => {
 								className='me-9px mb-0 fw-bold text-capitalize'>
 								{notification?.sender.name}
 							</Link>
-							<NotificationTypeMessage
+							<NotificationMessageType
 								notification={notification}
 							/>
 							<span className='fs-12 text-dark text-opacity-75  mt-md-0 mt-1 d-md-flex d-block'>
@@ -87,4 +87,4 @@ const NotificationListItem = ({ notification }: Iprops) => {
 	)
 }
 
-export default NotificationListItem
+export default NotificationItem
