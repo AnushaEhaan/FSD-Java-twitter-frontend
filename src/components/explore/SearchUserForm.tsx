@@ -1,10 +1,10 @@
 import React from 'react'
-import SearchUserSuggestionsExplore from './SearchUserSuggestions.explore'
-import axios from '../../config/axios'
 import { toast } from 'react-toastify'
+import axios from '../../config/axios.config'
 import Spinner from '../reusable/Spinner'
+import SearchUsersList from './SearchUsersList'
 
-const SearchUserExplore = () => {
+const SearchUserForm = () => {
 	const [users, setUsers] = React.useState([])
 	const [loading, setLoading] = React.useState(false)
 	const [search, setSearch] = React.useState('')
@@ -68,7 +68,7 @@ const SearchUserExplore = () => {
 				)}
 			</form>
 			{(search || users.length > 0) && (
-				<SearchUserSuggestionsExplore
+				<SearchUsersList
 					users={users}
 					error={error}
 					loading={loading}
@@ -78,4 +78,4 @@ const SearchUserExplore = () => {
 	)
 }
 
-export default SearchUserExplore
+export default SearchUserForm

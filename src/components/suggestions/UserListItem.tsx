@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import Avatar from '../../reusable/Avatar'
-import UserFollowUnfollowBtn from './UserFollowUnfollowBtn'
+import Avatar from '../reusable/Avatar'
+import BtnUserFollowUnfollow from '../reusable/BtnUserFollowUnfollow'
 interface Iprops {
 	user: any
 }
@@ -15,7 +15,7 @@ const UserListItem = ({ user }: Iprops) => {
 				<span className='fs-14 fw-medium'>{user.name}</span>
 			</Link>
 
-			<UserFollowUnfollowBtn user={user} />
+			<BtnUserFollowUnfollow user={user} />
 		</div>
 	)
 }

@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux'
-import navData from '../../JSON/navigation.json'
+import navigationsJson from '../../jsons/navigations.json'
 import BtnLogOut from '../reusable/BtnLogOut'
 import Avatar from '../reusable/Avatar'
-import CustomLink from './CustomLink.nav'
+import CustomLink from './CustomLink'
 
-const NavigationMenu = () => {
+const NavigationDropdown = () => {
 	const { currentUser } = useSelector((state: any) => state.user)
 
 	return (
@@ -20,7 +20,7 @@ const NavigationMenu = () => {
 			<ul
 				className='dropdown-menu pb-0 top-10px'
 				aria-labelledby='dropdownMenuButton1'>
-				{navData
+				{navigationsJson
 					.filter((item) => item.hideOnMd)
 					.map((item, index) => {
 						return (
@@ -40,4 +40,4 @@ const NavigationMenu = () => {
 	)
 }
 
-export default NavigationMenu
+export default NavigationDropdown

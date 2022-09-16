@@ -1,43 +1,49 @@
 import {
-    ProfileUserState,
-    ProfileUserActionTypes,
-    ProfileUserAction,
-    initialState,
-} from '../../interfaces/store/profileInfo.types';
+	ProfileUserState,
+	ProfileUserActionTypes,
+	ProfileUserAction,
+	initialState,
+} from '../../types/store/profileInfo.types'
 
 const profileUserReducer = (
-    state: ProfileUserState = initialState,
-    action: ProfileUserAction,
+	state: ProfileUserState = initialState,
+	action: ProfileUserAction
 ): ProfileUserState => {
-    switch (action.type) {
-        case ProfileUserActionTypes.GET_PROFILE_USER_START:
-            return {
-                ...state,
-                loading: true,
-                error: null,
-            };
-        case ProfileUserActionTypes.GET_PROFILE_USER_SUCCESS:
-            return {
-                ...state,
-                loading: false,
-                profileUser: action.payload,
-            };
-        case ProfileUserActionTypes.GET_PROFILE_USER_FAILURE:
-            return {
-                ...state,
-                loading: false,
-                error: action.payload,
-            };
+	switch (action.type) {
+		case ProfileUserActionTypes.GET_PROFILE_USER_START:
+			return {
+				...state,
+				loading: true,
+				error: null,
+			}
+		case ProfileUserActionTypes.GET_PROFILE_USER_SUCCESS:
+			return {
+				...state,
+				loading: false,
+				profileUser: action.payload,
+			}
+		case ProfileUserActionTypes.GET_PROFILE_USER_FAILURE:
+			return {
+				...state,
+				loading: false,
+				error: action.payload,
+			}
 
-        case ProfileUserActionTypes.SET_PROFILE_USER:
-            return {
-                ...state,
-                profileUser: state.profileUser._id === action.payload.user._id ? action.payload.user : state.profileUser._id === action.payload.userToFollow._id ? action.payload.userToFollow : state.profileUser,
-            };
+		case ProfileUserActionTypes.SET_PROFILE_USER:
+			return {
+				...state,
+				profileUser:
+					state.profileUser._id === action.payload.user._id
+						? action.payload.user
+						: state.profileUser._id ===
+						  action.payload.userToFollow._id
+						? action.payload.userToFollow
+						: state.profileUser,
+			}
 
-        default:
-            return state;
-    }
+		default:
+			return state
+	}
 }
 
-export default profileUserReducer;
+export default profileUserReducer

@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
 import Cookies from 'js-cookie'
-import TweetExplore from './Tweet.explore'
-import axios from '../../config/axios'
+import React, { useState } from 'react'
 import { toast } from 'react-toastify'
+import axios from '../../config/axios.config'
 import Spinner from '../reusable/Spinner'
+import TweetExplore from './TweetExplore'
 
-const TweetGroupExplore = () => {
+const TweetExploreList = () => {
 	const [tweets, setTweets] = useState([])
 	const [loading, setLoading] = useState(false)
 
@@ -60,4 +60,4 @@ const TweetGroupExplore = () => {
 	)
 }
 
-export default TweetGroupExplore
+export default TweetExploreList

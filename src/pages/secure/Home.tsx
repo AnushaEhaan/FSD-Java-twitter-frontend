@@ -1,17 +1,19 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Nav from '../../components/reusable/Nav';
-import SideBar from "../../components/sidebar/SideBar";
+import React from 'react'
+import { Outlet } from 'react-router-dom'
+import Navbar from '../../components/navigation/Navbar'
+import SideBar from '../../components/sidebar/SideBar'
 
 const Home = () => {
-  return (
+	return (
 		<div>
 			<section className='container'>
 				<div className='row gx-0'>
 					<aside className='col-xl-2 col-lg-1 col-12 '>
 						<div className='w-100 position-relative '>
-							<div className='position-fixed borde  px-lg-0 px-md-4 px-2 w-lg-auto w-100 left-lg-0 bg-white ' style={{zIndex:"10"}}>
-								<Nav />
+							<div
+								className='position-fixed borde  px-lg-0 px-md-4 px-2 w-lg-auto w-100 left-lg-0 bg-white '
+								style={{ zIndex: '10' }}>
+								<Navbar />
 							</div>
 						</div>
 					</aside>
@@ -30,7 +32,7 @@ const Home = () => {
 				</div>
 			</section>
 		</div>
-	);
+	)
 }
 
 export default Home

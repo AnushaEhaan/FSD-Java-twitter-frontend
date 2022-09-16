@@ -1,58 +1,64 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import formJson from '../../JSON/signUpForm.json';
-import { signUp } from '../../store/actions/signUp.action';
-import { useDispatch, useSelector } from 'react-redux';
-import Spinner from '../../components/reusable/Spinner';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import signupJson from '../../jsons/signup.json'
+import { signUp } from '../../store/actions/signUp.action'
+import { useDispatch, useSelector } from 'react-redux'
+import Spinner from '../../components/reusable/Spinner'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const SingUp = () => {
-	const navigate = useNavigate();
+	const navigate = useNavigate()
 
-	const dispatch = useDispatch();
-	const { isSignUp, loading } = useSelector((state: any) => state.signUp);
+	const dispatch = useDispatch()
+	const { isSignUp, loading } = useSelector((state: any) => state.signUp)
 
-	const initialFormState: any = {};
-	formJson.forEach((form) => {
-		initialFormState[`${form.name}`] = '';
-	});
+	const initialFormState: any = {}
+	signupJson.forEach((form) => {
+		initialFormState[`${form.name}`] = ''
+	})
 
-	const [form, setForm] = React.useState<any>(initialFormState);
+	const [form, setForm] = React.useState<any>(initialFormState)
 	const handleSubmit = (e: any) => {
-		e.preventDefault();
+		e.preventDefault()
 
-		const isValid = Object.values(form).every((value) => value !== '');
-		if (!isValid ) {
-			toast.error('Please fill all the fields');
-			return;
+		const isValid = Object.values(form).every((value) => value !== '')
+		if (!isValid) {
+			toast.error('Please fill all the fields')
+			return
 		} else if (form.password !== form.confirmPassword) {
-			toast.error('Passwords do not match');
-			return;
+			toast.error('Passwords do not match')
+			return
 		}
-				
-		const { name, email, password } = form;
-		dispatch(signUp({ name, email, password }));
-	};
+
+		const { name, email, password } = form
+		dispatch(signUp({ name, email, password }))
+	}
 
 	React.useEffect(() => {
 		if (isSignUp) {
-			navigate('/');
-		} 
-	}, [isSignUp]);
+			navigate('/')
+		}
+	}, [isSignUp])
 
 	return (
 		<div>
 			<header>
-				<h1 className='text-3xl font-bold text-center text-gray-900'>Create your account</h1>
+				<h1 className='text-3xl font-bold text-center text-gray-900'>
+					Create your account
+				</h1>
 			</header>
 
 			<section className='mt-6'>
 				<form onSubmit={handleSubmit}>
-					{formJson.map((field, index) => {
+					{signupJson.map((field, index) => {
 						return (
-							<div key={index} className='mb-3'>
-								<label htmlFor={field.name} className='form-label'>
+							<div
+								key={index}
+								className='mb-3'>
+								<label
+									htmlFor={field.name}
+									className='form-label'>
 									{field.placeholder}
 								</label>
 								<input
@@ -65,14 +71,16 @@ const SingUp = () => {
 										setForm({
 											...form,
 											[field.name]: e.target.value,
-										});
+										})
 									}}
 								/>
 							</div>
-						);
+						)
 					})}
 					<div>
-						<button className='btn btn-dark mt-4 w-100 btn-block' disabled={loading}>
+						<button
+							className='btn btn-dark mt-4 w-100 btn-block'
+							disabled={loading}>
 							{loading ? <Spinner size='sm' /> : 'Sign Up'}
 						</button>
 					</div>
@@ -88,7 +96,7 @@ const SingUp = () => {
 				</p>
 			</footer>
 		</div>
-	);
-};
+	)
+}
 
-export default SingUp;
+export default SingUp

@@ -1,14 +1,14 @@
 import { Link, useMatch, useResolvedPath } from 'react-router-dom'
-import profileNavJson from '../../JSON/profileNav.json'
+import navigationsTweetJson from '../../jsons/navigationsTweet.json'
 
 interface Iprops {
 	id: string
 }
 
-const TweetNavigation = ({ id }: Iprops) => {
+const NavigationsTweet = ({ id }: Iprops) => {
 	return (
 		<ul className='nav mt-3 border-bottom justify-content-between'>
-			{profileNavJson.map((item, index) => {
+			{navigationsTweetJson.map((item, index) => {
 				const url = item.url.replace(':id', id)
 				return (
 					<li
@@ -39,4 +39,4 @@ const CustomLink = ({ url, title }: any) => {
 	)
 }
 
-export default TweetNavigation
+export default NavigationsTweet

@@ -1,9 +1,9 @@
 import { toast } from 'react-toastify'
-import axios from '../../config/axios'
+import axios from '../../config/axios.config'
 import {
 	userPeopleAction,
 	userPeopleActionTypes,
-} from '../../interfaces/store/userPeople.store.types'
+} from '../../types/store/userPeople.store.types'
 
 const getUserPeopleStart = (): userPeopleAction => ({
 	type: userPeopleActionTypes.GET_USER_PEOPLE_START,

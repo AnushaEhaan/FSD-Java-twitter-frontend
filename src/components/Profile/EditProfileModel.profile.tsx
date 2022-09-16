@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
-import updateProfileJson from '../../JSON/updateProfileForm.json'
+import updateProfileJson from '../../jsons/updateProfile.json'
 import {
 	updateUser,
 	updateUserStart,

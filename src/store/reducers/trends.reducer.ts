@@ -3,11 +3,11 @@ import {
 	TrendsActionTypes,
 	TrendsAction,
 	initialState,
-} from '../../interfaces/store/trends.types';
+} from '../../types/store/trends.types'
 
 const trendReducer = (
 	state: TrendsState = initialState,
-	action: TrendsAction,
+	action: TrendsAction
 ): TrendsState => {
 	switch (action.type) {
 		case TrendsActionTypes.GET_TRENDS:
@@ -16,10 +16,10 @@ const trendReducer = (
 				loading: true,
 				error: null,
 				topTrends: action.payload,
-			};
+			}
 		default:
-			return state;
+			return state
 	}
-};
+}
 
-export default trendReducer;
+export default trendReducer

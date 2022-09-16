@@ -3,7 +3,7 @@ import {
 	userPeopleActionTypes,
 	userPeopleAction,
 	initialState,
-} from '../../interfaces/store/userPeople.store.types'
+} from '../../types/store/userPeople.store.types'
 
 const userPeopleReducer = (
 	state: userPeopleState = initialState,

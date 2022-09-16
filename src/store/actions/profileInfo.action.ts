@@ -1,8 +1,8 @@
 import {
 	ProfileUserActionTypes,
 	ProfileUserAction,
-} from '../../interfaces/store/profileInfo.types'
-import axios from '../../config/axios'
+} from '../../types/store/profileInfo.types'
+import axios from '../../config/axios.config'
 import { toast } from 'react-toastify'
 import Cookies from 'js-cookie'
 import { setSuggestedUsers } from './suggestedUsers.action'

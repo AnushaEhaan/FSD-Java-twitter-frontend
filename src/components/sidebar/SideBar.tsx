@@ -1,4 +1,4 @@
-import SuggestionsList from './suggestedUsers/SuggestionsList'
+import SuggestionsList from '../suggestions/SuggestionsList'
 import Trends from '../trends/TrendsList'
 
 const SideBar = () => {

@@ -1,7 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Avatar from '../reusable/Avatar'
 import Spinner from '../reusable/Spinner'
+import SearchUserItem from './SearchUserItem'
 
 interface Iprops {
 	users: any[]
@@ -9,22 +7,7 @@ interface Iprops {
 	loading: boolean
 }
 
-const SearchUserSuggestionsExplore = ({ users, error, loading }: Iprops) => {
-	const UserItem = ({ user }: any) => {
-		return (
-			<Link
-				to={`/profile/${user._id}`}
-				className={`d-flex ${
-					!user.bio && 'align-items-center'
-				} cursor hover-bg-secondary p-3 rounded-2`}>
-				<Avatar avatar={user.avatar} />
-				<div>
-					<p className='mb-0 fw-medium'>{user.name}</p>
-					<small className='mt-2px fs-13'>{user.bio}</small>
-				</div>
-			</Link>
-		)
-	}
+const SearchUsersList = ({ users, error, loading }: Iprops) => {
 	return (
 		<div
 			className='position-absolute  bg-white p-2 py-3 w-100 shadow border rounded-3 mt-1'
@@ -42,7 +25,7 @@ const SearchUserSuggestionsExplore = ({ users, error, loading }: Iprops) => {
 			{users.length > 0 &&
 				users.map((user: any) => {
 					return (
-						<UserItem
+						<SearchUserItem
 							key={user._id}
 							user={user}
 						/>
@@ -57,4 +40,4 @@ const SearchUserSuggestionsExplore = ({ users, error, loading }: Iprops) => {
 	)
 }
 
-export default SearchUserSuggestionsExplore
+export default SearchUsersList

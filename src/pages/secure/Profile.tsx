@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
-import TweetNavigation from '../../components/Profile/TweetNavigation'
+import NavigationsTweet from '../../components/Profile/NavigationsTweet'
 import ProfileCover from '../../components/Profile/ProfileCover.profile'
 import UserInformation from '../../components/Profile/UserInformation.profile'
 import { getProfileUser } from '../../store/actions/profileInfo.action'
@@ -36,7 +36,7 @@ const Profile = (props: any) => {
 					profileUser={profileUser}
 				/>
 				<UserInformation user={profileUser} />
-				<TweetNavigation id={id} />
+				<NavigationsTweet id={id} />
 				<div className='mt-4'>
 					<Outlet />
 				</div>

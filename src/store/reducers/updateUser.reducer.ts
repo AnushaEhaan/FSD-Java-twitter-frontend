@@ -1,13 +1,13 @@
 import {
 	UpdateUserActionTypes,
-    UpdateUserAction,
+	UpdateUserAction,
 	UpdateUserState,
 	initialState,
-} from '../../interfaces/store/updateUser.types';
+} from '../../types/store/updateUser.types'
 
 const updateUserReducer = (
 	state: UpdateUserState = initialState,
-	action: UpdateUserAction,
+	action: UpdateUserAction
 ): UpdateUserState => {
 	switch (action.type) {
 		case UpdateUserActionTypes.UPDATE_USER_START:
@@ -16,24 +16,24 @@ const updateUserReducer = (
 				loading: true,
 				error: null,
 				isUserUpdated: false,
-			};
+			}
 		case UpdateUserActionTypes.UPDATE_USER_SUCCESS:
 			return {
 				...state,
 				loading: false,
 				error: null,
 				isUserUpdated: true,
-			};
+			}
 		case UpdateUserActionTypes.UPDATE_USER_FAILURE:
 			return {
 				...state,
 				loading: false,
 				error: action.payload,
 				isUserUpdated: false,
-			};
+			}
 		default:
-			return state;
+			return state
 	}
 }
 
-export default updateUserReducer;
+export default updateUserReducer

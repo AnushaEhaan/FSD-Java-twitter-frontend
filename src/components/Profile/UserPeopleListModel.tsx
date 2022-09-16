@@ -2,7 +2,7 @@ import { memo } from 'react'
 import { Modal } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import Spinner from '../reusable/Spinner'
-import UserList from '../sidebar/suggestedUsers/UserList'
+import UserList from '../suggestions/UserList'
 
 interface Iprops {
 	show: boolean

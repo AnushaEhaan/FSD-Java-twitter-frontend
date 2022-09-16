@@ -1,49 +1,56 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import formJson from '../../JSON/loginForm.json';
-import { userLogin } from "../../store/actions/user.action" 
-import { useDispatch, useSelector } from 'react-redux';
-import Spinner from '../../components/reusable/Spinner';
-import { useNavigate } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import loginJson from '../../jsons/login.json'
+import { userLogin } from '../../store/actions/user.action'
+import { useDispatch, useSelector } from 'react-redux'
+import Spinner from '../../components/reusable/Spinner'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-	const navigate = useNavigate();
+	const navigate = useNavigate()
 
-	const dispatch = useDispatch();
-	const { currentUser, loading, error } = useSelector((state: any) => state.user);
+	const dispatch = useDispatch()
+	const { currentUser, loading, error } = useSelector(
+		(state: any) => state.user
+	)
 
-	const initialFormState:any = {}
-	formJson.forEach(form => {
-		initialFormState[`${form.name}`] = form.value ;
-	});
+	const initialFormState: any = {}
+	loginJson.forEach((form) => {
+		initialFormState[`${form.name}`] = form.value
+	})
 
-	const [form, setForm] = React.useState<any>(initialFormState);
-	const handleSubmit = (e:any) => {
-		e.preventDefault();
+	const [form, setForm] = React.useState<any>(initialFormState)
+	const handleSubmit = (e: any) => {
+		e.preventDefault()
 		dispatch(userLogin(form))
 	}
 
 	React.useEffect(() => {
 		if (currentUser) {
-			navigate('/');
+			navigate('/')
 		} else if (error) {
-			console.log(error);
+			console.log(error)
 		}
-	}, [currentUser, error]);
-
+	}, [currentUser, error])
 
 	return (
 		<div>
 			<header>
-				<h1 className='text-3xl font-bold text-center text-gray-900'>Sign in to Twitter</h1>
+				<h1 className='text-3xl font-bold text-center text-gray-900'>
+					Sign in to Twitter
+				</h1>
 			</header>
 
 			<section className='mt-6'>
 				<form onSubmit={handleSubmit}>
-					{formJson.map((field, index) => {
+					{loginJson.map((field, index) => {
 						return (
-							<div key={index} className='mb-3'>
-								<label htmlFor={field.name} className='form-label'>
+							<div
+								key={index}
+								className='mb-3'>
+								<label
+									htmlFor={field.name}
+									className='form-label'>
 									{field.placeholder}
 								</label>
 								<input
@@ -56,14 +63,16 @@ const Login = () => {
 										setForm({
 											...form,
 											[field.name]: e.target.value,
-										});
+										})
 									}}
 								/>
 							</div>
-						);
+						)
 					})}
 					<div>
-						<button className='btn btn-dark mt-4 w-100 btn-block' disabled={loading}>
+						<button
+							className='btn btn-dark mt-4 w-100 btn-block'
+							disabled={loading}>
 							{loading ? <Spinner size='sm' /> : 'Login'}
 						</button>
 					</div>
@@ -79,7 +88,7 @@ const Login = () => {
 				</p>
 			</footer>
 		</div>
-	);
-};
+	)
+}
 
-export default Login;
+export default Login

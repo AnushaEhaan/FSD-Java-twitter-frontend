@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { markAsReadNotification } from '../../store/actions/notification.action'
 import Avatar from '../reusable/Avatar'
-import UserFollowUnfollowBtn from '../sidebar/suggestedUsers/UserFollowUnfollowBtn'
+import BtnUserFollowUnfollow from '../reusable/BtnUserFollowUnfollow'
 import NotificationMessageType from './NotificationMessageType'
 
 interface Iprops {
@@ -79,7 +79,7 @@ const NotificationItem = ({ notification }: Iprops) => {
 						)}
 					</section>
 					{notification.type === 'follow' && (
-						<UserFollowUnfollowBtn user={notification.sender} />
+						<BtnUserFollowUnfollow user={notification.sender} />
 					)}
 				</div>
 			</Link>
