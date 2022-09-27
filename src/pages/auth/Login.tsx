@@ -2,36 +2,34 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import Spinner from '../../components/reusable/Spinner'
+import useForm from '../../hooks/useForm'
 import loginJson from '../../jsons/login.json'
 import { userLogin } from '../../store/actions/user.action'
+import { IForm } from '../../types/form.types'
 import { IRootState } from '../../types/store/IRootState.types'
 
 const Login = () => {
-	const navigate = useNavigate()
-
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 	const { currentUser, loading, error } = useSelector(
 		(state: IRootState) => state.user
 	)
+	const { form, handleChange, doValidate, isValid } = useForm(loginJson)
 
-	const initialFormState: any = {}
-	loginJson.forEach((form) => {
-		initialFormState[`${form.name}`] = form.value
-	})
-
-	const [form, setForm] = React.useState<any>(initialFormState)
 	const handleSubmit = (e: any) => {
 		e.preventDefault()
-		dispatch(userLogin(form))
+		if (!isValid) return doValidate()
+		dispatch(
+			userLogin({
+				email: form.email.value,
+				password: form.password.value,
+			})
+		)
 	}
 
 	React.useEffect(() => {
-		if (currentUser) {
-			navigate('/')
-		} else if (error) {
-			console.log(error)
-		}
-	}, [currentUser, error])
+		currentUser && navigate('/')
+	}, [currentUser])
 
 	return (
 		<div>
@@ -43,7 +41,7 @@ const Login = () => {
 
 			<section className='mt-6'>
 				<form onSubmit={handleSubmit}>
-					{loginJson.map((field, index) => {
+					{loginJson.map((field: IForm, index) => {
 						return (
 							<div
 								key={index}
@@ -57,22 +55,22 @@ const Login = () => {
 									type={field.type}
 									className='form-control'
 									id={field.name}
+									required={field.required}
 									name={field.name}
-									value={form[field.name]}
-									onChange={(e) => {
-										setForm({
-											...form,
-											[field.name]: e.target.value,
-										})
-									}}
+									value={form[field.name].value}
+									onChange={handleChange}
 								/>
+								<div className='mt-2 fs-14 text-danger'>
+									{form[field.name].error}
+								</div>
 							</div>
 						)
 					})}
 					<div>
 						<button
 							className='btn btn-dark mt-4 w-100 btn-block'
-							disabled={loading}>
+							disabled={loading}
+							type='submit'>
 							{loading ? <Spinner size='sm' /> : 'Login'}
 						</button>
 					</div>
@@ -80,12 +78,12 @@ const Login = () => {
 			</section>
 
 			<footer className='mt-5'>
-				<p className='text-center text-gray-600'>
+				<div className='text-center text-gray-600'>
 					Don't have an account?{' '}
 					<Link to='/signup'>
 						<span className='fw-bold fs-17'>Sign up</span>
 					</Link>
-				</p>
+				</div>
 			</footer>
 		</div>
 	)
