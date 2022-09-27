@@ -1,4 +1,4 @@
-import { IRoute } from '../types/routes/routes.types'
+import { IRoute } from '../types/routes.types'
 import { Route } from 'react-router-dom'
 
 const renderRoutes = (routes: IRoute[]) => {
