@@ -15,13 +15,12 @@ const SingUp = () => {
 		(state: IRootState) => state.signUp
 	)
 
-	const { form, handleChange, doValidate, isValid, setFormError } =
-		useForm(signupJson)
+	const { form, handleChange, doValidate, setFormError } = useForm(signupJson)
 
 	const handleSubmit = (e: any) => {
 		e.preventDefault()
 
-		if (!isValid) return doValidate()
+		if (!doValidate()) return
 		if (form.password.value !== form.confirmPassword.value)
 			return setFormError('confirmPassword', 'Passwords do not match')
 

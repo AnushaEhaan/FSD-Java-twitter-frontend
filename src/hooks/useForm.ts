@@ -14,7 +14,6 @@ const useForm = (formJson: IForm[]) => {
 	}
 
 	const [form, setForm] = useState<IFormState>(getInitialState)
-	const [isValid, setIsValid] = useState<boolean>(false)
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
 		const { name, value } = event.target
@@ -44,7 +43,7 @@ const useForm = (formJson: IForm[]) => {
 			}
 		})
 		setForm({ ...form, ...errors })
-		setIsValid(Object.keys(errors).length === 0)
+		return Object.keys(errors).length === 0
 	}
 
 	const setFormError = (name: string, error?: string) => {
@@ -58,7 +57,7 @@ const useForm = (formJson: IForm[]) => {
 		setForm(newForm)
 	}
 
-	return { form, handleChange, doValidate, isValid, setFormError }
+	return { form, handleChange, doValidate, setFormError }
 }
 
 export default useForm

@@ -14,11 +14,11 @@ const Login = () => {
 	const { currentUser, loading, error } = useSelector(
 		(state: IRootState) => state.user
 	)
-	const { form, handleChange, doValidate, isValid } = useForm(loginJson)
-
+	const { form, handleChange, doValidate } = useForm(loginJson)
 	const handleSubmit = (e: any) => {
 		e.preventDefault()
-		if (!isValid) return doValidate()
+
+		if (!doValidate()) return
 		dispatch(
 			userLogin({
 				email: form.email.value,
