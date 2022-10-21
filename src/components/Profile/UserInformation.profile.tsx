@@ -6,9 +6,10 @@ import {
 	clearUserPeopleList,
 } from '../../store/actions/userPeopleList.action'
 import { useDispatch } from 'react-redux'
+import { IUser } from '../../types/user.type'
 
 interface Iprops {
-	user: any
+	user: IUser
 }
 
 const UserInformation = ({ user }: Iprops) => {
@@ -40,7 +41,7 @@ const UserInformation = ({ user }: Iprops) => {
 		dispatch(clearUserPeopleList())
 	}
 
-	const handleShow = (type: string) => {
+	const handleShow = (type: 'followers' | 'following') => {
 		setType(type)
 		setShow(true)
 		setTotalPages(Math.ceil(user[type].length / limit))

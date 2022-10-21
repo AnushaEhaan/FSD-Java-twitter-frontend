@@ -1,5 +1,5 @@
 import { lazy } from 'react'
-import { IRoute, Routes } from '../types/routes.types'
+import { IRoute, Routes } from '../types/routes.type'
 
 export const secureRoutes: IRoute[] = [
 	{

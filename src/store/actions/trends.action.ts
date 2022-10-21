@@ -1,13 +1,14 @@
-import { TrendsActionTypes, TrendsAction } from '../../types/store/trends.types'
+import { TrendsActionTypes, TrendsAction } from '../../types/store/trends.type'
 import axios from '../../config/axios.config'
 import { toast } from 'react-toastify'
 import Cookies from 'js-cookie'
 import { getTweetsSuccess, getTweetsStart } from './tweets.action'
+import { ITrend } from '../../types/trend.type'
 
-const getTrendsType = (data = []): TrendsAction => {
+const getTrendsType = (trends: ITrend[]): TrendsAction => {
 	return {
 		type: TrendsActionTypes.GET_TRENDS,
-		payload: data,
+		payload: trends,
 	}
 }
 

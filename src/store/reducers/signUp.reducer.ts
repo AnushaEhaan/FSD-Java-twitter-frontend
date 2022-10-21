@@ -3,7 +3,7 @@ import {
 	SignUpAction,
 	SignUpActionTypes,
 	initialState,
-} from '../../types/store/signUp.store.types'
+} from '../../types/store/signUp.store.type'
 
 const signUpReducer = (
 	state: SignUpState = initialState,

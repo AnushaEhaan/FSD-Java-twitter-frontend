@@ -1,41 +1,40 @@
 import React from 'react'
+import { IUser } from '../../types/user.type'
 
 interface Iprops {
 	handleAvatar: (avatar: any) => void
-	user: any
+	user: IUser
 }
 
 const EditProfileCover = ({ handleAvatar, user }: Iprops) => {
 	const [selectedAvatar, setSelectedAvatar] = React.useState<any>(null)
 	const [cover, setCover] = React.useState<any>(null)
 
-	const handleAvatarChange = (e: any) => {
+	const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (!e.target.files) return
 		const file = e.target.files[0]
 		handleAvatar({
 			state: 'avatar',
 			file,
 		})
-		if (file) {
-			const reader = new FileReader()
-			reader.readAsDataURL(file)
-			reader.onload = () => {
-				setSelectedAvatar(reader.result)
-			}
+		const reader = new FileReader()
+		reader.readAsDataURL(file)
+		reader.onload = () => {
+			setSelectedAvatar(reader.result)
 		}
 	}
 
-	const handleCoverChanlge = (e: any) => {
+	const handleCoverChanlge = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (!e.target.files) return
 		const file = e.target.files[0]
 		handleAvatar({
 			state: 'cover',
 			file,
 		})
-		if (file) {
-			const reader = new FileReader()
-			reader.readAsDataURL(file)
-			reader.onload = () => {
-				setCover(reader.result)
-			}
+		const reader = new FileReader()
+		reader.readAsDataURL(file)
+		reader.onload = () => {
+			setCover(reader.result)
 		}
 	}
 

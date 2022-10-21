@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
+import { ITrend } from '../../types/trend.type'
 
 interface Iprops {
-	trend: any
+	trend: ITrend
 }
 
 const TrendItem = ({ trend }: Iprops) => {

@@ -3,7 +3,7 @@ import {
 	NotificationAction,
 	NotificationActionTypes,
 	NotificationState,
-} from '../../types/store/notification.types'
+} from '../../types/store/notification.type'
 
 const reducer = (
 	state = initialState,

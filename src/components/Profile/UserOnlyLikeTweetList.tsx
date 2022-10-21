@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { getTweetsLikeByUser } from '../../store/actions/tweets.action'
 import TweetList from '../tweet/TweetList'
-import { IRootState } from '../../types/store/IRootState.types'
+import { IRootState } from '../../types/store/IRootState.type'
 
 const UserOnlyLikeTweetList = () => {
 	const params = useParams()

@@ -3,7 +3,7 @@ import {
 	TrendsActionTypes,
 	TrendsAction,
 	initialState,
-} from '../../types/store/trends.types'
+} from '../../types/store/trends.type'
 
 const trendReducer = (
 	state: TrendsState = initialState,

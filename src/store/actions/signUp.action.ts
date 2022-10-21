@@ -1,9 +1,10 @@
 import {
 	SignUpActionTypes,
 	SignUpAction,
-} from '../../types/store/signUp.store.types'
+} from '../../types/store/signUp.store.type'
 import axios from '../../config/axios.config'
 import { toast } from 'react-toastify'
+import { ISignup } from '../../types/singup.type'
 
 const signUpStart = (): SignUpAction => ({
 	type: SignUpActionTypes.SIGN_UP_START,
@@ -18,7 +19,7 @@ const signUpFailure = (error: any): SignUpAction => ({
 	payload: error,
 })
 
-export const signUp = (form: any) => async (dispatch: any) => {
+export const signUp = (form: ISignup) => async (dispatch: any) => {
 	dispatch(signUpStart())
 	try {
 		const response = await axios.post('/auth/signup', JSON.stringify(form))

@@ -4,14 +4,15 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { findUserById } from '../../store/actions/profileInfo.action'
-import { IRootState } from '../../types/store/IRootState.types'
+import { IRootState } from '../../types/store/IRootState.type'
+import { ITweet } from '../../types/tweet.type'
 import Avatar from '../reusable/Avatar'
 import TweetActionMenu from './TweetActionMenu'
 import TweetActions from './TweetActions'
 import TweetDetails from './TweetDetails'
 
 interface Iprops {
-	tweet: any
+	tweet: ITweet
 	handleSetTweet?: any
 	isCommentBtnHidden?: boolean
 }
@@ -21,16 +22,19 @@ const Tweet = ({ tweet, handleSetTweet, isCommentBtnHidden }: Iprops) => {
 	const { currentUser } = useSelector((state: IRootState) => state.user)
 	const [whoRetweeted, setWhoRetweeted] = useState('')
 
+	const isCurrentUserInRetweets = () =>
+		tweet.retweetedBy.includes(currentUserId as string)
+
 	React.useEffect(() => {
 		setWhoRetweeted('')
 		if (tweet.retweetedBy.length > 0) {
-			if (tweet.retweetedBy.includes(currentUserId)) {
+			if (isCurrentUserInRetweets()) {
 				setWhoRetweeted('You')
 				return
 			}
-			currentUser.following.forEach(async (user: any) => {
-				if (tweet.retweetedBy.includes(user)) {
-					const data = await findUserById(user)
+			currentUser?.following.forEach(async (followingId: string) => {
+				if (tweet.retweetedBy.includes(followingId)) {
+					const data = await findUserById(followingId)
 					setWhoRetweeted(data.user.name)
 				}
 			})

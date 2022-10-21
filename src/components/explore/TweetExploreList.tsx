@@ -2,11 +2,12 @@ import Cookies from 'js-cookie'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import axios from '../../config/axios.config'
+import { ITweet } from '../../types/tweet.type'
 import Spinner from '../reusable/Spinner'
 import TweetExplore from './TweetExplore'
 
 const TweetExploreList = () => {
-	const [tweets, setTweets] = useState([])
+	const [tweets, setTweets] = useState<ITweet[]>([])
 	const [loading, setLoading] = useState(false)
 
 	React.useEffect(() => {
@@ -30,10 +31,10 @@ const TweetExploreList = () => {
 
 	if (loading) return <Spinner height='15vh' />
 
-	const renderTweets = (tweets: any) => {
+	const renderTweets = (tweets: ITweet[]) => {
 		return (
 			tweets.length > 0 &&
-			tweets.map((tweet: any) => {
+			tweets.map((tweet: ITweet) => {
 				return (
 					<TweetExplore
 						key={tweet._id}

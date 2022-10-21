@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { getUserTweets } from '../../store/actions/tweets.action'
-import { IRootState } from '../../types/store/IRootState.types'
+import { IRootState } from '../../types/store/IRootState.type'
 import TweetList from '../tweet/TweetList'
 
 const UserTweetList = () => {

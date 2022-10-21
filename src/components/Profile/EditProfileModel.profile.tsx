@@ -8,14 +8,15 @@ import {
 	updateUserStart,
 	uploadAvatar,
 } from '../../store/actions/updateUser.action'
-import { IRootState } from '../../types/store/IRootState.types'
+import { IRootState } from '../../types/store/IRootState.type'
+import { IUser } from '../../types/user.type'
 import Calendar from '../reusable/Calendar'
 import Spinner from '../reusable/Spinner'
 import EditProfileCover from './EditProfileCover.profile'
 
 interface Iprops {
-	user: any
-	handleClose: any
+	user: IUser
+	handleClose: () => void
 	show: boolean
 }
 

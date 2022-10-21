@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { IForm, IFormState } from '../types/form.types'
+import { IForm, IFormState } from '../types/form.type'
 
 const useForm = (formJson: IForm[]) => {
 	const getInitialState = () => {

@@ -3,7 +3,7 @@ import {
 	ProfileUserActionTypes,
 	ProfileUserAction,
 	initialState,
-} from '../../types/store/profileInfo.types'
+} from '../../types/store/profileInfo.type'
 
 const profileUserReducer = (
 	state: ProfileUserState = initialState,
@@ -30,12 +30,13 @@ const profileUserReducer = (
 			}
 
 		case ProfileUserActionTypes.SET_PROFILE_USER:
+			console.log(action.payload)
 			return {
 				...state,
 				profileUser:
-					state.profileUser._id === action.payload.user._id
+					state.profileUser?._id === action.payload.user._id
 						? action.payload.user
-						: state.profileUser._id ===
+						: state.profileUser?._id ===
 						  action.payload.userToFollow._id
 						? action.payload.userToFollow
 						: state.profileUser,

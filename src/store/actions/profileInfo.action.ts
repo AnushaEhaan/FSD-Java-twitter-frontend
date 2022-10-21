@@ -1,19 +1,20 @@
-import {
-	ProfileUserActionTypes,
-	ProfileUserAction,
-} from '../../types/store/profileInfo.types'
-import axios from '../../config/axios.config'
-import { toast } from 'react-toastify'
 import Cookies from 'js-cookie'
+import { toast } from 'react-toastify'
+import axios from '../../config/axios.config'
+import {
+	ProfileUserAction,
+	ProfileUserActionTypes,
+} from '../../types/store/profileInfo.type'
+import { IUser } from '../../types/user.type'
+import { update_notification_user_followers } from './notification.action'
 import { setSuggestedUsers } from './suggestedUsers.action'
 import { setuserPeople } from './userPeopleList.action'
-import { update_notification_user_followers } from './notification.action'
 
 const getProfileUserStart = (): ProfileUserAction => ({
 	type: ProfileUserActionTypes.GET_PROFILE_USER_START,
 })
 
-const getProfileUserSuccess = (profileUser: any): ProfileUserAction => ({
+const getProfileUserSuccess = (profileUser: IUser): ProfileUserAction => ({
 	type: ProfileUserActionTypes.GET_PROFILE_USER_SUCCESS,
 	payload: profileUser,
 })
@@ -23,7 +24,7 @@ const getProfileUserFailure = (error: any): ProfileUserAction => ({
 	payload: error,
 })
 
-export const setProfileUser = (profileUser: any): ProfileUserAction => ({
+export const setProfileUser = (profileUser: Object): ProfileUserAction => ({
 	type: ProfileUserActionTypes.SET_PROFILE_USER,
 	payload: profileUser,
 })

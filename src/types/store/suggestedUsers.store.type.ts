@@ -1,7 +1,9 @@
+import { IUser } from '../user.type'
+
 export interface SuggestedUsersState {
 	loading: boolean
 	error: string | null
-	suggestedUsers: any[]
+	suggestedUsers: IUser[]
 }
 
 export interface SuggestedUsersAction {

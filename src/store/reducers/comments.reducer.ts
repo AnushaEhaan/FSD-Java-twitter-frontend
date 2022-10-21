@@ -3,7 +3,7 @@ import {
 	CommentsAction,
 	CommentsActionTypes,
 	CommentsState,
-} from '../../types/store/comments.types'
+} from '../../types/store/comments.type'
 
 const commentsReducer = (
 	state: CommentsState = initialState,

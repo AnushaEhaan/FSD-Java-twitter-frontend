@@ -1,10 +1,11 @@
 import Cookies from 'js-cookie'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
+import { IComment } from '../../types/comment.type'
 import Avatar from '../reusable/Avatar'
 
 interface Iprops {
-	comment: any
+	comment: IComment
 }
 
 const TweetComment = ({ comment }: Iprops) => {

@@ -1,7 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTopTrends } from '../../store/actions/trends.action'
-import { IRootState } from '../../types/store/IRootState.types'
+import { IRootState } from '../../types/store/IRootState.type'
+import { ITrend } from '../../types/trend.type'
 import Spinner from '../reusable/Spinner'
 import TrendItem from './TrendItem'
 
@@ -33,7 +34,7 @@ const TrendsList = () => {
 				)}
 
 				{topTrends.length > 0 &&
-					topTrends.map((trend: any) => (
+					topTrends.map((trend: ITrend) => (
 						<TrendItem
 							trend={trend}
 							key={trend._id}

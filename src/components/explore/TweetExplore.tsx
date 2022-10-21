@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
+import { ITweet } from '../../types/tweet.type'
 import stringUtils from '../../utils/string.utils'
 
 interface Iprops {
-	tweet: any
+	tweet: ITweet
 }
 
 const TweetExplore = ({ tweet }: Iprops) => {

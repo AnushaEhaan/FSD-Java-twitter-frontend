@@ -3,7 +3,7 @@ import {
 	TweetsAction,
 	TweetsActionTypes,
 	TweetsState,
-} from '../../types/store/tweets.types'
+} from '../../types/store/tweets.type'
 
 const tweetsReducer = (
 	state: TweetsState = initialState,

@@ -1,14 +1,15 @@
+import { IUser } from '../../types/user.type'
 import UserListItem from './UserListItem'
 
 interface Iprops {
-	users: any
+	users: IUser[]
 }
 
 const UserList = ({ users }: Iprops) => {
 	return (
 		<div>
 			{users.length > 0 &&
-				users.map((user: any) => {
+				users.map((user: IUser) => {
 					return (
 						<UserListItem
 							user={user}

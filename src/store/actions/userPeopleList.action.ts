@@ -3,13 +3,14 @@ import axios from '../../config/axios.config'
 import {
 	UserPeopleAction,
 	UserPeopleActionTypes,
-} from '../../types/store/userPeople.store.types'
+} from '../../types/store/userPeople.store.type'
+import { IUser } from '../../types/user.type'
 
 const getUserPeopleStart = (): UserPeopleAction => ({
 	type: UserPeopleActionTypes.GET_USER_PEOPLE_START,
 })
 
-const getUserPeopleSuccess = (payload: any[]): UserPeopleAction => ({
+const getUserPeopleSuccess = (payload: IUser[]): UserPeopleAction => ({
 	type: UserPeopleActionTypes.GET_USER_PEOPLE_SUCCESS,
 	payload,
 })

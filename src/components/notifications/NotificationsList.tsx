@@ -6,7 +6,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import Spinner from '../../components/reusable/Spinner'
 import NotificationItem from '../../components/notifications/NotificationItem'
-import { IRootState } from '../../types/store/IRootState.types'
+import { IRootState } from '../../types/store/IRootState.type'
 
 const NotificationsList = () => {
 	const dispatch = useDispatch()

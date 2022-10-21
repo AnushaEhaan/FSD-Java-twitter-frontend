@@ -3,7 +3,7 @@ import navigationsJson from '../../jsons/navigations.json'
 import BtnLogOut from '../reusable/BtnLogOut'
 import Avatar from '../reusable/Avatar'
 import CustomLink from './CustomLink'
-import { IRootState } from '../../types/store/IRootState.types'
+import { IRootState } from '../../types/store/IRootState.type'
 
 const NavigationDropdown = () => {
 	const { currentUser } = useSelector((state: IRootState) => state.user)
@@ -16,7 +16,7 @@ const NavigationDropdown = () => {
 				id='dropdownMenuButton1'
 				data-bs-toggle='dropdown'
 				aria-expanded='false'>
-				<Avatar avatar={currentUser.avatar} />
+				<Avatar avatar={currentUser?.avatar} />
 			</button>
 			<ul
 				className='dropdown-menu pb-0 top-10px'

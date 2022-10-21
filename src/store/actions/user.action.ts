@@ -1,13 +1,14 @@
-import { UserActionTypes, UserAction } from '../../types/store/user.store.types'
+import { UserActionTypes, UserAction } from '../../types/store/user.store.type'
 import axios from '../../config/axios.config'
 import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
+import { IUser } from '../../types/user.type'
 
 const userLoginStart = (): UserAction => ({
 	type: UserActionTypes.USER_LOGIN_START,
 })
 
-export const userLoginSuccess = (user: any): UserAction => ({
+export const userLoginSuccess = (user: IUser): UserAction => ({
 	type: UserActionTypes.USER_LOGIN_SUCCESS,
 	payload: user,
 })

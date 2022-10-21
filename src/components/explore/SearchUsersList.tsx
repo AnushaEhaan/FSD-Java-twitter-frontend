@@ -1,8 +1,9 @@
+import { IUser } from '../../types/user.type'
 import Spinner from '../reusable/Spinner'
 import SearchUserItem from './SearchUserItem'
 
 interface Iprops {
-	users: any[]
+	users: IUser[]
 	error: any
 	loading: boolean
 }
@@ -23,14 +24,12 @@ const SearchUsersList = ({ users, error, loading }: Iprops) => {
 				/>
 			)}
 			{users.length > 0 &&
-				users.map((user: any) => {
-					return (
-						<SearchUserItem
-							key={user._id}
-							user={user}
-						/>
-					)
-				})}
+				users.map((user: IUser) => (
+					<SearchUserItem
+						key={user._id}
+						user={user}
+					/>
+				))}
 			{error && (
 				<p className='text-black-50 mt-6 h-100 text-center mb-0 py-3'>
 					{error}

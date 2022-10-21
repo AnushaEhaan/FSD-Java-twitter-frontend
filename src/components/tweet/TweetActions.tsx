@@ -6,11 +6,12 @@ import {
 	likeTweet,
 	retweet,
 } from '../../store/actions/tweets.action'
+import { ITweet } from '../../types/tweet.type'
 import Spinner from '../reusable/Spinner'
 
 interface TweetActionsProps {
-	tweet: any
-	handleSetTweet: (tweet: any) => void
+	tweet: ITweet
+	handleSetTweet: (tweet: ITweet) => void
 	isCommentBtnHidden?: boolean
 }
 
@@ -57,13 +58,14 @@ const TweetActions = ({
 					onClick={() => handleRetweet(tweet._id)}>
 					<i
 						className={`fa-solid  fa-retweet fs-18 ${
-							tweet.retweetedBy.includes(currentUserId) &&
-							'text-success'
+							tweet.retweetedBy.includes(
+								currentUserId as string
+							) && 'text-success'
 						} `}></i>
 				</button>
 				<span
 					className={`${
-						tweet.retweetedBy.includes(currentUserId) &&
+						tweet.retweetedBy.includes(currentUserId as string) &&
 						'text-success'
 					}`}>
 					{tweet.retweetedBy.length > 0 && tweet.retweetedBy.length}
@@ -73,7 +75,7 @@ const TweetActions = ({
 					onClick={() => handleTweetLike(tweet._id)}>
 					<i
 						className={`fa-${
-							tweet.likes.includes(currentUserId)
+							tweet.likes.includes(currentUserId as string)
 								? 'solid text-danger'
 								: 'regular'
 						}  fa-heart fs-18`}></i>
@@ -81,7 +83,8 @@ const TweetActions = ({
 				{tweet.likes.length > 0 && (
 					<span
 						className={`${
-							tweet.likes.includes(currentUserId) && 'text-danger'
+							tweet.likes.includes(currentUserId as string) &&
+							'text-danger'
 						} ms-1 mt-1`}>
 						{tweet.likes.length}
 					</span>
@@ -96,7 +99,7 @@ const TweetActions = ({
 				) : (
 					<i
 						className={`fa-${
-							tweet.bookmarks.includes(currentUserId)
+							tweet.bookmarks.includes(currentUserId as string)
 								? 'solid'
 								: 'regular'
 						} fa-bookmark fs-18 `}></i>

@@ -2,10 +2,11 @@ import React from 'react'
 import { followUser } from '../../store/actions/profileInfo.action'
 import { useDispatch, useSelector } from 'react-redux'
 import EditProfileModel from '../../components/Profile/EditProfileModel.profile'
+import { IUser } from '../../types/user.type'
 
 interface Iprops {
-	profileUser: any
-	currentUser: any
+	profileUser: IUser
+	currentUser: IUser
 }
 
 const ProfileCover = ({ profileUser, currentUser }: Iprops) => {
@@ -18,6 +19,9 @@ const ProfileCover = ({ profileUser, currentUser }: Iprops) => {
 
 	const handleClose = () => setShow(false)
 	const handleShow = () => setShow(true)
+
+	const isCurrentUserInFollowers = () =>
+		profileUser.followers.includes(currentUser._id)
 
 	return (
 		<>
@@ -61,15 +65,13 @@ const ProfileCover = ({ profileUser, currentUser }: Iprops) => {
 					) : (
 						<button
 							className={`${
-								profileUser.followers.includes(currentUser._id)
+								isCurrentUserInFollowers()
 									? 'btn-outline-secondary text-dark'
 									: 'btn-dark text-white'
 							} btn px-4  float-end `}
 							style={{ marginTop: '-55px', marginRight: '20px' }}
 							onClick={() => handleFollowUser(profileUser._id)}>
-							{profileUser.followers.includes(currentUser._id)
-								? 'Unfollow'
-								: 'Follow'}
+							{isCurrentUserInFollowers() ? 'Unfollow' : 'Follow'}
 						</button>
 					)}
 				</div>

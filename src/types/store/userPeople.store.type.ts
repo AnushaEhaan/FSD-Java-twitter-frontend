@@ -1,7 +1,9 @@
+import { IUser } from '../user.type'
+
 export interface UserPeopleState {
 	loading: boolean
 	error: string | null
-	userPeople: any[]
+	userPeople: IUser[]
 }
 
 export interface UserPeopleAction {

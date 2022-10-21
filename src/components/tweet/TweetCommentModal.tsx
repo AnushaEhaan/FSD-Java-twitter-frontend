@@ -3,12 +3,13 @@ import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { addComment } from '../../store/actions/comment.action'
+import { ITweet } from '../../types/tweet.type'
 import Spinner from '../reusable/Spinner'
 import Tweet from './Tweet'
 import TweetCommentCreate from './TweetCommentCreate'
 
 interface Iprops {
-	tweet: any
+	tweet: ITweet
 	showCommentModel: boolean
 	handleModelClose: any
 }

@@ -8,7 +8,7 @@ import TweetCommentCreate from '../../components/tweet/TweetCommentCreate'
 import Spinner from '../../components/reusable/Spinner'
 import Cookies from 'js-cookie'
 import { addComment } from '../../store/actions/comment.action'
-import { IRootState } from '../../types/store/IRootState.types'
+import { IRootState } from '../../types/store/IRootState.type'
 
 const Tweet = () => {
 	const userId = Cookies.get('user_Id')
@@ -39,7 +39,7 @@ const Tweet = () => {
 		setAddCommentLoading(true)
 		const data = {
 			content,
-			tweetId: tweet._id,
+			tweetId: tweet?._id,
 			userId,
 		}
 		const isAdded = await dispatch(addComment(data))

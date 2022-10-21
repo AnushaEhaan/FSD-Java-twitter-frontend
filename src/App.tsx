@@ -8,7 +8,7 @@ import Cookies from 'js-cookie'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Spinner from './components/reusable/Spinner'
-import { IRootState } from './types/store/IRootState.types'
+import { IRootState } from './types/store/IRootState.type'
 
 const App = () => {
 	const dispatch = useDispatch()

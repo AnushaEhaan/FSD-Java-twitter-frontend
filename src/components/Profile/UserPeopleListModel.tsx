@@ -3,12 +3,13 @@ import { Modal } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import Spinner from '../reusable/Spinner'
 import UserList from '../suggestions/UserList'
-import { IRootState } from '../../types/store/IRootState.types'
+import { IRootState } from '../../types/store/IRootState.type'
+import { IUser } from '../../types/user.type'
 
 interface Iprops {
 	show: boolean
 	handleClose: () => void
-	user: any
+	user: IUser
 	type: string
 	nextPage: () => void
 	totalPages: number

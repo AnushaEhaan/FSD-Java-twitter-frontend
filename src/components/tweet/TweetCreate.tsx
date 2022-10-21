@@ -7,7 +7,7 @@ import { addTweet } from '../../store/actions/tweets.action'
 import { useDispatch, useSelector } from 'react-redux'
 import stringUtils from '../../utils/string.utils'
 import Avatar from '../reusable/Avatar'
-import { IRootState } from '../../types/store/IRootState.types'
+import { IRootState } from '../../types/store/IRootState.type'
 
 const TweetCreate = () => {
 	const dispatch = useDispatch()
@@ -109,7 +109,7 @@ const TweetCreate = () => {
 		<section className='border-bottom px-md-4 px-1 pt-md-4 pt-1 pb-4 position-relative'>
 			<header className='d-flex  pb2 align-items-start'>
 				<div>
-					<Avatar avatar={currentUser.avatar} />
+					<Avatar avatar={currentUser?.avatar} />
 				</div>
 				<div className='w-100 ms-1'>
 					<textarea

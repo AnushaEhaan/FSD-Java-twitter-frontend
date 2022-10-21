@@ -1,11 +1,12 @@
 import React from 'react'
 import { toast } from 'react-toastify'
 import axios from '../../config/axios.config'
+import { IUser } from '../../types/user.type'
 import Spinner from '../reusable/Spinner'
 import SearchUsersList from './SearchUsersList'
 
 const SearchUserForm = () => {
-	const [users, setUsers] = React.useState([])
+	const [users, setUsers] = React.useState<IUser[]>([])
 	const [loading, setLoading] = React.useState(false)
 	const [search, setSearch] = React.useState('')
 	const [error, setError] = React.useState('')

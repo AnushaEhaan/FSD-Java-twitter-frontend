@@ -1,13 +1,15 @@
+import { ITweet } from '../tweet.type'
+
 export interface TweetsState {
-	loading: boolean;
-	error: string | null;
-    tweets: any;
-	tweet: any;
+	loading: boolean
+	error: string | null
+	tweets: ITweet[]
+	tweet: ITweet | null
 }
 
 export interface TweetsAction {
-	type: string;
-	payload?: any;
+	type: string
+	payload?: any
 }
 
 export const initialState: TweetsState = {
@@ -15,7 +17,7 @@ export const initialState: TweetsState = {
 	error: null,
 	tweets: [],
 	tweet: null,
-};
+}
 
 export enum TweetsActionTypes {
 	GET_TWEETS_START = 'GET_TWEETS_START',

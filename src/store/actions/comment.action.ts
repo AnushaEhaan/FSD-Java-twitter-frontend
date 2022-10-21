@@ -1,10 +1,10 @@
+import { toast } from 'react-toastify'
+import axios from '../../config/axios.config'
+import { IComment } from '../../types/comment.type'
 import {
 	CommentsAction,
 	CommentsActionTypes,
-} from '../../types/store/comments.types'
-import axios from '../../config/axios.config'
-import { toast } from 'react-toastify'
-import Cookies from 'js-cookie'
+} from '../../types/store/comments.type'
 import { updateTweet } from './tweets.action'
 
 export const getComments = (comments: any): CommentsAction => ({
@@ -12,17 +12,17 @@ export const getComments = (comments: any): CommentsAction => ({
 	payload: comments,
 })
 
-const addCommentType = (comment: any): CommentsAction => ({
+const addCommentType = (comment: IComment): CommentsAction => ({
 	type: CommentsActionTypes.ADD_COMMENT,
 	payload: comment,
 })
 
-const updateCommentType = (comment: any): CommentsAction => ({
+const updateCommentType = (comment: IComment): CommentsAction => ({
 	type: CommentsActionTypes.UPDATE_COMMENT,
 	payload: comment,
 })
 
-const deleteCommentType = (comment: any): CommentsAction => ({
+const deleteCommentType = (comment: IComment): CommentsAction => ({
 	type: CommentsActionTypes.DELETE_COMMENT,
 	payload: comment,
 })

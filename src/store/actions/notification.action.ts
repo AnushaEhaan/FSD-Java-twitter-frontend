@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import {
 	NotificationAction,
 	NotificationActionTypes,
-} from '../../types/store/notification.types'
+} from '../../types/store/notification.type'
 
 const getNotificationsStart = (): NotificationAction => ({
 	type: NotificationActionTypes.GET_NOTIFICATIONS_START,

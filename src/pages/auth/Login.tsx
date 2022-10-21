@@ -5,8 +5,8 @@ import Spinner from '../../components/reusable/Spinner'
 import useForm from '../../hooks/useForm'
 import loginJson from '../../jsons/login.json'
 import { userLogin } from '../../store/actions/user.action'
-import { IForm } from '../../types/form.types'
-import { IRootState } from '../../types/store/IRootState.types'
+import { IForm } from '../../types/form.type'
+import { IRootState } from '../../types/store/IRootState.type'
 
 const Login = () => {
 	const dispatch = useDispatch()
@@ -15,9 +15,9 @@ const Login = () => {
 		(state: IRootState) => state.user
 	)
 	const { form, handleChange, doValidate } = useForm(loginJson)
-	const handleSubmit = (e: any) => {
-		e.preventDefault()
 
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault()
 		if (!doValidate()) return
 		dispatch(
 			userLogin({

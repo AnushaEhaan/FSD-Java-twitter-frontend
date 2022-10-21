@@ -1,14 +1,15 @@
-import { TweetsActionTypes, TweetsAction } from '../../types/store/tweets.types'
+import { TweetsActionTypes, TweetsAction } from '../../types/store/tweets.type'
 import axios from '../../config/axios.config'
 import { toast } from 'react-toastify'
 import Cookies from 'js-cookie'
 import { getComments } from './comment.action'
+import { ITweet } from '../../types/tweet.type'
 
 export const getTweetsStart = (): TweetsAction => ({
 	type: TweetsActionTypes.GET_TWEETS_START,
 })
 
-export const getTweetsSuccess = (tweets: any): TweetsAction => ({
+export const getTweetsSuccess = (tweets: ITweet[]): TweetsAction => ({
 	type: TweetsActionTypes.GET_TWEETS_SUCCESS,
 	payload: tweets,
 })
@@ -18,29 +19,33 @@ const getTweetsFailure = (error: any): TweetsAction => ({
 	payload: error,
 })
 
-const getTweet = (tweet: any): TweetsAction => ({
+const getTweet = (tweet: ITweet): TweetsAction => ({
 	type: TweetsActionTypes.GET_TWEET,
 	payload: tweet,
 })
 
-export const addTweet = (tweet: any): TweetsAction => ({
+export const addTweet = (tweet: ITweet): TweetsAction => ({
 	type: TweetsActionTypes.ADD_TWEET,
 	payload: tweet,
 })
 
-export const updateTweet = (tweet: any): TweetsAction => ({
+export const updateTweet = (tweet: ITweet): TweetsAction => ({
 	type: TweetsActionTypes.UPDATE_TWEET,
 	payload: tweet,
 })
 
-export const deleteTweetType = (tweetId: any): TweetsAction => ({
+export const deleteTweetType = (tweetId: string): TweetsAction => ({
 	type: TweetsActionTypes.DELTE_TWEET,
 	payload: tweetId,
 })
 
-const setRetweet = (obj: any): TweetsAction => ({
+const setRetweet = (payload: {
+	tweet: ITweet
+	isRetweeted: boolean
+	currentUserID: string | undefined
+}): TweetsAction => ({
 	type: TweetsActionTypes.RETWEET,
-	payload: obj,
+	payload: payload,
 })
 
 export const getTweets = (userId: string) => async (dispatch: any) => {

@@ -1,19 +1,21 @@
+import { IComment } from '../comment.type'
+
 export interface CommentsState {
-	loading: boolean;
-	error: string | null;
-	comments: any;
+	loading: boolean
+	error: string | null
+	comments: IComment[]
 }
 
 export interface CommentsAction {
-	type: string;
-	payload?: any;
+	type: string
+	payload?: any
 }
 
 export const initialState: CommentsState = {
 	loading: false,
 	error: null,
 	comments: [],
-};
+}
 
 export enum CommentsActionTypes {
 	GET_COMMENTS = 'GET_COMMENTS',

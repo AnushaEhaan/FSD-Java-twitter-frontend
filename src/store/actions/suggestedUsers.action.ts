@@ -1,17 +1,17 @@
+import Cookies from 'js-cookie'
+import axios from '../../config/axios.config'
 import {
 	SuggestedUsersAction,
 	SuggestedUsersActionTypes,
-} from '../../types/store/suggestedUsers.store.types'
-import axios from '../../config/axios.config'
-import { toast } from 'react-toastify'
-import Cookies from 'js-cookie'
+} from '../../types/store/suggestedUsers.store.type'
+import { IUser } from '../../types/user.type'
 
 const getSuggestedUsersStart = (): SuggestedUsersAction => ({
 	type: SuggestedUsersActionTypes.SUGGESTED_USERS_START,
 })
 
 const getSuggestedUsersSuccess = (
-	suggestedUsers: any
+	suggestedUsers: IUser[]
 ): SuggestedUsersAction => ({
 	type: SuggestedUsersActionTypes.SUGGESTED_USERS_SUCCESS,
 	payload: suggestedUsers,
@@ -23,7 +23,7 @@ const getSuggestedUsersFailure = (error: any): SuggestedUsersAction => ({
 })
 
 export const setSuggestedUsers = (
-	suggestedUser: any
+	suggestedUser: IUser[]
 ): SuggestedUsersAction => ({
 	type: SuggestedUsersActionTypes.SET_SUGGESTED_USER,
 	payload: suggestedUser,

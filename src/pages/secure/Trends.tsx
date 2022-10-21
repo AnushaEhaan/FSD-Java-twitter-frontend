@@ -5,7 +5,7 @@ import { toast } from 'react-toastify'
 import SearchTrends from '../../components/trends/SearchTrends'
 import TweetList from '../../components/tweet/TweetList'
 import { findTrends } from '../../store/actions/trends.action'
-import { IRootState } from '../../types/store/IRootState.types'
+import { IRootState } from '../../types/store/IRootState.type'
 
 const Trends = () => {
 	const { slug } = useParams()
@@ -15,11 +15,10 @@ const Trends = () => {
 
 	const [search, setSearch] = React.useState(slug)
 
-	const handleSearch = (e: any) => {
+	const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) =>
 		setSearch(e.target.value)
-	}
 
-	const handleSubmit = (e: any) => {
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		if (search) {
 			dispatch(findTrends(search))

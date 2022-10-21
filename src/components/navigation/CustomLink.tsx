@@ -2,7 +2,7 @@ import Cookies from 'js-cookie'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { IRootState } from '../../types/store/IRootState.types'
+import { IRootState } from '../../types/store/IRootState.type'
 
 interface Iprops {
 	link: any

@@ -1,17 +1,18 @@
 import React from 'react'
+import { ITweet } from '../../types/tweet.type'
 import Spinner from '../reusable/Spinner'
 import Tweet from './Tweet'
 import TweetCommentModal from './TweetCommentModal'
 
 interface Iprops {
-	tweets: any
+	tweets: ITweet[]
 	loading: boolean
 	error?: string
 }
 
 const TweetList = ({ tweets, loading, error }: Iprops) => {
 	const [showCommentModel, setShowCommentModel] = React.useState(false)
-	const [tweet, setTweet] = React.useState(null)
+	const [tweet, setTweet] = React.useState<ITweet | null>(null)
 
 	const handleModelClose = () => {
 		setShowCommentModel(false)
@@ -32,7 +33,7 @@ const TweetList = ({ tweets, loading, error }: Iprops) => {
 						height='20vh'
 					/>
 				) : tweets.length > 0 ? (
-					tweets.map((tweet: any) => (
+					tweets.map((tweet: ITweet) => (
 						<Tweet
 							key={tweet._id}
 							tweet={tweet}

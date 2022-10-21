@@ -3,7 +3,7 @@ import {
 	UpdateUserAction,
 	UpdateUserState,
 	initialState,
-} from '../../types/store/updateUser.types'
+} from '../../types/store/updateUser.type'
 
 const updateUserReducer = (
 	state: UpdateUserState = initialState,

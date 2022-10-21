@@ -3,7 +3,7 @@ import {
 	SuggestedUsersAction,
 	SuggestedUsersActionTypes,
 	initialState,
-} from '../../types/store/suggestedUsers.store.types'
+} from '../../types/store/suggestedUsers.store.type'
 
 const suggestedUsersReducer = (
 	state: SuggestedUsersState = initialState,
