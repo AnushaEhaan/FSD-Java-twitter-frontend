@@ -2,12 +2,13 @@ import moment from 'moment'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { markAsReadNotification } from '../../store/actions/notification.action'
+import { INotification } from '../../types/notification.type'
 import Avatar from '../reusable/Avatar'
 import BtnUserFollowUnfollow from '../reusable/BtnUserFollowUnfollow'
 import NotificationMessageType from './NotificationMessageType'
 
 interface Iprops {
-	notification: any
+	notification: INotification
 }
 
 const NotificationItem = ({ notification }: Iprops) => {

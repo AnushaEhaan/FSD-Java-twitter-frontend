@@ -1,5 +1,7 @@
+import { INotification } from '../../types/notification.type'
+
 interface Iprops {
-	notification: any
+	notification: INotification
 }
 
 const NotificationMessageType = ({ notification }: Iprops) => {

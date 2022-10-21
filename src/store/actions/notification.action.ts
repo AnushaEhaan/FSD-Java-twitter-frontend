@@ -5,12 +5,16 @@ import {
 	NotificationAction,
 	NotificationActionTypes,
 } from '../../types/store/notification.type'
+import { INotification } from '../../types/notification.type'
+import { IUser } from '../../types/user.type'
 
 const getNotificationsStart = (): NotificationAction => ({
 	type: NotificationActionTypes.GET_NOTIFICATIONS_START,
 })
 
-const getNotificationsSuccess = (notifications: any): NotificationAction => ({
+const getNotificationsSuccess = (
+	notifications: INotification[]
+): NotificationAction => ({
 	type: NotificationActionTypes.GET_NOTIFICATIONS_SUCCESS,
 	payload: notifications,
 })
@@ -28,13 +32,15 @@ export const countUnreadNotificationsType = (
 })
 
 export const update_notification_user_followers = (
-	user: any
+	user: IUser
 ): NotificationAction => ({
 	type: NotificationActionTypes.UPDATE_NOTIFICATION_USER_FOLLOWERS,
 	payload: user,
 })
 
-const markAsReadNotificationType = (notification: any): NotificationAction => ({
+const markAsReadNotificationType = (
+	notification: INotification
+): NotificationAction => ({
 	type: NotificationActionTypes.MARK_AS_READ_NOTIFICATION,
 	payload: notification,
 })
@@ -57,7 +63,6 @@ export const countUnreadNotifications = () => async (dispatch: any) => {
 		const res = await axios.get(`/notification/count/${userId}`)
 		const data = await res.data
 		dispatch(countUnreadNotificationsType(data.count))
-		console.log(data.count)
 	} catch (error: any) {
 		toast.error(error?.response.data.message)
 	}
@@ -69,7 +74,6 @@ export const markAsSeenNotification = () => async (dispatch: any) => {
 		const res = await axios.put(`/notification/markAsSeen/${userId}`)
 		const data = await res.data
 		dispatch(countUnreadNotificationsType(0))
-		console.log(data)
 	} catch (error: any) {
 		toast.error(error?.response.data.message)
 	}

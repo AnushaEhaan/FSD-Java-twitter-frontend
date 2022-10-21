@@ -24,7 +24,6 @@ const Tweet = () => {
 		async function fetchData() {
 			setLoading(true)
 			const isTweetFound = id && (await dispatch(findTweetById(id)))
-			console.log(isTweetFound)
 			!isTweetFound && setError('Tweet not found')
 			setLoading(false)
 		}
@@ -43,7 +42,6 @@ const Tweet = () => {
 			userId,
 		}
 		const isAdded = await dispatch(addComment(data))
-		console.log(isAdded)
 		setContent('')
 		setAddCommentLoading(false)
 	}

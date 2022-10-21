@@ -30,7 +30,6 @@ const profileUserReducer = (
 			}
 
 		case ProfileUserActionTypes.SET_PROFILE_USER:
-			console.log(action.payload)
 			return {
 				...state,
 				profileUser:

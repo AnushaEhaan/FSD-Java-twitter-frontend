@@ -38,8 +38,6 @@ const reducer = (
 				totalUnreadNotifications: action.payload,
 			}
 		case NotificationActionTypes.UPDATE_NOTIFICATION_USER_FOLLOWERS:
-			console.log(action.payload)
-			console.log(state.notifications)
 			return {
 				...state,
 				notifications: state.notifications.map((notification: any) => {

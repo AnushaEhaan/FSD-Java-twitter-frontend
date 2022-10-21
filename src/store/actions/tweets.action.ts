@@ -146,7 +146,6 @@ export const addBookmark = (tweetId: string) => async (dispatch: any) => {
 		const userId = Cookies.get('user_Id')
 		const response = await axios.post(`bookmar/add/${userId}/${tweetId}`)
 		const data = await response.data
-		console.log(data)
 		dispatch(updateTweet(data.tweet))
 		return true
 	} catch (error: any) {
@@ -161,7 +160,6 @@ export const getBookmarks = () => async (dispatch: any) => {
 		dispatch(getTweetsStart())
 		const response = await axios.get(`bookmar/get/${userId}`)
 		const data = await response.data
-		console.log(data)
 		dispatch(getTweetsSuccess(data.bookmarks))
 		return true
 	} catch (error: any) {

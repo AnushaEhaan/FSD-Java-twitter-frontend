@@ -1,13 +1,15 @@
+import { INotification } from '../notification.type'
+
 export interface NotificationState {
-	loading: boolean;
-	error: string | null;
-	notifications: any;
-	totalUnreadNotifications: number;
+	loading: boolean
+	error: string | null
+	notifications: INotification[]
+	totalUnreadNotifications: number
 }
 
 export interface NotificationAction {
-	type: string;
-	payload?: any;
+	type: string
+	payload?: any
 }
 
 export const initialState: NotificationState = {
@@ -15,7 +17,7 @@ export const initialState: NotificationState = {
 	error: null,
 	notifications: [],
 	totalUnreadNotifications: 0,
-};
+}
 
 export enum NotificationActionTypes {
 	GET_NOTIFICATIONS_START = 'GET_NOTIFICATIONS_START',

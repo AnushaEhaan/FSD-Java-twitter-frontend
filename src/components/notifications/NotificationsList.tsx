@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Spinner from '../../components/reusable/Spinner'
 import NotificationItem from '../../components/notifications/NotificationItem'
 import { IRootState } from '../../types/store/IRootState.type'
+import { INotification } from '../../types/notification.type'
 
 const NotificationsList = () => {
 	const dispatch = useDispatch()
@@ -34,7 +35,7 @@ const NotificationsList = () => {
 			)}
 			{!loading && !error && notifications.length > 0 && (
 				<ul className='list-group'>
-					{notifications.map((notification: any) => (
+					{notifications.map((notification: INotification) => (
 						<NotificationItem
 							key={notification._id}
 							notification={notification}
