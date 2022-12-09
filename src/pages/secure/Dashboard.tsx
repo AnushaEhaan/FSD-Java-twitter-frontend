@@ -1,8 +1,8 @@
 import Cookies from 'js-cookie'
-import React from 'react'
+import React, { lazy } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import TweetCreate from '../../components/tweet/TweetCreate'
-import TweetList from '../../components/tweet/TweetList'
+const TweetList = lazy(() => import('../../components/tweet/TweetList'))
+const TweetCreate = lazy(() => import('../../components/tweet/TweetCreate'))
 import { getTweets } from '../../store/actions/tweets.action'
 import { IRootState } from '../../types/store/IRootState.type'
 

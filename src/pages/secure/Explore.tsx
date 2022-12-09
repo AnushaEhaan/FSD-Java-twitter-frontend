@@ -1,5 +1,6 @@
-import SearchUserForm from '../../components/explore/SearchUserForm'
-import TweetExploreList from '../../components/explore/TweetExploreList'
+import { lazy } from 'react'
+const SearchUserForm = lazy(() => import('../../components/explore/SearchUserForm'))
+const TweetExploreList = lazy(() => import('../../components/explore/TweetExploreList'))
 
 const Explore = () => {
 	return (

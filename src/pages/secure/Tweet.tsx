@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
-import TweetContent from '../../components/tweet/Tweet'
-import TweetCommentList from '../../components/tweet/TweetCommentList'
-import { useDispatch, useSelector } from 'react-redux'
-import { findTweetById } from '../../store/actions/tweets.action'
-import { useParams } from 'react-router-dom'
-import TweetCommentCreate from '../../components/tweet/TweetCommentCreate'
-import Spinner from '../../components/reusable/Spinner'
 import Cookies from 'js-cookie'
+import React, { lazy, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import Spinner from '../../components/reusable/Spinner'
 import { addComment } from '../../store/actions/comment.action'
+import { findTweetById } from '../../store/actions/tweets.action'
 import { IRootState } from '../../types/store/IRootState.type'
+const TweetCommentCreate = lazy(() => import('../../components/tweet/TweetCommentCreate'))
+const TweetContent = lazy(() => import('../../components/tweet/Tweet'))
+const TweetCommentList = lazy(() => import('../../components/tweet/TweetCommentList'))
 
 const Tweet = () => {
 	const userId = Cookies.get('user_Id')
@@ -54,11 +54,7 @@ const Tweet = () => {
 			/>
 		)
 	if (error)
-		return (
-			<div className='center mt-5 fs-17 alert alert-danger w-md mx-auto'>
-				{error} ☹️
-			</div>
-		)
+		return <div className='center mt-5 fs-17 alert alert-danger w-md mx-auto'>{error} ☹️</div>
 
 	return (
 		<div className='px-md-4 pt-lg-5 pt-md-3'>

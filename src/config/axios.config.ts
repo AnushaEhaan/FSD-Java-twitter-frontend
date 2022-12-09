@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
-const baseURL = 'https://twitter-backend-theta.vercel.app/api/v1'
+const baseURL = import.meta.env.VITE_API_URL as string
 
 const api = axios.create({
 	baseURL,

@@ -1,7 +1,7 @@
-import React from 'react'
+import { lazy } from 'react'
 import { Outlet } from 'react-router-dom'
-import Navbar from '../../components/navigation/Navbar'
-import SideBar from '../../components/sidebar/SideBar'
+const Navbar = lazy(() => import('../../components/navigation/Navbar'))
+const SideBar = lazy(() => import('../../components/sidebar/SideBar'))
 
 const Home = () => {
 	return (
