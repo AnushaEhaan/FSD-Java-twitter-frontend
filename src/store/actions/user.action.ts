@@ -33,12 +33,16 @@ export const userLogin = (form: any) => async (dispatch: any) => {
 	}
 }
 
-export const findCurrentUser = (id: string) => async (dispatch: any) => {
+export const loggedInUser = () => async (dispatch: any) => {
 	try {
 		dispatch(userLoginStart())
-		const response = await axios.get(`/user/getUserById/${id}`)
+		const token = Cookies.get('token')
+		const response = await axios.get('/auth/logedIn', {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		})
 		const data = await response.data
-		dispatch(userLoginSuccess(data))
 		Cookies.set('user_Id', data.user._id)
 		dispatch(userLoginSuccess(data.user))
 	} catch (error: any) {
