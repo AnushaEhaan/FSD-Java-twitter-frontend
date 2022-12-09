@@ -9,7 +9,7 @@ import { IRootState } from '../../types/store/IRootState.type'
 const Dashboard = () => {
 	const dispatch = useDispatch()
 	const { tweets, loading } = useSelector((state: IRootState) => state.tweets)
-
+	console.log('tweets', tweets)
 	React.useEffect(() => {
 		const userId = Cookies.get('user_Id')
 		userId && dispatch(getTweets(userId))

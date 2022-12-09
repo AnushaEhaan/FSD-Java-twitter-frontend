@@ -1,26 +1,26 @@
-import axios from 'axios';
-import Cookies from 'js-cookie';
+import axios from 'axios'
+import Cookies from 'js-cookie'
 
-const baseURL = 'https://etwitter.herokuapp.com/api/v1';
+const baseURL = 'https://twitter-backend-theta.vercel.app/api/v1'
 
 const api = axios.create({
-    baseURL,
-    headers: {
-        'Content-Type': 'application/json',
-    },
-});
+	baseURL,
+	headers: {
+		'Content-Type': 'application/json',
+	},
+})
 
 api.interceptors.request.use(
-    (config:any) => {
-        const token = Cookies.get('token');
-        if (token) {
-            config.headers.Authorization = `Bearer ${token}`;
-        } 
-        return config;
-    },
-    (error) => {
-        return Promise.reject(error);
-    },
-);
+	(config: any) => {
+		const token = Cookies.get('token')
+		if (token) {
+			config.headers.Authorization = `Bearer ${token}`
+		}
+		return config
+	},
+	(error) => {
+		return Promise.reject(error)
+	}
+)
 
-export default api;
+export default api
