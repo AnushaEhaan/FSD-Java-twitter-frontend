@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie'
-import axios from '../../config/axios.config'
 import { toast } from 'react-toastify'
-import { NotificationAction, NotificationActionTypes } from '../../types/store/notification.type'
-import { INotification } from '../../types/notification.type'
+import axios from '../../config/axios.config'
 import { IUser } from '../../types/user.type'
+import { INotification } from '../../types/notification.type'
+import { NotificationAction, NotificationActionTypes } from '../../types/store/notification.type'
 
 const getNotificationsStart = (): NotificationAction => ({
    type: NotificationActionTypes.GET_NOTIFICATIONS_START,

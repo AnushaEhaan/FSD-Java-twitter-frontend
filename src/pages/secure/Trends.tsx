@@ -1,11 +1,11 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import SearchTrends from '../../components/trends/SearchTrends'
+import { useDispatch, useSelector } from 'react-redux'
 import TweetList from '../../components/tweet/TweetList'
+import { useNavigate, useParams } from 'react-router-dom'
 import { findTrends } from '../../store/actions/trends.action'
 import { IRootState } from '../../types/store/IRootState.type'
+import SearchTrends from '../../components/trends/SearchTrends'
 
 const Trends = () => {
    const { slug } = useParams()

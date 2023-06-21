@@ -1,9 +1,9 @@
 import React, { lazy } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { Outlet } from 'react-router-dom'
-import { getProfileUser } from '../../store/actions/profileInfo.action'
+import { useDispatch, useSelector } from 'react-redux'
 import { IRootState } from '../../types/store/IRootState.type'
+import { getProfileUser } from '../../store/actions/profileInfo.action'
 const NavigationsTweet = lazy(() => import('../../components/Profile/NavigationsTweet'))
 const ProfileCover = lazy(() => import('../../components/Profile/ProfileCover.profile'))
 const UserInformation = lazy(() => import('../../components/Profile/UserInformation.profile'))

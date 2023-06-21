@@ -1,10 +1,10 @@
 import Cookies from 'js-cookie'
-import React, { useState } from 'react'
 import { toast } from 'react-toastify'
-import axios from '../../config/axios.config'
-import { ITweet } from '../../types/tweet.type'
+import React, { useState } from 'react'
 import Spinner from '../reusable/Spinner'
 import TweetExplore from './TweetExplore'
+import axios from '../../config/axios.config'
+import { ITweet } from '../../types/tweet.type'
 
 const TweetExploreList = () => {
    const [tweets, setTweets] = useState<ITweet[]>([])

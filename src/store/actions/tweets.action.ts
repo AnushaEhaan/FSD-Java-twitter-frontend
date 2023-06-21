@@ -1,9 +1,9 @@
-import { TweetsActionTypes, TweetsAction } from '../../types/store/tweets.type'
-import axios from '../../config/axios.config'
-import { toast } from 'react-toastify'
 import Cookies from 'js-cookie'
+import { toast } from 'react-toastify'
+import axios from '../../config/axios.config'
 import { getComments } from './comment.action'
 import { ITweet } from '../../types/tweet.type'
+import { TweetsActionTypes, TweetsAction } from '../../types/store/tweets.type'
 
 export const getTweetsStart = (): TweetsAction => ({
    type: TweetsActionTypes.GET_TWEETS_START,

@@ -1,9 +1,9 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
-import { getTweetsLikeByUser } from '../../store/actions/tweets.action'
 import TweetList from '../tweet/TweetList'
+import { useDispatch, useSelector } from 'react-redux'
 import { IRootState } from '../../types/store/IRootState.type'
+import { getTweetsLikeByUser } from '../../store/actions/tweets.action'
 
 const UserOnlyLikeTweetList = () => {
    const params = useParams()

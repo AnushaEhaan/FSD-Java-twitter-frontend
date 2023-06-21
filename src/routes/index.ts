@@ -55,7 +55,7 @@ export const secureRoutes: IRoute[] = [
 export const authRoutes: IRoute[] = [
    {
       path: Routes.Home,
-      element: lazy(() => import('../pages/auth/Register')),
+      element: lazy(() => import('../pages/auth/Auth')),
       childrens: [
          {
             path: Routes.Home,

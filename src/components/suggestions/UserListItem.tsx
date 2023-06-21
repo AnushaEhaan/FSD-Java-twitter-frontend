@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { IUser } from '../../types/user.type'
 import Avatar from '../reusable/Avatar'
 import BtnUserFollowUnfollow from '../reusable/BtnUserFollowUnfollow'
+
 interface Iprops {
    user: IUser
 }

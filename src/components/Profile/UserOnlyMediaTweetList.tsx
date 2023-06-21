@@ -1,9 +1,9 @@
 import React from 'react'
-import { getOnlyMediaTweets } from '../../store/actions/tweets.action'
-import { useDispatch, useSelector } from 'react-redux'
-import TweetList from '../tweet/TweetList'
 import { useParams } from 'react-router'
+import TweetList from '../tweet/TweetList'
+import { useDispatch, useSelector } from 'react-redux'
 import { IRootState } from '../../types/store/IRootState.type'
+import { getOnlyMediaTweets } from '../../store/actions/tweets.action'
 
 const UserOnlyMediaTweetList = () => {
    const params = useParams()

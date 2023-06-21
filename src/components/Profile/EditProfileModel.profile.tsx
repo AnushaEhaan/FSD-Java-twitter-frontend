@@ -1,14 +1,14 @@
+import { toast } from 'react-toastify'
 import React, { useState } from 'react'
+import Spinner from '../reusable/Spinner'
+import Calendar from '../reusable/Calendar'
+import { IUser } from '../../types/user.type'
 import { Button, Modal } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { toast } from 'react-toastify'
-import updateProfileJson from '../../jsons/updateProfile.json'
-import { updateUser, updateUserStart, uploadAvatar } from '../../store/actions/updateUser.action'
-import { IRootState } from '../../types/store/IRootState.type'
-import { IUser } from '../../types/user.type'
-import Calendar from '../reusable/Calendar'
-import Spinner from '../reusable/Spinner'
 import EditProfileCover from './EditProfileCover.profile'
+import updateProfileJson from '../../jsons/updateProfile.json'
+import { IRootState } from '../../types/store/IRootState.type'
+import { updateUser, updateUserStart, uploadAvatar } from '../../store/actions/updateUser.action'
 
 interface Iprops {
    user: IUser

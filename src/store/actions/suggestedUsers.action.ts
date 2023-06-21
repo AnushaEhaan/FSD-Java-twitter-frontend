@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie'
 import axios from '../../config/axios.config'
-import { SuggestedUsersAction, SuggestedUsersActionTypes } from '../../types/store/suggestedUsers.store.type'
 import { IUser } from '../../types/user.type'
+import { SuggestedUsersAction, SuggestedUsersActionTypes } from '../../types/store/suggestedUsers.store.type'
 
 const getSuggestedUsersStart = (): SuggestedUsersAction => ({
    type: SuggestedUsersActionTypes.SUGGESTED_USERS_START,

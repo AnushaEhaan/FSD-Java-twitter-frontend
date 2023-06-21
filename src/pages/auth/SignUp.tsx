@@ -62,7 +62,10 @@ const SingUp = () => {
                   )
                })}
                <div>
-                  <button className="btn btn-dark mt-4 w-100 btn-block" disabled={loading} type="submit">
+                  <button
+                     className="btn btn-dark btn-lg mt-4 w-100 btn-block"
+                     disabled={loading}
+                     type="submit">
                      {loading ? <Spinner size="sm" /> : 'Sign Up'}
                   </button>
                </div>

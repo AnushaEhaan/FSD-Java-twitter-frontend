@@ -1,14 +1,14 @@
 import Cookies from 'js-cookie'
+import { useParams } from 'react-router-dom'
 import React, { lazy, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
 import Spinner from '../../components/reusable/Spinner'
+import { IRootState } from '../../types/store/IRootState.type'
 import { addComment } from '../../store/actions/comment.action'
 import { findTweetById } from '../../store/actions/tweets.action'
-import { IRootState } from '../../types/store/IRootState.type'
-const TweetCommentCreate = lazy(() => import('../../components/tweet/TweetCommentCreate'))
 const TweetContent = lazy(() => import('../../components/tweet/Tweet'))
 const TweetCommentList = lazy(() => import('../../components/tweet/TweetCommentList'))
+const TweetCommentCreate = lazy(() => import('../../components/tweet/TweetCommentCreate'))
 
 const Tweet = () => {
    const userId = Cookies.get('user_Id')

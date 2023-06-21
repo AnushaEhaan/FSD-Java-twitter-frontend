@@ -1,14 +1,14 @@
-import Cookies from 'js-cookie'
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify'
+import Cookies from 'js-cookie'
 import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
 import Spinner from './components/reusable/Spinner'
-import renderRoutes from './config/renderRoutes.config'
 import { authRoutes, secureRoutes } from './routes'
+import { useDispatch, useSelector } from 'react-redux'
+import renderRoutes from './config/renderRoutes.config'
 import { loggedInUser } from './store/actions/user.action'
 import { IRootState } from './types/store/IRootState.type'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 
 const App = () => {
    const dispatch = useDispatch()

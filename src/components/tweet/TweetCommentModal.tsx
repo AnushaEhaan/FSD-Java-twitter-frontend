@@ -1,12 +1,12 @@
-import Cookies from 'js-cookie'
 import React from 'react'
-import { Button, Modal } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
-import { addComment } from '../../store/actions/comment.action'
-import { ITweet } from '../../types/tweet.type'
-import Spinner from '../reusable/Spinner'
 import Tweet from './Tweet'
+import Cookies from 'js-cookie'
+import { useDispatch } from 'react-redux'
+import Spinner from '../reusable/Spinner'
+import { Button, Modal } from 'react-bootstrap'
+import { ITweet } from '../../types/tweet.type'
 import TweetCommentCreate from './TweetCommentCreate'
+import { addComment } from '../../store/actions/comment.action'
 
 interface Iprops {
    tweet: ITweet

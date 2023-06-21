@@ -1,8 +1,8 @@
 import React from 'react'
-import { followUser } from '../../store/actions/profileInfo.action'
-import { useDispatch, useSelector } from 'react-redux'
-import EditProfileModel from '../../components/Profile/EditProfileModel.profile'
 import { IUser } from '../../types/user.type'
+import { useDispatch, useSelector } from 'react-redux'
+import { followUser } from '../../store/actions/profileInfo.action'
+import EditProfileModel from '../../components/Profile/EditProfileModel.profile'
 
 interface Iprops {
    profileUser: IUser

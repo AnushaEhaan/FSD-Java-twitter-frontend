@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
 import moment from 'moment'
-import UserPeopleListModel from './UserPeopleListModel'
-import { getUserPeople, clearUserPeopleList } from '../../store/actions/userPeopleList.action'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { IUser } from '../../types/user.type'
+import UserPeopleListModel from './UserPeopleListModel'
+import { getUserPeople, clearUserPeopleList } from '../../store/actions/userPeopleList.action'
 
 interface Iprops {
    user: IUser

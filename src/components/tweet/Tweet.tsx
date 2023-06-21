@@ -1,15 +1,15 @@
-import Cookies from 'js-cookie'
 import moment from 'moment'
+import Cookies from 'js-cookie'
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { findUserById } from '../../store/actions/profileInfo.action'
-import { IRootState } from '../../types/store/IRootState.type'
-import { ITweet } from '../../types/tweet.type'
 import Avatar from '../reusable/Avatar'
-import TweetActionMenu from './TweetActionMenu'
-import TweetActions from './TweetActions'
 import TweetDetails from './TweetDetails'
+import { useSelector } from 'react-redux'
+import TweetActions from './TweetActions'
+import { ITweet } from '../../types/tweet.type'
+import TweetActionMenu from './TweetActionMenu'
+import { IRootState } from '../../types/store/IRootState.type'
+import { findUserById } from '../../store/actions/profileInfo.action'
 
 interface Iprops {
    tweet: ITweet

@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import TweetComment from './TweetComment'
-import { IRootState } from '../../types/store/IRootState.type'
 import { IComment } from '../../types/comment.type'
+import { IRootState } from '../../types/store/IRootState.type'
 
 const TweetCommentList = () => {
    const { comments } = useSelector((state: IRootState) => state.comments)

@@ -1,12 +1,12 @@
 import React from 'react'
-import axios from '../../config/axios.config'
-import { toast } from 'react-toastify'
 import Cookies from 'js-cookie'
-import Spinner from '../reusable/Spinner'
-import { addTweet } from '../../store/actions/tweets.action'
-import { useDispatch, useSelector } from 'react-redux'
-import stringUtils from '../../utils/string.utils'
+import { toast } from 'react-toastify'
 import Avatar from '../reusable/Avatar'
+import Spinner from '../reusable/Spinner'
+import axios from '../../config/axios.config'
+import stringUtils from '../../utils/string.utils'
+import { useDispatch, useSelector } from 'react-redux'
+import { addTweet } from '../../store/actions/tweets.action'
 import { IRootState } from '../../types/store/IRootState.type'
 
 const TweetCreate = () => {
@@ -119,9 +119,13 @@ const TweetCreate = () => {
                   style={{ resize: 'none' }}></textarea>
                {readableImage && (
                   <div className="position-relative">
-                     <img src={readableImage} className="w-100 h-md mt-4 rounded-3" alt="" />
+                     <img
+                        src={readableImage}
+                        className="w-100 object-contain bg-secondary  h-md mt-4 rounded-3"
+                        alt=""
+                     />
                      <button
-                        className="btn h-34px w-34px center bg-dark bg-opacity-75 text-white position-absolute start-5px top-24px"
+                        className="btn h-34px w-34px center bg-dark bg-opacity-25 text-white position-absolute start-9px top-28px"
                         onClick={handleCancelImage}>
                         <i className="fa-solid fa-xmark fs-16"></i>
                      </button>

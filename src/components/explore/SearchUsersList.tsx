@@ -1,5 +1,5 @@
-import { IUser } from '../../types/user.type'
 import Spinner from '../reusable/Spinner'
+import { IUser } from '../../types/user.type'
 import SearchUserItem from './SearchUserItem'
 
 interface Iprops {

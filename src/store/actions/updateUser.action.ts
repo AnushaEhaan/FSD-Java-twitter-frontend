@@ -1,9 +1,9 @@
-import { UpdateUserActionTypes, UpdateUserAction } from '../../types/store/updateUser.type'
-import axios from '../../config/axios.config'
-import { toast } from 'react-toastify'
 import store from '../store'
-import { setProfileUser } from './profileInfo.action'
 import Cookies from 'js-cookie'
+import { toast } from 'react-toastify'
+import axios from '../../config/axios.config'
+import { setProfileUser } from './profileInfo.action'
+import { UpdateUserActionTypes, UpdateUserAction } from '../../types/store/updateUser.type'
 
 export const updateUserStart = (): UpdateUserAction => ({
    type: UpdateUserActionTypes.UPDATE_USER_START,

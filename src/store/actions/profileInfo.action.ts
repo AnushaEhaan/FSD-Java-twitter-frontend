@@ -1,11 +1,11 @@
 import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
 import axios from '../../config/axios.config'
-import { ProfileUserAction, ProfileUserActionTypes } from '../../types/store/profileInfo.type'
 import { IUser } from '../../types/user.type'
-import { update_notification_user_followers } from './notification.action'
-import { setSuggestedUsers } from './suggestedUsers.action'
 import { setuserPeople } from './userPeopleList.action'
+import { setSuggestedUsers } from './suggestedUsers.action'
+import { update_notification_user_followers } from './notification.action'
+import { ProfileUserAction, ProfileUserActionTypes } from '../../types/store/profileInfo.type'
 
 const getProfileUserStart = (): ProfileUserAction => ({
    type: ProfileUserActionTypes.GET_PROFILE_USER_START,

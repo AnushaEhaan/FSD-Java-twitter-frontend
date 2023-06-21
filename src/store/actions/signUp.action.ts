@@ -1,7 +1,7 @@
-import { SignUpActionTypes, SignUpAction } from '../../types/store/signUp.store.type'
-import axios from '../../config/axios.config'
 import { toast } from 'react-toastify'
+import axios from '../../config/axios.config'
 import { ISignup } from '../../types/singup.type'
+import { SignUpActionTypes, SignUpAction } from '../../types/store/signUp.store.type'
 
 const signUpStart = (): SignUpAction => ({
    type: SignUpActionTypes.SIGN_UP_START,

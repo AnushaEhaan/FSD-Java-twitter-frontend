@@ -1,6 +1,6 @@
+import Avatar from '../reusable/Avatar'
 import { Link } from 'react-router-dom'
 import { IUser } from '../../types/user.type'
-import Avatar from '../reusable/Avatar'
 
 interface Iprops {
    user: IUser

@@ -1,8 +1,8 @@
 import React from 'react'
 import { toast } from 'react-toastify'
+import Spinner from '../reusable/Spinner'
 import axios from '../../config/axios.config'
 import { IUser } from '../../types/user.type'
-import Spinner from '../reusable/Spinner'
 import SearchUsersList from './SearchUsersList'
 
 const SearchUserForm = () => {

@@ -2,9 +2,9 @@ import { memo } from 'react'
 import { Modal } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import Spinner from '../reusable/Spinner'
+import { IUser } from '../../types/user.type'
 import UserList from '../suggestions/UserList'
 import { IRootState } from '../../types/store/IRootState.type'
-import { IUser } from '../../types/user.type'
 
 interface Iprops {
    show: boolean

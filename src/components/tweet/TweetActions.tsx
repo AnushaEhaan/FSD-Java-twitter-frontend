@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addBookmark, likeTweet, retweet } from '../../store/actions/tweets.action'
-import { ITweet } from '../../types/tweet.type'
 import Spinner from '../reusable/Spinner'
+import { ITweet } from '../../types/tweet.type'
+import { addBookmark, likeTweet, retweet } from '../../store/actions/tweets.action'
 
 interface TweetActionsProps {
    tweet: ITweet

@@ -1,8 +1,8 @@
-import { useSelector } from 'react-redux'
-import navigationsJson from '../../jsons/navigations.json'
-import BtnLogOut from '../reusable/BtnLogOut'
-import Avatar from '../reusable/Avatar'
 import CustomLink from './CustomLink'
+import Avatar from '../reusable/Avatar'
+import { useSelector } from 'react-redux'
+import BtnLogOut from '../reusable/BtnLogOut'
+import navigationsJson from '../../jsons/navigations.json'
 import { IRootState } from '../../types/store/IRootState.type'
 
 const NavigationDropdown = () => {

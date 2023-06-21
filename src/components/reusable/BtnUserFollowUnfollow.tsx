@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie'
 import { useDispatch } from 'react-redux'
-import { followUser } from '../../store/actions/profileInfo.action'
 import { IUser } from '../../types/user.type'
+import { followUser } from '../../store/actions/profileInfo.action'
 
 interface Iprops {
    user: IUser

@@ -1,39 +1,39 @@
 import {
-	UpdateUserActionTypes,
-	UpdateUserAction,
-	UpdateUserState,
-	initialState,
+   UpdateUserActionTypes,
+   UpdateUserAction,
+   UpdateUserState,
+   initialState,
 } from '../../types/store/updateUser.type'
 
 const updateUserReducer = (
-	state: UpdateUserState = initialState,
-	action: UpdateUserAction
+   state: UpdateUserState = initialState,
+   action: UpdateUserAction
 ): UpdateUserState => {
-	switch (action.type) {
-		case UpdateUserActionTypes.UPDATE_USER_START:
-			return {
-				...state,
-				loading: true,
-				error: null,
-				isUserUpdated: false,
-			}
-		case UpdateUserActionTypes.UPDATE_USER_SUCCESS:
-			return {
-				...state,
-				loading: false,
-				error: null,
-				isUserUpdated: true,
-			}
-		case UpdateUserActionTypes.UPDATE_USER_FAILURE:
-			return {
-				...state,
-				loading: false,
-				error: action.payload,
-				isUserUpdated: false,
-			}
-		default:
-			return state
-	}
+   switch (action.type) {
+      case UpdateUserActionTypes.UPDATE_USER_START:
+         return {
+            ...state,
+            loading: true,
+            error: null,
+            isUserUpdated: false,
+         }
+      case UpdateUserActionTypes.UPDATE_USER_SUCCESS:
+         return {
+            ...state,
+            loading: false,
+            error: null,
+            isUserUpdated: true,
+         }
+      case UpdateUserActionTypes.UPDATE_USER_FAILURE:
+         return {
+            ...state,
+            loading: false,
+            error: action.payload,
+            isUserUpdated: false,
+         }
+      default:
+         return state
+   }
 }
 
 export default updateUserReducer

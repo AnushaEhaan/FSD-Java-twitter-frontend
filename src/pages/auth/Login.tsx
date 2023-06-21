@@ -1,11 +1,11 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
-import Spinner from '../../components/reusable/Spinner'
 import useForm from '../../hooks/useForm'
-import loginJson from '../../jsons/login.json'
-import { userLogin } from '../../store/actions/user.action'
 import { IForm } from '../../types/form.type'
+import loginJson from '../../jsons/login.json'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import Spinner from '../../components/reusable/Spinner'
+import { userLogin } from '../../store/actions/user.action'
 import { IRootState } from '../../types/store/IRootState.type'
 
 const Login = () => {
@@ -57,7 +57,10 @@ const Login = () => {
                   )
                })}
                <div>
-                  <button className="btn btn-dark mt-4 w-100 btn-block" disabled={loading} type="submit">
+                  <button
+                     className="btn btn-lg btn-dark mt-4 w-100 btn-block"
+                     disabled={loading}
+                     type="submit">
                      {loading ? <Spinner size="sm" /> : 'Login'}
                   </button>
                </div>

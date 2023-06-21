@@ -1,8 +1,8 @@
-import Cookies from 'js-cookie'
 import moment from 'moment'
+import Cookies from 'js-cookie'
 import { Link } from 'react-router-dom'
-import { IComment } from '../../types/comment.type'
 import Avatar from '../reusable/Avatar'
+import { IComment } from '../../types/comment.type'
 
 interface Iprops {
    comment: IComment

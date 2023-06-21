@@ -1,5 +1,5 @@
-import navigationsJson from '../../jsons/navigations.json'
 import CustomLink from './CustomLink'
+import navigationsJson from '../../jsons/navigations.json'
 
 const NavigationsList = () => {
    return (

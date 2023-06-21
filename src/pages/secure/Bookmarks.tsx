@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import TweetList from '../../components/tweet/TweetList'
-import { getBookmarks } from '../../store/actions/tweets.action'
 import { IRootState } from '../../types/store/IRootState.type'
+import { getBookmarks } from '../../store/actions/tweets.action'
 
 const Bookmarks = () => {
    const dispatch = useDispatch()

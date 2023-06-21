@@ -1,7 +1,7 @@
 import React from 'react'
-import { ITweet } from '../../types/tweet.type'
-import Spinner from '../reusable/Spinner'
 import Tweet from './Tweet'
+import Spinner from '../reusable/Spinner'
+import { ITweet } from '../../types/tweet.type'
 import TweetCommentModal from './TweetCommentModal'
 
 interface Iprops {

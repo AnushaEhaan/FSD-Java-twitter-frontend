@@ -1,10 +1,10 @@
-import React, { Suspense } from 'react'
-import ReactDOM from 'react-dom'
 import App from './App'
-import './assets/scss/bootstrap.scss'
-import Spinner from './components/reusable/Spinner'
-import { Provider } from 'react-redux'
+import ReactDOM from 'react-dom'
 import store from './store/store'
+import './assets/scss/bootstrap.scss'
+import { Provider } from 'react-redux'
+import React, { Suspense } from 'react'
+import Spinner from './components/reusable/Spinner'
 
 ReactDOM.render(
    <React.StrictMode>
