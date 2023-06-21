@@ -7,25 +7,22 @@ import { getTweets } from '../../store/actions/tweets.action'
 import { IRootState } from '../../types/store/IRootState.type'
 
 const Dashboard = () => {
-	const dispatch = useDispatch()
-	const { tweets, loading } = useSelector((state: IRootState) => state.tweets)
-	console.log('tweets', tweets)
-	React.useEffect(() => {
-		const userId = Cookies.get('user_Id')
-		userId && dispatch(getTweets(userId))
-	}, [dispatch])
+   const dispatch = useDispatch()
+   const { tweets, loading } = useSelector((state: IRootState) => state.tweets)
+   console.log('tweets', tweets)
+   React.useEffect(() => {
+      const userId = Cookies.get('user_Id')
+      userId && dispatch(getTweets(userId))
+   }, [dispatch])
 
-	return (
-		<div>
-			<TweetCreate />
-			<div className='mx-md-4 mt-5'>
-				<TweetList
-					tweets={tweets}
-					loading={loading}
-				/>
-			</div>
-		</div>
-	)
+   return (
+      <div>
+         <TweetCreate />
+         <div className="mx-md-4 mt-5">
+            <TweetList tweets={tweets} loading={loading} />
+         </div>
+      </div>
+   )
 }
 
 export default Dashboard

@@ -5,33 +5,31 @@ import { IComment } from '../../types/comment.type'
 import Avatar from '../reusable/Avatar'
 
 interface Iprops {
-	comment: IComment
+   comment: IComment
 }
 
 const TweetComment = ({ comment }: Iprops) => {
-	const currentUserId = Cookies.get('user_Id')
-	return (
-		<div className='d-flex py-3  border-bottom'>
-			<Link to={`/profile/${comment.user._id}`}>
-				<Avatar avatar={comment.user.avatar} />
-			</Link>
-			<main>
-				<div className='d-flex'>
-					<div>
-						<div className='mb-1px d-flex'>
-							<Link
-								to={`/profile/${comment.user._id}`}
-								className='fw-bold me-3 fs-16 mb-0'>
-								{comment.user.name}
-							</Link>
-						</div>
-						<span className='fs-13 text-dark text-opacity-75 me-2'>
-							{moment(comment.createdAt).fromNow()}
-						</span>
-					</div>
-				</div>
-				<main className='py-3'>{comment.content}</main>
-				{/* <footer className='d-flex  justify-content-between '>
+   const currentUserId = Cookies.get('user_Id')
+   return (
+      <div className="d-flex py-3  border-bottom">
+         <Link to={`/profile/${comment.user._id}`}>
+            <Avatar avatar={comment.user.avatar} />
+         </Link>
+         <main>
+            <div className="d-flex">
+               <div>
+                  <div className="mb-1px d-flex">
+                     <Link to={`/profile/${comment.user._id}`} className="fw-bold me-3 fs-16 mb-0">
+                        {comment.user.name}
+                     </Link>
+                  </div>
+                  <span className="fs-13 text-dark text-opacity-75 me-2">
+                     {moment(comment.createdAt).fromNow()}
+                  </span>
+               </div>
+            </div>
+            <main className="py-3">{comment.content}</main>
+            {/* <footer className='d-flex  justify-content-between '>
 					<div className='d-flex align-items-center'>
 						<button className='btn btn-outline-secondary text-dark text-opacity-50 border-0 me-1px w-40px h-40px center'>
 							<i className='fa-regular fa-comment fs-18 '></i>
@@ -62,9 +60,9 @@ const TweetComment = ({ comment }: Iprops) => {
 						<i className='fa-solid fa-arrow-up-from-bracket fs-18 '></i>
 					</button>
 				</footer> */}
-			</main>
-		</div>
-	)
+         </main>
+      </div>
+   )
 }
 
 export default TweetComment

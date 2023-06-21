@@ -6,26 +6,22 @@ import { IRootState } from '../../types/store/IRootState.type'
 import TweetList from '../tweet/TweetList'
 
 const UserTweetList = () => {
-	const params = useParams()
-	const { id }: any = params
-	const dispatch = useDispatch()
-	const { tweets, loading: tweetLoading } = useSelector(
-		(state: IRootState) => state.tweets
-	)
-	React.useEffect(() => {
-		dispatch(getUserTweets(id))
-	}, [])
+   const params = useParams()
+   const { id }: any = params
+   const dispatch = useDispatch()
+   const { tweets, loading: tweetLoading } = useSelector((state: IRootState) => state.tweets)
 
-	return (
-		<div className='mt-5'>
-			<div>
-				<TweetList
-					tweets={tweets}
-					loading={tweetLoading}
-				/>
-			</div>
-		</div>
-	)
+   React.useEffect(() => {
+      dispatch(getUserTweets(id))
+   }, [])
+
+   return (
+      <div className="mt-5">
+         <div>
+            <TweetList tweets={tweets} loading={tweetLoading} />
+         </div>
+      </div>
+   )
 }
 
 export default UserTweetList

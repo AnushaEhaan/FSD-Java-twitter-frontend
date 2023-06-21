@@ -9,33 +9,30 @@ const ProfileCover = lazy(() => import('../../components/Profile/ProfileCover.pr
 const UserInformation = lazy(() => import('../../components/Profile/UserInformation.profile'))
 
 const Profile = () => {
-	const dispatch = useDispatch()
-	const params = useParams()
-	const { id }: any = params
+   const dispatch = useDispatch()
+   const params = useParams()
+   const { id }: any = params
 
-	const { profileUser, loading, error } = useSelector((state: IRootState) => state.profileUser)
-	const { currentUser } = useSelector((state: IRootState) => state.user)
+   const { profileUser, loading, error } = useSelector((state: IRootState) => state.profileUser)
+   const { currentUser } = useSelector((state: IRootState) => state.user)
 
-	React.useEffect(() => {
-		dispatch(getProfileUser(id))
-	}, [id])
+   React.useEffect(() => {
+      dispatch(getProfileUser(id))
+   }, [id])
 
-	if (loading || !profileUser || !currentUser) return <div>Loading...</div>
-	if (error) return <div className='vh-50 center'>{error}</div>
+   if (loading || !profileUser || !currentUser) return <div>Loading...</div>
+   if (error) return <div className="vh-50 center">{error}</div>
 
-	return (
-		<div className='px-md-4'>
-			<ProfileCover
-				currentUser={currentUser}
-				profileUser={profileUser}
-			/>
-			<UserInformation user={profileUser} />
-			<NavigationsTweet id={id} />
-			<div className='mt-4'>
-				<Outlet />
-			</div>
-		</div>
-	)
+   return (
+      <div className="px-md-4">
+         <ProfileCover currentUser={currentUser} profileUser={profileUser} />
+         <UserInformation user={profileUser} />
+         <NavigationsTweet id={id} />
+         <div className="mt-4">
+            <Outlet />
+         </div>
+      </div>
+   )
 }
 
 export default Profile

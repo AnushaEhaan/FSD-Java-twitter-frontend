@@ -5,25 +5,21 @@ import { getBookmarks } from '../../store/actions/tweets.action'
 import { IRootState } from '../../types/store/IRootState.type'
 
 const Bookmarks = () => {
-	const dispatch = useDispatch()
-	const { tweets, loading } = useSelector((state: IRootState) => state.tweets)
+   const dispatch = useDispatch()
+   const { tweets, loading } = useSelector((state: IRootState) => state.tweets)
 
-	useEffect(() => {
-		dispatch(getBookmarks())
-	}, [])
+   useEffect(() => {
+      dispatch(getBookmarks())
+   }, [])
 
-	return (
-		<div>
-			<div className='mx-md-4 py-md-5 pt-1'>
-				<h4 className='fs-21 mb-5'>Bookmarks</h4>
-				<TweetList
-					tweets={tweets}
-					loading={loading}
-					error='No Bookmarks yet'
-				/>
-			</div>
-		</div>
-	)
+   return (
+      <div>
+         <div className="mx-md-4 py-md-5 pt-1">
+            <h4 className="fs-21 mb-5">Bookmarks</h4>
+            <TweetList tweets={tweets} loading={loading} error="No Bookmarks yet" />
+         </div>
+      </div>
+   )
 }
 
 export default Bookmarks

@@ -7,48 +7,45 @@ import Spinner from '../reusable/Spinner'
 import TrendItem from './TrendItem'
 
 const TrendsList = () => {
-	const dispatch = useDispatch()
-	const { topTrends } = useSelector((state: IRootState) => state.trends)
-	const [loading, setLoading] = React.useState(false)
+   const dispatch = useDispatch()
+   const { topTrends } = useSelector((state: IRootState) => state.trends)
+   const [loading, setLoading] = React.useState(false)
 
-	React.useEffect(() => {
-		const fetchData = async () => {
-			setLoading(true)
-			const data = await dispatch(getTopTrends())
-			setLoading(false)
-		}
-		fetchData()
-	}, [dispatch])
+   React.useEffect(() => {
+      const fetchData = async () => {
+         setLoading(true)
+         await dispatch(getTopTrends())
+         setLoading(false)
+      }
+      fetchData()
 
-	return (
-		<div className='bg-secondary bg-opacity-25 rounded py-4	 px-lg-3 px-2'>
-			<div className='ms-2'>
-				<h5 className='fs-19'>Trends for you</h5>
-			</div>
+      return () => setLoading(false)
+   }, [dispatch])
 
-			<main className='mt-3'>
-				{loading && (
-					<div className='mt-5'>
-						<Spinner size='sm' />
-					</div>
-				)}
+   return (
+      <div className="bg-secondary bg-opacity-25 rounded py-4	 px-lg-3 px-2">
+         <div className="ms-2">
+            <h5 className="fs-19">Trends for you</h5>
+         </div>
 
-				{topTrends.length > 0 &&
-					topTrends.map((trend: ITrend) => (
-						<TrendItem
-							trend={trend}
-							key={trend._id}
-						/>
-					))}
+         <main className="mt-3">
+            {loading && (
+               <div className="mt-5">
+                  <Spinner size="sm" />
+               </div>
+            )}
 
-				{topTrends.length === 0 && !loading && (
-					<div className='mt-6 text-center'>
-						<p>No trends found</p>
-					</div>
-				)}
-			</main>
-		</div>
-	)
+            {topTrends.length > 0 &&
+               topTrends.map((trend: ITrend) => <TrendItem trend={trend} key={trend._id} />)}
+
+            {topTrends.length === 0 && !loading && (
+               <div className="mt-6 text-center">
+                  <p>No trends found</p>
+               </div>
+            )}
+         </main>
+      </div>
+   )
 }
 
 export default TrendsList

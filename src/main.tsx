@@ -7,12 +7,12 @@ import { Provider } from 'react-redux'
 import store from './store/store'
 
 ReactDOM.render(
-	<React.StrictMode>
-		<Provider store={store}>
-			<Suspense fallback={<Spinner height='80vh' />}>
-				<App />
-			</Suspense>
-		</Provider>
-	</React.StrictMode>,
-	document.getElementById('root')
+   <React.StrictMode>
+      <Provider store={store}>
+         <Suspense fallback={<Spinner height="80vh" />}>
+            <App />
+         </Suspense>
+      </Provider>
+   </React.StrictMode>,
+   document.getElementById('root')
 )

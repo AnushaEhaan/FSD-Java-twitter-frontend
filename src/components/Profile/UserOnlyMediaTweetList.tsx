@@ -6,24 +6,20 @@ import { useParams } from 'react-router'
 import { IRootState } from '../../types/store/IRootState.type'
 
 const UserOnlyMediaTweetList = () => {
-	const params = useParams()
-	const { id }: any = params
-	const dispatch = useDispatch()
-	const { tweets, loading: tweetLoading } = useSelector(
-		(state: IRootState) => state.tweets
-	)
-	React.useEffect(() => {
-		dispatch(getOnlyMediaTweets(id))
-	}, [])
+   const params = useParams()
+   const { id }: any = params
+   const dispatch = useDispatch()
+   const { tweets, loading: tweetLoading } = useSelector((state: IRootState) => state.tweets)
 
-	return (
-		<div className='mt-5'>
-			<TweetList
-				tweets={tweets}
-				loading={tweetLoading}
-			/>
-		</div>
-	)
+   React.useEffect(() => {
+      dispatch(getOnlyMediaTweets(id))
+   }, [])
+
+   return (
+      <div className="mt-5">
+         <TweetList tweets={tweets} loading={tweetLoading} />
+      </div>
+   )
 }
 
 export default UserOnlyMediaTweetList
