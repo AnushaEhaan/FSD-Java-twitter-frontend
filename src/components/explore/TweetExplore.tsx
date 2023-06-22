@@ -8,7 +8,7 @@ interface Iprops {
 
 const TweetExplore = ({ tweet }: Iprops) => {
    return (
-      <div className="mb-5">
+      <div className="w-100">
          <Link to={`/tweet/${tweet._id}`} className="cursor">
             {tweet.content && (
                <p
@@ -18,7 +18,7 @@ const TweetExplore = ({ tweet }: Iprops) => {
                   {stringUtils.heighLightTrends(tweet.content)}
                </p>
             )}
-            {tweet.photo && <img src={tweet.photo} className="w-100 h-sm rounded-2" alt="" />}
+            {tweet.photo && <img src={tweet.photo} className="w-100 rounded-2" alt="" />}
          </Link>
       </div>
    )

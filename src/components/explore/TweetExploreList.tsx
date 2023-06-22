@@ -40,11 +40,13 @@ const TweetExploreList = () => {
 
    return (
       <div>
-         <main className="px-md-3 row">
-            <section className="col-6">
+         <main className="px-md-3 gap-3 d-flex">
+            <section className="w-50 d-flex flex-column gap-3">
                {renderTweets(tweets.slice(0, Math.round(tweets.length / 2)))}
             </section>
-            <div className="col-6">{renderTweets(tweets.slice(Math.round(tweets.length / 2)))}</div>
+            <div className="w-50 d-flex flex-column gap-3">
+               {renderTweets(tweets.slice(Math.round(tweets.length / 2)))}
+            </div>
          </main>
       </div>
    )
