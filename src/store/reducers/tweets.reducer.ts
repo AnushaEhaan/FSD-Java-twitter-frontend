@@ -1,4 +1,5 @@
 import { initialState, TweetsAction, TweetsActionTypes, TweetsState } from '../../types/store/tweets.type'
+import { ITweet } from '../../types/tweet.type'
 
 const tweetsReducer = (state: TweetsState = initialState, action: TweetsAction): TweetsState => {
    switch (action.type) {
@@ -40,6 +41,31 @@ const tweetsReducer = (state: TweetsState = initialState, action: TweetsAction):
             tweet: {
                ...action.payload,
                comments: state.tweet?.comments,
+            },
+         }
+      case TweetsActionTypes.LIKE_TWEET:
+         console.log(action.payload)
+         return {
+            ...state,
+            tweets: state.tweets.map(
+               (tweet: ITweet): ITweet =>
+                  tweet._id === action.payload.tweetId
+                     ? {
+                          ...tweet,
+                          likes: tweet.likes.includes(action.payload.meId)
+                             ? tweet.likes.filter((id: string) => id !== action.payload.meId)
+                             : [...tweet.likes, action.payload.meId],
+                       }
+                     : tweet
+            ),
+            // @ts-ignore
+            tweet: {
+               ...state.tweet,
+               likes: state.tweet
+                  ? state.tweet?.likes.includes(action.payload.meId)
+                     ? state.tweet?.likes.filter((id: string) => id !== action.payload.meId)
+                     : [...state.tweet?.likes, action.payload.meId]
+                  : [],
             },
          }
 

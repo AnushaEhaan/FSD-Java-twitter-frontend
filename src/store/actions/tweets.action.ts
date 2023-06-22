@@ -68,7 +68,7 @@ export const getUserTweets = (userId: string) => async (dispatch: any) => {
       dispatch(getTweetsSuccess(data.tweets))
    } catch (error: any) {
       dispatch(getTweetsFailure(error?.response.data.message))
-      toast.error(error?.response.data.message)
+      console.log(error)
    }
 }
 
@@ -80,7 +80,7 @@ export const getOnlyMediaTweets = (userId: string) => async (dispatch: any) => {
       dispatch(getTweetsSuccess(data.tweets))
    } catch (error: any) {
       dispatch(getTweetsFailure(error?.response.data.message))
-      toast.error(error?.response.data.message)
+      console.log(error)
    }
 }
 
@@ -92,35 +92,40 @@ export const getTweetsLikeByUser = (userId: string) => async (dispatch: any) => 
       dispatch(getTweetsSuccess(data.tweets))
    } catch (error: any) {
       dispatch(getTweetsFailure(error?.response.data.message))
-      toast.error(error?.response.data.message)
+      console.log(error)
    }
 }
 
 export const likeTweet = (tweetId: string) => async (dispatch: any) => {
    try {
       const userId = Cookies.get('user_Id')
-      const response = await axios.post(`/tweet/likeTweet/${tweetId}/${userId}`)
-      const data = await response.data
-      dispatch(updateTweet(data.tweet))
+      await axios.post(`/tweet/likeTweet/${tweetId}/${userId}`)
    } catch (error: any) {
-      toast.error(error?.response.data.message)
+      console.log(error)
    }
 }
 
-export const retweet = (tweetId: string) => async (dispatch: any) => {
+export const retweet = (tweet: ITweet) => async (dispatch: any) => {
    try {
-      const userId = Cookies.get('user_Id')
-      const response = await axios.post(`/tweet/retweet/${tweetId}/${userId}`)
-      const data = await response.data
+      const userId = Cookies.get('user_Id') as string
+
+      const newTweet: ITweet = {
+         ...tweet,
+         retweetedBy: tweet.retweetedBy.includes(userId)
+            ? tweet.retweetedBy.filter((id) => id !== userId)
+            : [...tweet.retweetedBy, userId],
+      }
+
       dispatch(
          setRetweet({
-            tweet: data.tweet,
-            isRetweeted: data.isRetweeted,
+            tweet: newTweet,
+            isRetweeted: !tweet.isRetweeted,
             currentUserID: userId,
          })
       )
+      await axios.post(`/tweet/retweet/${tweet._id}/${userId}`)
    } catch (error: any) {
-      toast.error(error?.response.data.message)
+      console.log(error)
    }
 }
 
@@ -144,7 +149,7 @@ export const addBookmark = (tweetId: string) => async (dispatch: any) => {
       dispatch(updateTweet(data.tweet))
       return true
    } catch (error: any) {
-      toast.error(error?.response.data.message)
+      console.log(error)
       return false
    }
 }

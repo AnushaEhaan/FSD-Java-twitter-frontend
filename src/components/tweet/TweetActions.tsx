@@ -12,16 +12,23 @@ interface TweetActionsProps {
 }
 
 const TweetActions = ({ tweet, handleSetTweet, isCommentBtnHidden }: TweetActionsProps) => {
+   const [likes, setLikes] = useState<string[]>(tweet.likes)
+
    const currentUserId = Cookies.get('user_Id')
    const dispatch = useDispatch()
    const [loadingOnBookMark, setLoadingOnBookMark] = useState(false)
 
    const handleTweetLike = (tweetId: string) => {
       dispatch(likeTweet(tweetId))
+
+      if (likes.includes(currentUserId as string)) {
+         return setLikes(likes.filter((like) => like !== currentUserId))
+      }
+      setLikes([...likes, currentUserId as string])
    }
 
-   const handleRetweet = (tweetId: string) => {
-      dispatch(retweet(tweetId))
+   const handleRetweet = () => {
+      dispatch(retweet(tweet))
    }
 
    const handleTweetBookmark = async (tweetId: string) => {
@@ -45,7 +52,7 @@ const TweetActions = ({ tweet, handleSetTweet, isCommentBtnHidden }: TweetAction
             )}
             <button
                className="btn btn-outline-secondary text-dark text-opacity-50  me-2px border-0 w-40px h-40px center"
-               onClick={() => handleRetweet(tweet._id)}>
+               onClick={handleRetweet}>
                <i
                   className={`fa-solid  fa-retweet fs-18 ${
                      tweet.retweetedBy.includes(currentUserId as string) && 'text-success'
@@ -59,13 +66,12 @@ const TweetActions = ({ tweet, handleSetTweet, isCommentBtnHidden }: TweetAction
                onClick={() => handleTweetLike(tweet._id)}>
                <i
                   className={`fa-${
-                     tweet.likes.includes(currentUserId as string) ? 'solid text-danger' : 'regular'
+                     likes.includes(currentUserId as string) ? 'solid text-danger' : 'regular'
                   }  fa-heart fs-18`}></i>
             </button>
-            {tweet.likes.length > 0 && (
-               <span
-                  className={`${tweet.likes.includes(currentUserId as string) && 'text-danger'} ms-1 mt-1`}>
-                  {tweet.likes.length}
+            {likes.length > 0 && (
+               <span className={`${likes.includes(currentUserId as string) && 'text-danger'} ms-1 mt-1`}>
+                  {likes.length}
                </span>
             )}
          </div>
