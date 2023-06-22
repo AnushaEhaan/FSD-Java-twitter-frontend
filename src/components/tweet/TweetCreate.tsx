@@ -42,7 +42,6 @@ const TweetCreate = () => {
          const response = await axios.post('tweet/uploadPhoto', formData, {
             headers: {
                'Content-Type': 'multipart/form-data',
-               'Access-Control-Allow-Origin': '*',
             },
          })
          const data = await response.data
