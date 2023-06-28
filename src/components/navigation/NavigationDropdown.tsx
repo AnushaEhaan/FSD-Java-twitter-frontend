@@ -11,11 +11,11 @@ const NavigationDropdown = () => {
    return (
       <div>
          <button
-            className="btn pt-3 h-42px w-42px center"
             type="button"
+            aria-expanded="false"
             id="dropdownMenuButton1"
             data-bs-toggle="dropdown"
-            aria-expanded="false">
+            className="btn pt-3 h-42px w-42px center">
             <Avatar avatar={currentUser?.avatar} />
          </button>
          <ul className="dropdown-menu pb-0 top-10px" aria-labelledby="dropdownMenuButton1">

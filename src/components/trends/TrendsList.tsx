@@ -1,10 +1,10 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getTopTrends } from '../../store/actions/trends.action'
-import { IRootState } from '../../types/store/IRootState.type'
-import { ITrend } from '../../types/trend.type'
-import Spinner from '../reusable/Spinner'
 import TrendItem from './TrendItem'
+import Spinner from '../reusable/Spinner'
+import { ITrend } from '../../types/trend.type'
+import { useDispatch, useSelector } from 'react-redux'
+import { IRootState } from '../../types/store/IRootState.type'
+import { getTopTrends } from '../../store/actions/trends.action'
 
 const TrendsList = () => {
    const dispatch = useDispatch()

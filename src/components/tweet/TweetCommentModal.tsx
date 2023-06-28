@@ -10,8 +10,8 @@ import { addComment } from '../../store/actions/comment.action'
 
 interface Iprops {
    tweet: ITweet
-   showCommentModel: boolean
    handleModelClose: any
+   showCommentModel: boolean
 }
 
 const TweetCommentModal = ({ tweet, showCommentModel, handleModelClose }: Iprops) => {

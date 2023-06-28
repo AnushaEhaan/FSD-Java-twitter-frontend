@@ -7,11 +7,11 @@ import UserList from '../suggestions/UserList'
 import { IRootState } from '../../types/store/IRootState.type'
 
 interface Iprops {
-   show: boolean
    user: IUser
    type: string
-   totalPages: number
    page: number
+   show: boolean
+   totalPages: number
    nextPage: () => void
    handleClose: () => void
 }

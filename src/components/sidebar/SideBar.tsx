@@ -1,5 +1,5 @@
-import SuggestionsList from '../suggestions/SuggestionsList'
 import Trends from '../trends/TrendsList'
+import SuggestionsList from '../suggestions/SuggestionsList'
 
 const SideBar = () => {
    return (

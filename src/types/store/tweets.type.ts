@@ -2,8 +2,8 @@ import { ITweet } from '../tweet.type'
 
 export interface TweetsState {
    loading: boolean
-   error: string | null
    tweets: ITweet[]
+   error: string | null
    tweet: ITweet | null
 }
 
@@ -20,13 +20,13 @@ export const initialState: TweetsState = {
 }
 
 export enum TweetsActionTypes {
+   RETWEET = 'RETWEET',
+   ADD_TWEET = 'ADD_TWEET',
+   GET_TWEET = 'GET_TWEET',
+   LIKE_TWEET = 'LIKE_TWEET',
+   DELTE_TWEET = 'DELTE_TWEET',
+   UPDATE_TWEET = 'UPDATE_TWEET',
    GET_TWEETS_START = 'GET_TWEETS_START',
    GET_TWEETS_SUCCESS = 'GET_TWEETS_SUCCESS',
    GET_TWEETS_FAILURE = 'GET_TWEETS_FAILURE',
-   ADD_TWEET = 'ADD_TWEET',
-   UPDATE_TWEET = 'UPDATE_TWEET',
-   LIKE_TWEET = 'LIKE_TWEET',
-   RETWEET = 'RETWEET',
-   GET_TWEET = 'GET_TWEET',
-   DELTE_TWEET = 'DELTE_TWEET',
 }

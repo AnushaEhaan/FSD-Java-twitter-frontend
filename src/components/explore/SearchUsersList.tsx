@@ -3,8 +3,8 @@ import { IUser } from '../../types/user.type'
 import SearchUserItem from './SearchUserItem'
 
 interface Iprops {
-   users: IUser[]
    error: any
+   users: IUser[]
    loading: boolean
 }
 
@@ -13,9 +13,9 @@ const SearchUsersList = ({ users, error, loading }: Iprops) => {
       <div
          className="position-absolute  bg-white p-2 py-3 w-100 shadow border rounded-3 mt-1"
          style={{
+            overflowY: 'auto',
             maxHeight: '400px',
             minHeight: '150px',
-            overflowY: 'auto',
          }}>
          {loading && users.length === 0 && <Spinner size="sm" height="10vh" />}
          {users.length > 0 && users.map((user: IUser) => <SearchUserItem key={user._id} user={user} />)}

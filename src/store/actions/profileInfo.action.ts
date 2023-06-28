@@ -11,11 +11,6 @@ const getProfileUserStart = (): ProfileUserAction => ({
    type: ProfileUserActionTypes.GET_PROFILE_USER_START,
 })
 
-const getProfileUserSuccess = (profileUser: IUser): ProfileUserAction => ({
-   type: ProfileUserActionTypes.GET_PROFILE_USER_SUCCESS,
-   payload: profileUser,
-})
-
 const getProfileUserFailure = (error: any): ProfileUserAction => ({
    type: ProfileUserActionTypes.GET_PROFILE_USER_FAILURE,
    payload: error,
@@ -25,6 +20,12 @@ export const setProfileUser = (profileUser: Object): ProfileUserAction => ({
    type: ProfileUserActionTypes.SET_PROFILE_USER,
    payload: profileUser,
 })
+
+const getProfileUserSuccess = (profileUser: IUser): ProfileUserAction => ({
+   type: ProfileUserActionTypes.GET_PROFILE_USER_SUCCESS,
+   payload: profileUser,
+})
+
 
 export const findUserById = async (userId: string) => {
    try {

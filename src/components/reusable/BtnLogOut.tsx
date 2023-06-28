@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux'
-import { userLogout } from '../../store/actions/user.action'
-
 import { useNavigate } from 'react-router-dom'
+import { userLogout } from '../../store/actions/user.action'
 
 interface Iprops {
    displayInDropDown?: boolean

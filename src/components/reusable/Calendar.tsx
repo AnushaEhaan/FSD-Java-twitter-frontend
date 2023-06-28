@@ -6,13 +6,13 @@ interface IProps {
 }
 
 const Calendar = ({ handleDateOfBirth }: IProps) => {
-   const [selectedMonth, setSelectedMonth] = React.useState<string | null>(null)
    const [selectedDay, setSelectedDay] = React.useState<number | null>(null)
    const [selectedYear, setSelectedYear] = React.useState<number | null>(null)
+   const [selectedMonth, setSelectedMonth] = React.useState<string | null>(null)
 
-   const handleMonthChange = (value: string) => setSelectedMonth(value)
    const handleDayChange = (value: number) => setSelectedDay(value)
    const handleYearChange = (value: number) => setSelectedYear(value)
+   const handleMonthChange = (value: string) => setSelectedMonth(value)
 
    React.useEffect(() => {
       handleDateOfBirth({

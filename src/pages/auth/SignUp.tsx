@@ -1,11 +1,11 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
-import Spinner from '../../components/reusable/Spinner'
 import useForm from '../../hooks/useForm'
-import signupJson from '../../jsons/signup.json'
-import { signUp } from '../../store/actions/signUp.action'
 import { IForm } from '../../types/form.type'
+import signupJson from '../../jsons/signup.json'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import Spinner from '../../components/reusable/Spinner'
+import { signUp } from '../../store/actions/signUp.action'
 import { IRootState } from '../../types/store/IRootState.type'
 
 const SingUp = () => {

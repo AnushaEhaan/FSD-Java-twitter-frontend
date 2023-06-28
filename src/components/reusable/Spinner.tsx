@@ -1,8 +1,6 @@
-import React from 'react'
-
 interface Iprops {
-   size?: 'xsm' | 'sm' | 'md' | 'lg'
    height?: string
+   size?: 'xsm' | 'sm' | 'md' | 'lg'
 }
 
 const Spinner = ({ size, height: h }: Iprops) => {

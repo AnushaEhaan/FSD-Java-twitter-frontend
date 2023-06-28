@@ -12,14 +12,14 @@ import { updateUser, updateUserStart, uploadAvatar } from '../../store/actions/u
 
 interface Iprops {
    user: IUser
-   handleClose: () => void
    show: boolean
+   handleClose: () => void
 }
 
 export interface IDateOfBirth {
-   month: string | null
    day: number | null
    year: number | null
+   month: string | null
 }
 
 const EditProfileModel = ({ user, handleClose, show }: Iprops) => {
@@ -43,10 +43,10 @@ const EditProfileModel = ({ user, handleClose, show }: Iprops) => {
    }
 
    const [inputFormData, setInputFormData] = useState<Partial<IUser>>({
-      name: user.name || '',
-      location: user.location || '',
-      website: user.website || '',
       bio: user.bio || '',
+      name: user.name || '',
+      website: user.website || '',
+      location: user.location || '',
    })
 
    const handleSubmit = async () => {

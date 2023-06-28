@@ -11,14 +11,14 @@ const TweetCommentList = lazy(() => import('../../components/tweet/TweetCommentL
 const TweetCommentCreate = lazy(() => import('../../components/tweet/TweetCommentCreate'))
 
 const Tweet = () => {
-   const userId = Cookies.get('user_Id')
    const { id } = useParams()
    const dispatch = useDispatch()
+   const userId = Cookies.get('user_Id')
+   const [error, setError] = useState('')
+   const [content, setContent] = useState('')
    const [loading, setLoading] = useState(false)
    const [addCommentLoading, setAddCommentLoading] = useState(false)
-   const [error, setError] = useState('')
    const { tweet } = useSelector((state: IRootState) => state.tweets)
-   const [content, setContent] = useState('')
 
    React.useEffect(() => {
       async function fetchData() {
